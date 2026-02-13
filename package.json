@@ -1,6 +1,6 @@
 {
   "name": "periapsis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "type": "module",
   "scripts": {
@@ -30,5 +30,8 @@
     "spdx",
     "cli"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "periapsis": "^1.0.1"
+  }
 }
