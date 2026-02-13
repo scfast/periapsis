@@ -1,0 +1,4352 @@
+[
+  {
+    "fullName": "BSD Zero Clause License",
+    "link": "https://spdx.org/licenses/0BSD.html",
+    "identifier": "0BSD",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "3D Slicer License v1.0",
+    "link": "https://spdx.org/licenses/3D-Slicer-1.0.html",
+    "identifier": "3D-Slicer-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Attribution Assurance License",
+    "link": "https://spdx.org/licenses/AAL.html",
+    "identifier": "AAL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Abstyles License",
+    "link": "https://spdx.org/licenses/Abstyles.html",
+    "identifier": "Abstyles",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "AdaCore Doc License",
+    "link": "https://spdx.org/licenses/AdaCore-doc.html",
+    "identifier": "AdaCore-doc",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Adobe Systems Incorporated Source Code License Agreement",
+    "link": "https://spdx.org/licenses/Adobe-2006.html",
+    "identifier": "Adobe-2006",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Adobe Display PostScript License",
+    "link": "https://spdx.org/licenses/Adobe-Display-PostScript.html",
+    "identifier": "Adobe-Display-PostScript",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Adobe Glyph List License",
+    "link": "https://spdx.org/licenses/Adobe-Glyph.html",
+    "identifier": "Adobe-Glyph",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Adobe Utopia Font License",
+    "link": "https://spdx.org/licenses/Adobe-Utopia.html",
+    "identifier": "Adobe-Utopia",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Amazon Digital Services License",
+    "link": "https://spdx.org/licenses/ADSL.html",
+    "identifier": "ADSL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Advanced Cryptics Dictionary License",
+    "link": "https://spdx.org/licenses/Advanced-Cryptics-Dictionary.html",
+    "identifier": "Advanced-Cryptics-Dictionary",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Academic Free License v1.1",
+    "link": "https://spdx.org/licenses/AFL-1.1.html",
+    "identifier": "AFL-1.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Academic Free License v1.2",
+    "link": "https://spdx.org/licenses/AFL-1.2.html",
+    "identifier": "AFL-1.2",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Academic Free License v2.0",
+    "link": "https://spdx.org/licenses/AFL-2.0.html",
+    "identifier": "AFL-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Academic Free License v2.1",
+    "link": "https://spdx.org/licenses/AFL-2.1.html",
+    "identifier": "AFL-2.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Academic Free License v3.0",
+    "link": "https://spdx.org/licenses/AFL-3.0.html",
+    "identifier": "AFL-3.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Afmparse License",
+    "link": "https://spdx.org/licenses/Afmparse.html",
+    "identifier": "Afmparse",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Affero General Public License v1.0",
+    "link": "https://spdx.org/licenses/AGPL-1.0.html",
+    "identifier": "AGPL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Affero General Public License v1.0 only",
+    "link": "https://spdx.org/licenses/AGPL-1.0-only.html",
+    "identifier": "AGPL-1.0-only",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Affero General Public License v1.0 or later",
+    "link": "https://spdx.org/licenses/AGPL-1.0-or-later.html",
+    "identifier": "AGPL-1.0-or-later",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Affero General Public License v3.0",
+    "link": "https://spdx.org/licenses/AGPL-3.0.html",
+    "identifier": "AGPL-3.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Affero General Public License v3.0 only",
+    "link": "https://spdx.org/licenses/AGPL-3.0-only.html",
+    "identifier": "AGPL-3.0-only",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Affero General Public License v3.0 or later",
+    "link": "https://spdx.org/licenses/AGPL-3.0-or-later.html",
+    "identifier": "AGPL-3.0-or-later",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Aladdin Free Public License",
+    "link": "https://spdx.org/licenses/Aladdin.html",
+    "identifier": "Aladdin",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ALGLIB Documentation License",
+    "link": "https://spdx.org/licenses/ALGLIB-Documentation.html",
+    "identifier": "ALGLIB-Documentation",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "AMD newlib License",
+    "link": "https://spdx.org/licenses/AMD-newlib.html",
+    "identifier": "AMD-newlib",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "AMD's plpa_map.c License",
+    "link": "https://spdx.org/licenses/AMDPLPA.html",
+    "identifier": "AMDPLPA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apple MIT License",
+    "link": "https://spdx.org/licenses/AML.html",
+    "identifier": "AML",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "AML glslang variant License",
+    "link": "https://spdx.org/licenses/AML-glslang.html",
+    "identifier": "AML-glslang",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Academy of Motion Picture Arts and Sciences BSD",
+    "link": "https://spdx.org/licenses/AMPAS.html",
+    "identifier": "AMPAS",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ANTLR Software Rights Notice",
+    "link": "https://spdx.org/licenses/ANTLR-PD.html",
+    "identifier": "ANTLR-PD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ANTLR Software Rights Notice with license fallback",
+    "link": "https://spdx.org/licenses/ANTLR-PD-fallback.html",
+    "identifier": "ANTLR-PD-fallback",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Any OSI License",
+    "link": "https://spdx.org/licenses/any-OSI.html",
+    "identifier": "any-OSI",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Any OSI License - Perl Modules",
+    "link": "https://spdx.org/licenses/any-OSI-perl-modules.html",
+    "identifier": "any-OSI-perl-modules",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apache License 1.0",
+    "link": "https://spdx.org/licenses/Apache-1.0.html",
+    "identifier": "Apache-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apache License 1.1",
+    "link": "https://spdx.org/licenses/Apache-1.1.html",
+    "identifier": "Apache-1.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Apache License 2.0",
+    "link": "https://spdx.org/licenses/Apache-2.0.html",
+    "identifier": "Apache-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Adobe Postscript AFM License",
+    "link": "https://spdx.org/licenses/APAFML.html",
+    "identifier": "APAFML",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Adaptive Public License 1.0",
+    "link": "https://spdx.org/licenses/APL-1.0.html",
+    "identifier": "APL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "App::s2p License",
+    "link": "https://spdx.org/licenses/App-s2p.html",
+    "identifier": "App-s2p",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apple Public Source License 1.0",
+    "link": "https://spdx.org/licenses/APSL-1.0.html",
+    "identifier": "APSL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apple Public Source License 1.1",
+    "link": "https://spdx.org/licenses/APSL-1.1.html",
+    "identifier": "APSL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apple Public Source License 1.2",
+    "link": "https://spdx.org/licenses/APSL-1.2.html",
+    "identifier": "APSL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Apple Public Source License 2.0",
+    "link": "https://spdx.org/licenses/APSL-2.0.html",
+    "identifier": "APSL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Arphic Public License",
+    "link": "https://spdx.org/licenses/Arphic-1999.html",
+    "identifier": "Arphic-1999",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Artistic License 1.0",
+    "link": "https://spdx.org/licenses/Artistic-1.0.html",
+    "identifier": "Artistic-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Artistic License 1.0 w/clause 8",
+    "link": "https://spdx.org/licenses/Artistic-1.0-cl8.html",
+    "identifier": "Artistic-1.0-cl8",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Artistic License 1.0 (Perl)",
+    "link": "https://spdx.org/licenses/Artistic-1.0-Perl.html",
+    "identifier": "Artistic-1.0-Perl",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Artistic License 2.0",
+    "link": "https://spdx.org/licenses/Artistic-2.0.html",
+    "identifier": "Artistic-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Artistic License 1.0 (dist)",
+    "link": "https://spdx.org/licenses/Artistic-dist.html",
+    "identifier": "Artistic-dist",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Aspell Russian License",
+    "link": "https://spdx.org/licenses/Aspell-RU.html",
+    "identifier": "Aspell-RU",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ASWF Digital Assets License version 1.0",
+    "link": "https://spdx.org/licenses/ASWF-Digital-Assets-1.0.html",
+    "identifier": "ASWF-Digital-Assets-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ASWF Digital Assets License 1.1",
+    "link": "https://spdx.org/licenses/ASWF-Digital-Assets-1.1.html",
+    "identifier": "ASWF-Digital-Assets-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Baekmuk License",
+    "link": "https://spdx.org/licenses/Baekmuk.html",
+    "identifier": "Baekmuk",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Bahyph License",
+    "link": "https://spdx.org/licenses/Bahyph.html",
+    "identifier": "Bahyph",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Barr License",
+    "link": "https://spdx.org/licenses/Barr.html",
+    "identifier": "Barr",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "bcrypt Solar Designer License",
+    "link": "https://spdx.org/licenses/bcrypt-Solar-Designer.html",
+    "identifier": "bcrypt-Solar-Designer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Beerware License",
+    "link": "https://spdx.org/licenses/Beerware.html",
+    "identifier": "Beerware",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Bitstream Charter Font License",
+    "link": "https://spdx.org/licenses/Bitstream-Charter.html",
+    "identifier": "Bitstream-Charter",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Bitstream Vera Font License",
+    "link": "https://spdx.org/licenses/Bitstream-Vera.html",
+    "identifier": "Bitstream-Vera",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BitTorrent Open Source License v1.0",
+    "link": "https://spdx.org/licenses/BitTorrent-1.0.html",
+    "identifier": "BitTorrent-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BitTorrent Open Source License v1.1",
+    "link": "https://spdx.org/licenses/BitTorrent-1.1.html",
+    "identifier": "BitTorrent-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SQLite Blessing",
+    "link": "https://spdx.org/licenses/blessing.html",
+    "identifier": "blessing",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Blue Oak Model License 1.0.0",
+    "link": "https://spdx.org/licenses/BlueOak-1.0.0.html",
+    "identifier": "BlueOak-1.0.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Boehm-Demers-Weiser GC License",
+    "link": "https://spdx.org/licenses/Boehm-GC.html",
+    "identifier": "Boehm-GC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Boehm-Demers-Weiser GC License (without fee)",
+    "link": "https://spdx.org/licenses/Boehm-GC-without-fee.html",
+    "identifier": "Boehm-GC-without-fee",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Borceux license",
+    "link": "https://spdx.org/licenses/Borceux.html",
+    "identifier": "Borceux",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Brian Gladman 2-Clause License",
+    "link": "https://spdx.org/licenses/Brian-Gladman-2-Clause.html",
+    "identifier": "Brian-Gladman-2-Clause",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Brian Gladman 3-Clause License",
+    "link": "https://spdx.org/licenses/Brian-Gladman-3-Clause.html",
+    "identifier": "Brian-Gladman-3-Clause",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 1-Clause License",
+    "link": "https://spdx.org/licenses/BSD-1-Clause.html",
+    "identifier": "BSD-1-Clause",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause \"Simplified\" License",
+    "link": "https://spdx.org/licenses/BSD-2-Clause.html",
+    "identifier": "BSD-2-Clause",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause - Ian Darwin variant",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-Darwin.html",
+    "identifier": "BSD-2-Clause-Darwin",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause - first lines requirement",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-first-lines.html",
+    "identifier": "BSD-2-Clause-first-lines",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause FreeBSD License",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-FreeBSD.html",
+    "identifier": "BSD-2-Clause-FreeBSD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause NetBSD License",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-NetBSD.html",
+    "identifier": "BSD-2-Clause-NetBSD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD-2-Clause Plus Patent License",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-Patent.html",
+    "identifier": "BSD-2-Clause-Patent",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause pkgconf disclaimer variant",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-pkgconf-disclaimer.html",
+    "identifier": "BSD-2-Clause-pkgconf-disclaimer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 2-Clause with views sentence",
+    "link": "https://spdx.org/licenses/BSD-2-Clause-Views.html",
+    "identifier": "BSD-2-Clause-Views",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause \"New\" or \"Revised\" License",
+    "link": "https://spdx.org/licenses/BSD-3-Clause.html",
+    "identifier": "BSD-3-Clause",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause acpica variant",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-acpica.html",
+    "identifier": "BSD-3-Clause-acpica",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD with attribution",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Attribution.html",
+    "identifier": "BSD-3-Clause-Attribution",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Clear License",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Clear.html",
+    "identifier": "BSD-3-Clause-Clear",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Flex variant",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-flex.html",
+    "identifier": "BSD-3-Clause-flex",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Hewlett-Packard BSD variant license",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-HP.html",
+    "identifier": "BSD-3-Clause-HP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Lawrence Berkeley National Labs BSD variant license",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-LBNL.html",
+    "identifier": "BSD-3-Clause-LBNL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Modification",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Modification.html",
+    "identifier": "BSD-3-Clause-Modification",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause No Military License",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-No-Military-License.html",
+    "identifier": "BSD-3-Clause-No-Military-License",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause No Nuclear License",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-No-Nuclear-License.html",
+    "identifier": "BSD-3-Clause-No-Nuclear-License",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause No Nuclear License 2014",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-No-Nuclear-License-2014.html",
+    "identifier": "BSD-3-Clause-No-Nuclear-License-2014",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause No Nuclear Warranty",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-No-Nuclear-Warranty.html",
+    "identifier": "BSD-3-Clause-No-Nuclear-Warranty",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Open MPI variant",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Open-MPI.html",
+    "identifier": "BSD-3-Clause-Open-MPI",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Sun Microsystems",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Sun.html",
+    "identifier": "BSD-3-Clause-Sun",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 3-Clause Tso variant",
+    "link": "https://spdx.org/licenses/BSD-3-Clause-Tso.html",
+    "identifier": "BSD-3-Clause-Tso",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 4-Clause \"Original\" or \"Old\" License",
+    "link": "https://spdx.org/licenses/BSD-4-Clause.html",
+    "identifier": "BSD-4-Clause",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 4 Clause Shortened",
+    "link": "https://spdx.org/licenses/BSD-4-Clause-Shortened.html",
+    "identifier": "BSD-4-Clause-Shortened",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD-4-Clause (University of California-Specific)",
+    "link": "https://spdx.org/licenses/BSD-4-Clause-UC.html",
+    "identifier": "BSD-4-Clause-UC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 4.3 RENO License",
+    "link": "https://spdx.org/licenses/BSD-4.3RENO.html",
+    "identifier": "BSD-4.3RENO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD 4.3 TAHOE License",
+    "link": "https://spdx.org/licenses/BSD-4.3TAHOE.html",
+    "identifier": "BSD-4.3TAHOE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD Advertising Acknowledgement License",
+    "link": "https://spdx.org/licenses/BSD-Advertising-Acknowledgement.html",
+    "identifier": "BSD-Advertising-Acknowledgement",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD with Attribution and HPND disclaimer",
+    "link": "https://spdx.org/licenses/BSD-Attribution-HPND-disclaimer.html",
+    "identifier": "BSD-Attribution-HPND-disclaimer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD-Inferno-Nettverk",
+    "link": "https://spdx.org/licenses/BSD-Inferno-Nettverk.html",
+    "identifier": "BSD-Inferno-Nettverk",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD Mark Modifications License",
+    "link": "https://spdx.org/licenses/BSD-Mark-Modifications.html",
+    "identifier": "BSD-Mark-Modifications",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD Protection License",
+    "link": "https://spdx.org/licenses/BSD-Protection.html",
+    "identifier": "BSD-Protection",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD Source Code Attribution - beginning of file variant",
+    "link": "https://spdx.org/licenses/BSD-Source-beginning-file.html",
+    "identifier": "BSD-Source-beginning-file",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "BSD Source Code Attribution",
+    "link": "https://spdx.org/licenses/BSD-Source-Code.html",
+    "identifier": "BSD-Source-Code",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Systemics BSD variant license",
+    "link": "https://spdx.org/licenses/BSD-Systemics.html",
+    "identifier": "BSD-Systemics",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Systemics W3Works BSD variant license",
+    "link": "https://spdx.org/licenses/BSD-Systemics-W3Works.html",
+    "identifier": "BSD-Systemics-W3Works",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Boost Software License 1.0",
+    "link": "https://spdx.org/licenses/BSL-1.0.html",
+    "identifier": "BSL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Buddy License",
+    "link": "https://spdx.org/licenses/Buddy.html",
+    "identifier": "Buddy",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Business Source License 1.1",
+    "link": "https://spdx.org/licenses/BUSL-1.1.html",
+    "identifier": "BUSL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "bzip2 and libbzip2 License v1.0.5",
+    "link": "https://spdx.org/licenses/bzip2-1.0.5.html",
+    "identifier": "bzip2-1.0.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "bzip2 and libbzip2 License v1.0.6",
+    "link": "https://spdx.org/licenses/bzip2-1.0.6.html",
+    "identifier": "bzip2-1.0.6",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Computational Use of Data Agreement v1.0",
+    "link": "https://spdx.org/licenses/C-UDA-1.0.html",
+    "identifier": "C-UDA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Cryptographic Autonomy License 1.0",
+    "link": "https://spdx.org/licenses/CAL-1.0.html",
+    "identifier": "CAL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Cryptographic Autonomy License 1.0 (Combined Work Exception)",
+    "link": "https://spdx.org/licenses/CAL-1.0-Combined-Work-Exception.html",
+    "identifier": "CAL-1.0-Combined-Work-Exception",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Caldera License",
+    "link": "https://spdx.org/licenses/Caldera.html",
+    "identifier": "Caldera",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Caldera License (without preamble)",
+    "link": "https://spdx.org/licenses/Caldera-no-preamble.html",
+    "identifier": "Caldera-no-preamble",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Attack    Pattern Enumeration and Classification License",
+    "link": "https://spdx.org/licenses/CAPEC-tou.html",
+    "identifier": "CAPEC-tou",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Catharon License",
+    "link": "https://spdx.org/licenses/Catharon.html",
+    "identifier": "Catharon",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Computer Associates Trusted Open Source License 1.1",
+    "link": "https://spdx.org/licenses/CATOSL-1.1.html",
+    "identifier": "CATOSL-1.1",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-1.0.html",
+    "identifier": "CC-BY-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-2.0.html",
+    "identifier": "CC-BY-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-2.5.html",
+    "identifier": "CC-BY-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 2.5 Australia",
+    "link": "https://spdx.org/licenses/CC-BY-2.5-AU.html",
+    "identifier": "CC-BY-2.5-AU",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-3.0.html",
+    "identifier": "CC-BY-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 Austria",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-AT.html",
+    "identifier": "CC-BY-3.0-AT",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 Australia",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-AU.html",
+    "identifier": "CC-BY-3.0-AU",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-DE.html",
+    "identifier": "CC-BY-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 IGO",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-IGO.html",
+    "identifier": "CC-BY-3.0-IGO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 Netherlands",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-NL.html",
+    "identifier": "CC-BY-3.0-NL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 3.0 United States",
+    "link": "https://spdx.org/licenses/CC-BY-3.0-US.html",
+    "identifier": "CC-BY-3.0-US",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-4.0.html",
+    "identifier": "CC-BY-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-1.0.html",
+    "identifier": "CC-BY-NC-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-2.0.html",
+    "identifier": "CC-BY-NC-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-2.5.html",
+    "identifier": "CC-BY-NC-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-NC-3.0.html",
+    "identifier": "CC-BY-NC-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-NC-3.0-DE.html",
+    "identifier": "CC-BY-NC-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-NC-4.0.html",
+    "identifier": "CC-BY-NC-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-1.0.html",
+    "identifier": "CC-BY-NC-ND-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-2.0.html",
+    "identifier": "CC-BY-NC-ND-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-2.5.html",
+    "identifier": "CC-BY-NC-ND-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-3.0.html",
+    "identifier": "CC-BY-NC-ND-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-3.0-DE.html",
+    "identifier": "CC-BY-NC-ND-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 3.0 IGO",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-3.0-IGO.html",
+    "identifier": "CC-BY-NC-ND-3.0-IGO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial No Derivatives 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-NC-ND-4.0.html",
+    "identifier": "CC-BY-NC-ND-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-1.0.html",
+    "identifier": "CC-BY-NC-SA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-2.0.html",
+    "identifier": "CC-BY-NC-SA-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 2.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-2.0-DE.html",
+    "identifier": "CC-BY-NC-SA-2.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution-NonCommercial-ShareAlike 2.0 France",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-2.0-FR.html",
+    "identifier": "CC-BY-NC-SA-2.0-FR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 2.0 England and Wales",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-2.0-UK.html",
+    "identifier": "CC-BY-NC-SA-2.0-UK",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-2.5.html",
+    "identifier": "CC-BY-NC-SA-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-3.0.html",
+    "identifier": "CC-BY-NC-SA-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-3.0-DE.html",
+    "identifier": "CC-BY-NC-SA-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 3.0 IGO",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-3.0-IGO.html",
+    "identifier": "CC-BY-NC-SA-3.0-IGO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Non Commercial Share Alike 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-NC-SA-4.0.html",
+    "identifier": "CC-BY-NC-SA-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-ND-1.0.html",
+    "identifier": "CC-BY-ND-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-ND-2.0.html",
+    "identifier": "CC-BY-ND-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-ND-2.5.html",
+    "identifier": "CC-BY-ND-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-ND-3.0.html",
+    "identifier": "CC-BY-ND-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-ND-3.0-DE.html",
+    "identifier": "CC-BY-ND-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution No Derivatives 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-ND-4.0.html",
+    "identifier": "CC-BY-ND-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-SA-1.0.html",
+    "identifier": "CC-BY-SA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 2.0 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-SA-2.0.html",
+    "identifier": "CC-BY-SA-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 2.0 England and Wales",
+    "link": "https://spdx.org/licenses/CC-BY-SA-2.0-UK.html",
+    "identifier": "CC-BY-SA-2.0-UK",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 2.1 Japan",
+    "link": "https://spdx.org/licenses/CC-BY-SA-2.1-JP.html",
+    "identifier": "CC-BY-SA-2.1-JP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 2.5 Generic",
+    "link": "https://spdx.org/licenses/CC-BY-SA-2.5.html",
+    "identifier": "CC-BY-SA-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 3.0 Unported",
+    "link": "https://spdx.org/licenses/CC-BY-SA-3.0.html",
+    "identifier": "CC-BY-SA-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 3.0 Austria",
+    "link": "https://spdx.org/licenses/CC-BY-SA-3.0-AT.html",
+    "identifier": "CC-BY-SA-3.0-AT",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 3.0 Germany",
+    "link": "https://spdx.org/licenses/CC-BY-SA-3.0-DE.html",
+    "identifier": "CC-BY-SA-3.0-DE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution-ShareAlike 3.0 IGO",
+    "link": "https://spdx.org/licenses/CC-BY-SA-3.0-IGO.html",
+    "identifier": "CC-BY-SA-3.0-IGO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Attribution Share Alike 4.0 International",
+    "link": "https://spdx.org/licenses/CC-BY-SA-4.0.html",
+    "identifier": "CC-BY-SA-4.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Public Domain Dedication and Certification",
+    "link": "https://spdx.org/licenses/CC-PDDC.html",
+    "identifier": "CC-PDDC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative    Commons Public Domain Mark 1.0 Universal",
+    "link": "https://spdx.org/licenses/CC-PDM-1.0.html",
+    "identifier": "CC-PDM-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Share Alike 1.0 Generic",
+    "link": "https://spdx.org/licenses/CC-SA-1.0.html",
+    "identifier": "CC-SA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Creative Commons Zero v1.0 Universal",
+    "link": "https://spdx.org/licenses/CC0-1.0.html",
+    "identifier": "CC0-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Common Development and Distribution License 1.0",
+    "link": "https://spdx.org/licenses/CDDL-1.0.html",
+    "identifier": "CDDL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Development and Distribution License 1.1",
+    "link": "https://spdx.org/licenses/CDDL-1.1.html",
+    "identifier": "CDDL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Documentation License 1.0",
+    "link": "https://spdx.org/licenses/CDL-1.0.html",
+    "identifier": "CDL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Community Data License Agreement Permissive 1.0",
+    "link": "https://spdx.org/licenses/CDLA-Permissive-1.0.html",
+    "identifier": "CDLA-Permissive-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Community Data License Agreement Permissive 2.0",
+    "link": "https://spdx.org/licenses/CDLA-Permissive-2.0.html",
+    "identifier": "CDLA-Permissive-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Community Data License Agreement Sharing 1.0",
+    "link": "https://spdx.org/licenses/CDLA-Sharing-1.0.html",
+    "identifier": "CDLA-Sharing-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL Free Software License Agreement v1.0",
+    "link": "https://spdx.org/licenses/CECILL-1.0.html",
+    "identifier": "CECILL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL Free Software License Agreement v1.1",
+    "link": "https://spdx.org/licenses/CECILL-1.1.html",
+    "identifier": "CECILL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL Free Software License Agreement v2.0",
+    "link": "https://spdx.org/licenses/CECILL-2.0.html",
+    "identifier": "CECILL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL Free Software License Agreement v2.1",
+    "link": "https://spdx.org/licenses/CECILL-2.1.html",
+    "identifier": "CECILL-2.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL-B Free Software License Agreement",
+    "link": "https://spdx.org/licenses/CECILL-B.html",
+    "identifier": "CECILL-B",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CeCILL-C Free Software License Agreement",
+    "link": "https://spdx.org/licenses/CECILL-C.html",
+    "identifier": "CECILL-C",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CERN Open Hardware Licence v1.1",
+    "link": "https://spdx.org/licenses/CERN-OHL-1.1.html",
+    "identifier": "CERN-OHL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CERN Open Hardware Licence v1.2",
+    "link": "https://spdx.org/licenses/CERN-OHL-1.2.html",
+    "identifier": "CERN-OHL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CERN Open Hardware Licence Version 2 - Permissive",
+    "link": "https://spdx.org/licenses/CERN-OHL-P-2.0.html",
+    "identifier": "CERN-OHL-P-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "CERN Open Hardware Licence Version 2 - Strongly Reciprocal",
+    "link": "https://spdx.org/licenses/CERN-OHL-S-2.0.html",
+    "identifier": "CERN-OHL-S-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "CERN Open Hardware Licence Version 2 - Weakly Reciprocal",
+    "link": "https://spdx.org/licenses/CERN-OHL-W-2.0.html",
+    "identifier": "CERN-OHL-W-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "CFITSIO License",
+    "link": "https://spdx.org/licenses/CFITSIO.html",
+    "identifier": "CFITSIO",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "check-cvs License",
+    "link": "https://spdx.org/licenses/check-cvs.html",
+    "identifier": "check-cvs",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Checkmk License",
+    "link": "https://spdx.org/licenses/checkmk.html",
+    "identifier": "checkmk",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Clarified Artistic License",
+    "link": "https://spdx.org/licenses/ClArtistic.html",
+    "identifier": "ClArtistic",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Clips License",
+    "link": "https://spdx.org/licenses/Clips.html",
+    "identifier": "Clips",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CMU Mach License",
+    "link": "https://spdx.org/licenses/CMU-Mach.html",
+    "identifier": "CMU-Mach",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CMU    Mach - no notices-in-documentation variant",
+    "link": "https://spdx.org/licenses/CMU-Mach-nodoc.html",
+    "identifier": "CMU-Mach-nodoc",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CNRI Jython License",
+    "link": "https://spdx.org/licenses/CNRI-Jython.html",
+    "identifier": "CNRI-Jython",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CNRI Python License",
+    "link": "https://spdx.org/licenses/CNRI-Python.html",
+    "identifier": "CNRI-Python",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "CNRI Python Open Source GPL Compatible License Agreement",
+    "link": "https://spdx.org/licenses/CNRI-Python-GPL-Compatible.html",
+    "identifier": "CNRI-Python-GPL-Compatible",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Copyfree Open Innovation License",
+    "link": "https://spdx.org/licenses/COIL-1.0.html",
+    "identifier": "COIL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Community Specification License 1.0",
+    "link": "https://spdx.org/licenses/Community-Spec-1.0.html",
+    "identifier": "Community-Spec-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Condor Public License v1.1",
+    "link": "https://spdx.org/licenses/Condor-1.1.html",
+    "identifier": "Condor-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "copyleft-next 0.3.0",
+    "link": "https://spdx.org/licenses/copyleft-next-0.3.0.html",
+    "identifier": "copyleft-next-0.3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "copyleft-next 0.3.1",
+    "link": "https://spdx.org/licenses/copyleft-next-0.3.1.html",
+    "identifier": "copyleft-next-0.3.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Cornell Lossless JPEG License",
+    "link": "https://spdx.org/licenses/Cornell-Lossless-JPEG.html",
+    "identifier": "Cornell-Lossless-JPEG",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Public Attribution License 1.0",
+    "link": "https://spdx.org/licenses/CPAL-1.0.html",
+    "identifier": "CPAL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Public License 1.0",
+    "link": "https://spdx.org/licenses/CPL-1.0.html",
+    "identifier": "CPL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Code Project Open License 1.02",
+    "link": "https://spdx.org/licenses/CPOL-1.02.html",
+    "identifier": "CPOL-1.02",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Cronyx License",
+    "link": "https://spdx.org/licenses/Cronyx.html",
+    "identifier": "Cronyx",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Crossword License",
+    "link": "https://spdx.org/licenses/Crossword.html",
+    "identifier": "Crossword",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CryptoSwift License",
+    "link": "https://spdx.org/licenses/CryptoSwift.html",
+    "identifier": "CryptoSwift",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CrystalStacker License",
+    "link": "https://spdx.org/licenses/CrystalStacker.html",
+    "identifier": "CrystalStacker",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CUA Office Public License v1.0",
+    "link": "https://spdx.org/licenses/CUA-OPL-1.0.html",
+    "identifier": "CUA-OPL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Cube License",
+    "link": "https://spdx.org/licenses/Cube.html",
+    "identifier": "Cube",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "curl License",
+    "link": "https://spdx.org/licenses/curl.html",
+    "identifier": "curl",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Vulnerability Enumeration ToU License",
+    "link": "https://spdx.org/licenses/cve-tou.html",
+    "identifier": "cve-tou",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Deutsche Freie Software Lizenz",
+    "link": "https://spdx.org/licenses/D-FSL-1.0.html",
+    "identifier": "D-FSL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DEC 3-Clause License",
+    "link": "https://spdx.org/licenses/DEC-3-Clause.html",
+    "identifier": "DEC-3-Clause",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "diffmark license",
+    "link": "https://spdx.org/licenses/diffmark.html",
+    "identifier": "diffmark",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Data licence Germany – attribution – version 2.0",
+    "link": "https://spdx.org/licenses/DL-DE-BY-2.0.html",
+    "identifier": "DL-DE-BY-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Data licence Germany – zero – version 2.0",
+    "link": "https://spdx.org/licenses/DL-DE-ZERO-2.0.html",
+    "identifier": "DL-DE-ZERO-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DOC License",
+    "link": "https://spdx.org/licenses/DOC.html",
+    "identifier": "DOC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DocBook DTD License",
+    "link": "https://spdx.org/licenses/DocBook-DTD.html",
+    "identifier": "DocBook-DTD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DocBook Schema License",
+    "link": "https://spdx.org/licenses/DocBook-Schema.html",
+    "identifier": "DocBook-Schema",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DocBook Stylesheet License",
+    "link": "https://spdx.org/licenses/DocBook-Stylesheet.html",
+    "identifier": "DocBook-Stylesheet",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DocBook XML License",
+    "link": "https://spdx.org/licenses/DocBook-XML.html",
+    "identifier": "DocBook-XML",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Dotseqn License",
+    "link": "https://spdx.org/licenses/Dotseqn.html",
+    "identifier": "Dotseqn",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Detection Rule License 1.0",
+    "link": "https://spdx.org/licenses/DRL-1.0.html",
+    "identifier": "DRL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Detection Rule License 1.1",
+    "link": "https://spdx.org/licenses/DRL-1.1.html",
+    "identifier": "DRL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "DSDP License",
+    "link": "https://spdx.org/licenses/DSDP.html",
+    "identifier": "DSDP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "David M. Gay dtoa License",
+    "link": "https://spdx.org/licenses/dtoa.html",
+    "identifier": "dtoa",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "dvipdfm License",
+    "link": "https://spdx.org/licenses/dvipdfm.html",
+    "identifier": "dvipdfm",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Educational Community License v1.0",
+    "link": "https://spdx.org/licenses/ECL-1.0.html",
+    "identifier": "ECL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Educational Community License v2.0",
+    "link": "https://spdx.org/licenses/ECL-2.0.html",
+    "identifier": "ECL-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "eCos license version 2.0",
+    "link": "https://spdx.org/licenses/eCos-2.0.html",
+    "identifier": "eCos-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Eiffel Forum License v1.0",
+    "link": "https://spdx.org/licenses/EFL-1.0.html",
+    "identifier": "EFL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Eiffel Forum License v2.0",
+    "link": "https://spdx.org/licenses/EFL-2.0.html",
+    "identifier": "EFL-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "eGenix.com Public License 1.1.0",
+    "link": "https://spdx.org/licenses/eGenix.html",
+    "identifier": "eGenix",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Elastic License 2.0",
+    "link": "https://spdx.org/licenses/Elastic-2.0.html",
+    "identifier": "Elastic-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Entessa Public License v1.0",
+    "link": "https://spdx.org/licenses/Entessa.html",
+    "identifier": "Entessa",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "EPICS Open License",
+    "link": "https://spdx.org/licenses/EPICS.html",
+    "identifier": "EPICS",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Eclipse Public License 1.0",
+    "link": "https://spdx.org/licenses/EPL-1.0.html",
+    "identifier": "EPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Eclipse Public License 2.0",
+    "link": "https://spdx.org/licenses/EPL-2.0.html",
+    "identifier": "EPL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Erlang Public License v1.1",
+    "link": "https://spdx.org/licenses/ErlPL-1.1.html",
+    "identifier": "ErlPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "European Space Agency Public License – v2.4 – Permissive (Type 3)",
+    "link": "https://spdx.org/licenses/ESA-PL-permissive-2.4.html",
+    "identifier": "ESA-PL-permissive-2.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "European Space Agency Public License (ESA-PL) - V2.4 - Strong Copyleft (Type 1)",
+    "link": "https://spdx.org/licenses/ESA-PL-strong-copyleft-2.4.html",
+    "identifier": "ESA-PL-strong-copyleft-2.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "European Space Agency Public License – v2.4 – Weak Copyleft (Type 2)",
+    "link": "https://spdx.org/licenses/ESA-PL-weak-copyleft-2.4.html",
+    "identifier": "ESA-PL-weak-copyleft-2.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Etalab Open License 2.0",
+    "link": "https://spdx.org/licenses/etalab-2.0.html",
+    "identifier": "etalab-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "EU DataGrid Software License",
+    "link": "https://spdx.org/licenses/EUDatagrid.html",
+    "identifier": "EUDatagrid",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "European Union Public License 1.0",
+    "link": "https://spdx.org/licenses/EUPL-1.0.html",
+    "identifier": "EUPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "European Union Public License 1.1",
+    "link": "https://spdx.org/licenses/EUPL-1.1.html",
+    "identifier": "EUPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "European Union Public License 1.2",
+    "link": "https://spdx.org/licenses/EUPL-1.2.html",
+    "identifier": "EUPL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Eurosym License",
+    "link": "https://spdx.org/licenses/Eurosym.html",
+    "identifier": "Eurosym",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Fair License",
+    "link": "https://spdx.org/licenses/Fair.html",
+    "identifier": "Fair",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Fuzzy Bitmap License",
+    "link": "https://spdx.org/licenses/FBM.html",
+    "identifier": "FBM",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Fraunhofer FDK AAC Codec Library",
+    "link": "https://spdx.org/licenses/FDK-AAC.html",
+    "identifier": "FDK-AAC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Ferguson Twofish License",
+    "link": "https://spdx.org/licenses/Ferguson-Twofish.html",
+    "identifier": "Ferguson-Twofish",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Frameworx Open License 1.0",
+    "link": "https://spdx.org/licenses/Frameworx-1.0.html",
+    "identifier": "Frameworx-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "FreeBSD Documentation License",
+    "link": "https://spdx.org/licenses/FreeBSD-DOC.html",
+    "identifier": "FreeBSD-DOC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FreeImage Public License v1.0",
+    "link": "https://spdx.org/licenses/FreeImage.html",
+    "identifier": "FreeImage",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF All Permissive License",
+    "link": "https://spdx.org/licenses/FSFAP.html",
+    "identifier": "FSFAP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF All Permissive License (without Warranty)",
+    "link": "https://spdx.org/licenses/FSFAP-no-warranty-disclaimer.html",
+    "identifier": "FSFAP-no-warranty-disclaimer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF Unlimited License",
+    "link": "https://spdx.org/licenses/FSFUL.html",
+    "identifier": "FSFUL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF Unlimited License (with License Retention)",
+    "link": "https://spdx.org/licenses/FSFULLR.html",
+    "identifier": "FSFULLR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF Unlimited License (with License Retention and Short Disclaimer)",
+    "link": "https://spdx.org/licenses/FSFULLRSD.html",
+    "identifier": "FSFULLRSD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "FSF Unlimited License (With License Retention and Warranty Disclaimer)",
+    "link": "https://spdx.org/licenses/FSFULLRWD.html",
+    "identifier": "FSFULLRWD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Functional Source License, Version 1.1, ALv2 Future License",
+    "link": "https://spdx.org/licenses/FSL-1.1-ALv2.html",
+    "identifier": "FSL-1.1-ALv2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Functional Source License, Version 1.1, MIT Future License",
+    "link": "https://spdx.org/licenses/FSL-1.1-MIT.html",
+    "identifier": "FSL-1.1-MIT",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Freetype Project License",
+    "link": "https://spdx.org/licenses/FTL.html",
+    "identifier": "FTL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Furuseth License",
+    "link": "https://spdx.org/licenses/Furuseth.html",
+    "identifier": "Furuseth",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "fwlw License",
+    "link": "https://spdx.org/licenses/fwlw.html",
+    "identifier": "fwlw",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Game Programming Gems License",
+    "link": "https://spdx.org/licenses/Game-Programming-Gems.html",
+    "identifier": "Game-Programming-Gems",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Gnome GCR Documentation License",
+    "link": "https://spdx.org/licenses/GCR-docs.html",
+    "identifier": "GCR-docs",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GD License",
+    "link": "https://spdx.org/licenses/GD.html",
+    "identifier": "GD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Generic XTS License",
+    "link": "https://spdx.org/licenses/generic-xts.html",
+    "identifier": "generic-xts",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1",
+    "link": "https://spdx.org/licenses/GFDL-1.1.html",
+    "identifier": "GFDL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 only - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.1-invariants-only.html",
+    "identifier": "GFDL-1.1-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 or later - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.1-invariants-or-later.html",
+    "identifier": "GFDL-1.1-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 only - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.1-no-invariants-only.html",
+    "identifier": "GFDL-1.1-no-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 or later - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.1-no-invariants-or-later.html",
+    "identifier": "GFDL-1.1-no-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 only",
+    "link": "https://spdx.org/licenses/GFDL-1.1-only.html",
+    "identifier": "GFDL-1.1-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.1 or later",
+    "link": "https://spdx.org/licenses/GFDL-1.1-or-later.html",
+    "identifier": "GFDL-1.1-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2",
+    "link": "https://spdx.org/licenses/GFDL-1.2.html",
+    "identifier": "GFDL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 only - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.2-invariants-only.html",
+    "identifier": "GFDL-1.2-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 or later - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.2-invariants-or-later.html",
+    "identifier": "GFDL-1.2-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 only - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.2-no-invariants-only.html",
+    "identifier": "GFDL-1.2-no-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 or later - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.2-no-invariants-or-later.html",
+    "identifier": "GFDL-1.2-no-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 only",
+    "link": "https://spdx.org/licenses/GFDL-1.2-only.html",
+    "identifier": "GFDL-1.2-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.2 or later",
+    "link": "https://spdx.org/licenses/GFDL-1.2-or-later.html",
+    "identifier": "GFDL-1.2-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3",
+    "link": "https://spdx.org/licenses/GFDL-1.3.html",
+    "identifier": "GFDL-1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 only - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.3-invariants-only.html",
+    "identifier": "GFDL-1.3-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 or later - invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.3-invariants-or-later.html",
+    "identifier": "GFDL-1.3-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 only - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.3-no-invariants-only.html",
+    "identifier": "GFDL-1.3-no-invariants-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 or later - no invariants",
+    "link": "https://spdx.org/licenses/GFDL-1.3-no-invariants-or-later.html",
+    "identifier": "GFDL-1.3-no-invariants-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 only",
+    "link": "https://spdx.org/licenses/GFDL-1.3-only.html",
+    "identifier": "GFDL-1.3-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Free Documentation License v1.3 or later",
+    "link": "https://spdx.org/licenses/GFDL-1.3-or-later.html",
+    "identifier": "GFDL-1.3-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Giftware License",
+    "link": "https://spdx.org/licenses/Giftware.html",
+    "identifier": "Giftware",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GL2PS License",
+    "link": "https://spdx.org/licenses/GL2PS.html",
+    "identifier": "GL2PS",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "3dfx Glide License",
+    "link": "https://spdx.org/licenses/Glide.html",
+    "identifier": "Glide",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Glulxe License",
+    "link": "https://spdx.org/licenses/Glulxe.html",
+    "identifier": "Glulxe",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Good Luck With That Public License",
+    "link": "https://spdx.org/licenses/GLWTPL.html",
+    "identifier": "GLWTPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "gnuplot License",
+    "link": "https://spdx.org/licenses/gnuplot.html",
+    "identifier": "gnuplot",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v1.0 only",
+    "link": "https://spdx.org/licenses/GPL-1.0.html",
+    "identifier": "GPL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v1.0 or later",
+    "link": "https://spdx.org/licenses/GPL-1.0+.html",
+    "identifier": "GPL-1.0+",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v1.0 only",
+    "link": "https://spdx.org/licenses/GPL-1.0-only.html",
+    "identifier": "GPL-1.0-only",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v1.0 or later",
+    "link": "https://spdx.org/licenses/GPL-1.0-or-later.html",
+    "identifier": "GPL-1.0-or-later",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 only",
+    "link": "https://spdx.org/licenses/GPL-2.0.html",
+    "identifier": "GPL-2.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 or later",
+    "link": "https://spdx.org/licenses/GPL-2.0+.html",
+    "identifier": "GPL-2.0+",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 only",
+    "link": "https://spdx.org/licenses/GPL-2.0-only.html",
+    "identifier": "GPL-2.0-only",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 or later",
+    "link": "https://spdx.org/licenses/GPL-2.0-or-later.html",
+    "identifier": "GPL-2.0-or-later",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 w/Autoconf exception",
+    "link": "https://spdx.org/licenses/GPL-2.0-with-autoconf-exception.html",
+    "identifier": "GPL-2.0-with-autoconf-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 w/Bison exception",
+    "link": "https://spdx.org/licenses/GPL-2.0-with-bison-exception.html",
+    "identifier": "GPL-2.0-with-bison-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 w/Classpath exception",
+    "link": "https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html",
+    "identifier": "GPL-2.0-with-classpath-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 w/Font exception",
+    "link": "https://spdx.org/licenses/GPL-2.0-with-font-exception.html",
+    "identifier": "GPL-2.0-with-font-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v2.0 w/GCC Runtime Library exception",
+    "link": "https://spdx.org/licenses/GPL-2.0-with-GCC-exception.html",
+    "identifier": "GPL-2.0-with-GCC-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 only",
+    "link": "https://spdx.org/licenses/GPL-3.0.html",
+    "identifier": "GPL-3.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 or later",
+    "link": "https://spdx.org/licenses/GPL-3.0+.html",
+    "identifier": "GPL-3.0+",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 only",
+    "link": "https://spdx.org/licenses/GPL-3.0-only.html",
+    "identifier": "GPL-3.0-only",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 or later",
+    "link": "https://spdx.org/licenses/GPL-3.0-or-later.html",
+    "identifier": "GPL-3.0-or-later",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 w/Autoconf exception",
+    "link": "https://spdx.org/licenses/GPL-3.0-with-autoconf-exception.html",
+    "identifier": "GPL-3.0-with-autoconf-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU General Public License v3.0 w/GCC Runtime Library exception",
+    "link": "https://spdx.org/licenses/GPL-3.0-with-GCC-exception.html",
+    "identifier": "GPL-3.0-with-GCC-exception",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Graphics Gems License",
+    "link": "https://spdx.org/licenses/Graphics-Gems.html",
+    "identifier": "Graphics-Gems",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "gSOAP Public License v1.3b",
+    "link": "https://spdx.org/licenses/gSOAP-1.3b.html",
+    "identifier": "gSOAP-1.3b",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "gtkbook License",
+    "link": "https://spdx.org/licenses/gtkbook.html",
+    "identifier": "gtkbook",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Gutmann License",
+    "link": "https://spdx.org/licenses/Gutmann.html",
+    "identifier": "Gutmann",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Haskell Language Report License",
+    "link": "https://spdx.org/licenses/HaskellReport.html",
+    "identifier": "HaskellReport",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HDF5 License",
+    "link": "https://spdx.org/licenses/HDF5.html",
+    "identifier": "HDF5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "hdparm License",
+    "link": "https://spdx.org/licenses/hdparm.html",
+    "identifier": "hdparm",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HIDAPI License",
+    "link": "https://spdx.org/licenses/HIDAPI.html",
+    "identifier": "HIDAPI",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Hippocratic License 2.1",
+    "link": "https://spdx.org/licenses/Hippocratic-2.1.html",
+    "identifier": "Hippocratic-2.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Hewlett-Packard 1986 License",
+    "link": "https://spdx.org/licenses/HP-1986.html",
+    "identifier": "HP-1986",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Hewlett-Packard 1989 License",
+    "link": "https://spdx.org/licenses/HP-1989.html",
+    "identifier": "HP-1989",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer",
+    "link": "https://spdx.org/licenses/HPND.html",
+    "identifier": "HPND",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - DEC variant",
+    "link": "https://spdx.org/licenses/HPND-DEC.html",
+    "identifier": "HPND-DEC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - documentation variant",
+    "link": "https://spdx.org/licenses/HPND-doc.html",
+    "identifier": "HPND-doc",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - documentation sell variant",
+    "link": "https://spdx.org/licenses/HPND-doc-sell.html",
+    "identifier": "HPND-doc-sell",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND with US Government export control warning",
+    "link": "https://spdx.org/licenses/HPND-export-US.html",
+    "identifier": "HPND-export-US",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND with US Government export control warning and acknowledgment",
+    "link": "https://spdx.org/licenses/HPND-export-US-acknowledgement.html",
+    "identifier": "HPND-export-US-acknowledgement",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND with US Government export control warning and modification rqmt",
+    "link": "https://spdx.org/licenses/HPND-export-US-modify.html",
+    "identifier": "HPND-export-US-modify",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND with US Government export control and 2 disclaimers",
+    "link": "https://spdx.org/licenses/HPND-export2-US.html",
+    "identifier": "HPND-export2-US",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Fenneberg-Livingston variant",
+    "link": "https://spdx.org/licenses/HPND-Fenneberg-Livingston.html",
+    "identifier": "HPND-Fenneberg-Livingston",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer    - INRIA-IMAG variant",
+    "link": "https://spdx.org/licenses/HPND-INRIA-IMAG.html",
+    "identifier": "HPND-INRIA-IMAG",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Intel variant",
+    "link": "https://spdx.org/licenses/HPND-Intel.html",
+    "identifier": "HPND-Intel",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Kevlin Henney variant",
+    "link": "https://spdx.org/licenses/HPND-Kevlin-Henney.html",
+    "identifier": "HPND-Kevlin-Henney",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Markus Kuhn variant",
+    "link": "https://spdx.org/licenses/HPND-Markus-Kuhn.html",
+    "identifier": "HPND-Markus-Kuhn",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - merchantability variant",
+    "link": "https://spdx.org/licenses/HPND-merchantability-variant.html",
+    "identifier": "HPND-merchantability-variant",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer with MIT disclaimer",
+    "link": "https://spdx.org/licenses/HPND-MIT-disclaimer.html",
+    "identifier": "HPND-MIT-disclaimer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Netrek variant",
+    "link": "https://spdx.org/licenses/HPND-Netrek.html",
+    "identifier": "HPND-Netrek",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - Pbmplus variant",
+    "link": "https://spdx.org/licenses/HPND-Pbmplus.html",
+    "identifier": "HPND-Pbmplus",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - sell xserver variant with MIT disclaimer",
+    "link": "https://spdx.org/licenses/HPND-sell-MIT-disclaimer-xserver.html",
+    "identifier": "HPND-sell-MIT-disclaimer-xserver",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - sell regexpr variant",
+    "link": "https://spdx.org/licenses/HPND-sell-regexpr.html",
+    "identifier": "HPND-sell-regexpr",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - sell variant",
+    "link": "https://spdx.org/licenses/HPND-sell-variant.html",
+    "identifier": "HPND-sell-variant",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND - sell variant with safety critical systems clause",
+    "link": "https://spdx.org/licenses/HPND-sell-variant-critical-systems.html",
+    "identifier": "HPND-sell-variant-critical-systems",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND sell variant with MIT disclaimer",
+    "link": "https://spdx.org/licenses/HPND-sell-variant-MIT-disclaimer.html",
+    "identifier": "HPND-sell-variant-MIT-disclaimer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HPND sell variant with MIT disclaimer - reverse",
+    "link": "https://spdx.org/licenses/HPND-sell-variant-MIT-disclaimer-rev.html",
+    "identifier": "HPND-sell-variant-MIT-disclaimer-rev",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - SMC variant",
+    "link": "https://spdx.org/licenses/HPND-SMC.html",
+    "identifier": "HPND-SMC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - University of California variant",
+    "link": "https://spdx.org/licenses/HPND-UC.html",
+    "identifier": "HPND-UC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Historical Permission Notice and Disclaimer - University of California, US export warning",
+    "link": "https://spdx.org/licenses/HPND-UC-export-US.html",
+    "identifier": "HPND-UC-export-US",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "HTML Tidy License",
+    "link": "https://spdx.org/licenses/HTMLTIDY.html",
+    "identifier": "HTMLTIDY",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "hyphen-bulgarian License",
+    "link": "https://spdx.org/licenses/hyphen-bulgarian.html",
+    "identifier": "hyphen-bulgarian",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "IBM PowerPC Initialization and Boot Software",
+    "link": "https://spdx.org/licenses/IBM-pibs.html",
+    "identifier": "IBM-pibs",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ICU License",
+    "link": "https://spdx.org/licenses/ICU.html",
+    "identifier": "ICU",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "IEC    Code Components End-user licence agreement",
+    "link": "https://spdx.org/licenses/IEC-Code-Components-EULA.html",
+    "identifier": "IEC-Code-Components-EULA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Independent JPEG Group License",
+    "link": "https://spdx.org/licenses/IJG.html",
+    "identifier": "IJG",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Independent JPEG Group License - short",
+    "link": "https://spdx.org/licenses/IJG-short.html",
+    "identifier": "IJG-short",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ImageMagick License",
+    "link": "https://spdx.org/licenses/ImageMagick.html",
+    "identifier": "ImageMagick",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "iMatix Standard Function Library Agreement",
+    "link": "https://spdx.org/licenses/iMatix.html",
+    "identifier": "iMatix",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Imlib2 License",
+    "link": "https://spdx.org/licenses/Imlib2.html",
+    "identifier": "Imlib2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Info-ZIP License",
+    "link": "https://spdx.org/licenses/Info-ZIP.html",
+    "identifier": "Info-ZIP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Inner Net License v2.0",
+    "link": "https://spdx.org/licenses/Inner-Net-2.0.html",
+    "identifier": "Inner-Net-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Inno Setup License",
+    "link": "https://spdx.org/licenses/InnoSetup.html",
+    "identifier": "InnoSetup",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Intel Open Source License",
+    "link": "https://spdx.org/licenses/Intel.html",
+    "identifier": "Intel",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Intel ACPI Software License Agreement",
+    "link": "https://spdx.org/licenses/Intel-ACPI.html",
+    "identifier": "Intel-ACPI",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Interbase Public License v1.0",
+    "link": "https://spdx.org/licenses/Interbase-1.0.html",
+    "identifier": "Interbase-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "IPA Font License",
+    "link": "https://spdx.org/licenses/IPA.html",
+    "identifier": "IPA",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "IBM Public License v1.0",
+    "link": "https://spdx.org/licenses/IPL-1.0.html",
+    "identifier": "IPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ISC License",
+    "link": "https://spdx.org/licenses/ISC.html",
+    "identifier": "ISC",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "ISC Veillard variant",
+    "link": "https://spdx.org/licenses/ISC-Veillard.html",
+    "identifier": "ISC-Veillard",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ISO permission notice",
+    "link": "https://spdx.org/licenses/ISO-permission.html",
+    "identifier": "ISO-permission",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Jam License",
+    "link": "https://spdx.org/licenses/Jam.html",
+    "identifier": "Jam",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "JasPer License",
+    "link": "https://spdx.org/licenses/JasPer-2.0.html",
+    "identifier": "JasPer-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Jove License",
+    "link": "https://spdx.org/licenses/jove.html",
+    "identifier": "jove",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "JPL Image Use Policy",
+    "link": "https://spdx.org/licenses/JPL-image.html",
+    "identifier": "JPL-image",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Japan Network Information Center License",
+    "link": "https://spdx.org/licenses/JPNIC.html",
+    "identifier": "JPNIC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "JSON License",
+    "link": "https://spdx.org/licenses/JSON.html",
+    "identifier": "JSON",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Kastrup License",
+    "link": "https://spdx.org/licenses/Kastrup.html",
+    "identifier": "Kastrup",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Kazlib License",
+    "link": "https://spdx.org/licenses/Kazlib.html",
+    "identifier": "Kazlib",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Knuth CTAN License",
+    "link": "https://spdx.org/licenses/Knuth-CTAN.html",
+    "identifier": "Knuth-CTAN",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Licence Art Libre 1.2",
+    "link": "https://spdx.org/licenses/LAL-1.2.html",
+    "identifier": "LAL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Licence Art Libre 1.3",
+    "link": "https://spdx.org/licenses/LAL-1.3.html",
+    "identifier": "LAL-1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Latex2e License",
+    "link": "https://spdx.org/licenses/Latex2e.html",
+    "identifier": "Latex2e",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Latex2e with translated notice permission",
+    "link": "https://spdx.org/licenses/Latex2e-translated-notice.html",
+    "identifier": "Latex2e-translated-notice",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Leptonica License",
+    "link": "https://spdx.org/licenses/Leptonica.html",
+    "identifier": "Leptonica",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Library General Public License v2 only",
+    "link": "https://spdx.org/licenses/LGPL-2.0.html",
+    "identifier": "LGPL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Library General Public License v2 or later",
+    "link": "https://spdx.org/licenses/LGPL-2.0+.html",
+    "identifier": "LGPL-2.0+",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Library General Public License v2 only",
+    "link": "https://spdx.org/licenses/LGPL-2.0-only.html",
+    "identifier": "LGPL-2.0-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Library General Public License v2 or later",
+    "link": "https://spdx.org/licenses/LGPL-2.0-or-later.html",
+    "identifier": "LGPL-2.0-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v2.1 only",
+    "link": "https://spdx.org/licenses/LGPL-2.1.html",
+    "identifier": "LGPL-2.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v2.1 or later",
+    "link": "https://spdx.org/licenses/LGPL-2.1+.html",
+    "identifier": "LGPL-2.1+",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v2.1 only",
+    "link": "https://spdx.org/licenses/LGPL-2.1-only.html",
+    "identifier": "LGPL-2.1-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v2.1 or later",
+    "link": "https://spdx.org/licenses/LGPL-2.1-or-later.html",
+    "identifier": "LGPL-2.1-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v3.0 only",
+    "link": "https://spdx.org/licenses/LGPL-3.0.html",
+    "identifier": "LGPL-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v3.0 or later",
+    "link": "https://spdx.org/licenses/LGPL-3.0+.html",
+    "identifier": "LGPL-3.0+",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v3.0 only",
+    "link": "https://spdx.org/licenses/LGPL-3.0-only.html",
+    "identifier": "LGPL-3.0-only",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "GNU Lesser General Public License v3.0 or later",
+    "link": "https://spdx.org/licenses/LGPL-3.0-or-later.html",
+    "identifier": "LGPL-3.0-or-later",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Lesser General Public License For Linguistic Resources",
+    "link": "https://spdx.org/licenses/LGPLLR.html",
+    "identifier": "LGPLLR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "libpng License",
+    "link": "https://spdx.org/licenses/Libpng.html",
+    "identifier": "Libpng",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PNG Reference Library License v1 (for libpng 0.5 through 1.6.35)",
+    "link": "https://spdx.org/licenses/libpng-1.6.35.html",
+    "identifier": "libpng-1.6.35",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PNG Reference Library version 2",
+    "link": "https://spdx.org/licenses/libpng-2.0.html",
+    "identifier": "libpng-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "libselinux public domain notice",
+    "link": "https://spdx.org/licenses/libselinux-1.0.html",
+    "identifier": "libselinux-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "libtiff License",
+    "link": "https://spdx.org/licenses/libtiff.html",
+    "identifier": "libtiff",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "libutil David Nugent License",
+    "link": "https://spdx.org/licenses/libutil-David-Nugent.html",
+    "identifier": "libutil-David-Nugent",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Licence Libre du Québec – Permissive version 1.1",
+    "link": "https://spdx.org/licenses/LiLiQ-P-1.1.html",
+    "identifier": "LiLiQ-P-1.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Licence Libre du Québec – Réciprocité version 1.1",
+    "link": "https://spdx.org/licenses/LiLiQ-R-1.1.html",
+    "identifier": "LiLiQ-R-1.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Licence Libre du Québec – Réciprocité forte version 1.1",
+    "link": "https://spdx.org/licenses/LiLiQ-Rplus-1.1.html",
+    "identifier": "LiLiQ-Rplus-1.1",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Linux man-pages - 1 paragraph",
+    "link": "https://spdx.org/licenses/Linux-man-pages-1-para.html",
+    "identifier": "Linux-man-pages-1-para",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Linux man-pages Copyleft",
+    "link": "https://spdx.org/licenses/Linux-man-pages-copyleft.html",
+    "identifier": "Linux-man-pages-copyleft",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Linux man-pages Copyleft - 2 paragraphs",
+    "link": "https://spdx.org/licenses/Linux-man-pages-copyleft-2-para.html",
+    "identifier": "Linux-man-pages-copyleft-2-para",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Linux man-pages Copyleft Variant",
+    "link": "https://spdx.org/licenses/Linux-man-pages-copyleft-var.html",
+    "identifier": "Linux-man-pages-copyleft-var",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Linux Kernel Variant of OpenIB.org license",
+    "link": "https://spdx.org/licenses/Linux-OpenIB.html",
+    "identifier": "Linux-OpenIB",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Common Lisp LOOP License",
+    "link": "https://spdx.org/licenses/LOOP.html",
+    "identifier": "LOOP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LPD Documentation License",
+    "link": "https://spdx.org/licenses/LPD-document.html",
+    "identifier": "LPD-document",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Lucent Public License Version 1.0",
+    "link": "https://spdx.org/licenses/LPL-1.0.html",
+    "identifier": "LPL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Lucent Public License v1.02",
+    "link": "https://spdx.org/licenses/LPL-1.02.html",
+    "identifier": "LPL-1.02",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "LaTeX Project Public License v1.0",
+    "link": "https://spdx.org/licenses/LPPL-1.0.html",
+    "identifier": "LPPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LaTeX Project Public License v1.1",
+    "link": "https://spdx.org/licenses/LPPL-1.1.html",
+    "identifier": "LPPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LaTeX Project Public License v1.2",
+    "link": "https://spdx.org/licenses/LPPL-1.2.html",
+    "identifier": "LPPL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LaTeX Project Public License v1.3a",
+    "link": "https://spdx.org/licenses/LPPL-1.3a.html",
+    "identifier": "LPPL-1.3a",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LaTeX Project Public License v1.3c",
+    "link": "https://spdx.org/licenses/LPPL-1.3c.html",
+    "identifier": "LPPL-1.3c",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "lsof License",
+    "link": "https://spdx.org/licenses/lsof.html",
+    "identifier": "lsof",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Lucida Bitmap Fonts License",
+    "link": "https://spdx.org/licenses/Lucida-Bitmap-Fonts.html",
+    "identifier": "Lucida-Bitmap-Fonts",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LZMA SDK License (versions 9.11 to 9.20)",
+    "link": "https://spdx.org/licenses/LZMA-SDK-9.11-to-9.20.html",
+    "identifier": "LZMA-SDK-9.11-to-9.20",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "LZMA SDK License (versions 9.22 and beyond)",
+    "link": "https://spdx.org/licenses/LZMA-SDK-9.22.html",
+    "identifier": "LZMA-SDK-9.22",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mackerras 3-Clause License",
+    "link": "https://spdx.org/licenses/Mackerras-3-Clause.html",
+    "identifier": "Mackerras-3-Clause",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mackerras 3-Clause - acknowledgment variant",
+    "link": "https://spdx.org/licenses/Mackerras-3-Clause-acknowledgment.html",
+    "identifier": "Mackerras-3-Clause-acknowledgment",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "magaz License",
+    "link": "https://spdx.org/licenses/magaz.html",
+    "identifier": "magaz",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "mailprio License",
+    "link": "https://spdx.org/licenses/mailprio.html",
+    "identifier": "mailprio",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MakeIndex License",
+    "link": "https://spdx.org/licenses/MakeIndex.html",
+    "identifier": "MakeIndex",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "man2html License",
+    "link": "https://spdx.org/licenses/man2html.html",
+    "identifier": "man2html",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Martin Birgmeier License",
+    "link": "https://spdx.org/licenses/Martin-Birgmeier.html",
+    "identifier": "Martin-Birgmeier",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "McPhee Slideshow License",
+    "link": "https://spdx.org/licenses/McPhee-slideshow.html",
+    "identifier": "McPhee-slideshow",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "metamail License",
+    "link": "https://spdx.org/licenses/metamail.html",
+    "identifier": "metamail",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Minpack License",
+    "link": "https://spdx.org/licenses/Minpack.html",
+    "identifier": "Minpack",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIPS License",
+    "link": "https://spdx.org/licenses/MIPS.html",
+    "identifier": "MIPS",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "The MirOS Licence",
+    "link": "https://spdx.org/licenses/MirOS.html",
+    "identifier": "MirOS",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "MIT License",
+    "link": "https://spdx.org/licenses/MIT.html",
+    "identifier": "MIT",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "MIT No Attribution",
+    "link": "https://spdx.org/licenses/MIT-0.html",
+    "identifier": "MIT-0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Enlightenment License (e16)",
+    "link": "https://spdx.org/licenses/MIT-advertising.html",
+    "identifier": "MIT-advertising",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT Click License",
+    "link": "https://spdx.org/licenses/MIT-Click.html",
+    "identifier": "MIT-Click",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "CMU License",
+    "link": "https://spdx.org/licenses/MIT-CMU.html",
+    "identifier": "MIT-CMU",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "enna License",
+    "link": "https://spdx.org/licenses/MIT-enna.html",
+    "identifier": "MIT-enna",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "feh License",
+    "link": "https://spdx.org/licenses/MIT-feh.html",
+    "identifier": "MIT-feh",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT Festival Variant",
+    "link": "https://spdx.org/licenses/MIT-Festival.html",
+    "identifier": "MIT-Festival",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT Khronos - old variant",
+    "link": "https://spdx.org/licenses/MIT-Khronos-old.html",
+    "identifier": "MIT-Khronos-old",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT License Modern Variant",
+    "link": "https://spdx.org/licenses/MIT-Modern-Variant.html",
+    "identifier": "MIT-Modern-Variant",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "MIT Open Group variant",
+    "link": "https://spdx.org/licenses/MIT-open-group.html",
+    "identifier": "MIT-open-group",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT-STK License",
+    "link": "https://spdx.org/licenses/MIT-STK.html",
+    "identifier": "MIT-STK",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT testregex Variant",
+    "link": "https://spdx.org/licenses/MIT-testregex.html",
+    "identifier": "MIT-testregex",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT Tom Wu Variant",
+    "link": "https://spdx.org/licenses/MIT-Wu.html",
+    "identifier": "MIT-Wu",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MIT +no-false-attribs license",
+    "link": "https://spdx.org/licenses/MITNFA.html",
+    "identifier": "MITNFA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "MMIXware License",
+    "link": "https://spdx.org/licenses/MMIXware.html",
+    "identifier": "MMIXware",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Minecraft Mod Public License v1.0.1",
+    "link": "https://spdx.org/licenses/MMPL-1.0.1.html",
+    "identifier": "MMPL-1.0.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Motosoto License",
+    "link": "https://spdx.org/licenses/Motosoto.html",
+    "identifier": "Motosoto",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "MPEG Software Simulation",
+    "link": "https://spdx.org/licenses/MPEG-SSG.html",
+    "identifier": "MPEG-SSG",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "mpi Permissive License",
+    "link": "https://spdx.org/licenses/mpi-permissive.html",
+    "identifier": "mpi-permissive",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "mpich2 License",
+    "link": "https://spdx.org/licenses/mpich2.html",
+    "identifier": "mpich2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mozilla Public License 1.0",
+    "link": "https://spdx.org/licenses/MPL-1.0.html",
+    "identifier": "MPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mozilla Public License 1.1",
+    "link": "https://spdx.org/licenses/MPL-1.1.html",
+    "identifier": "MPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mozilla Public License 2.0",
+    "link": "https://spdx.org/licenses/MPL-2.0.html",
+    "identifier": "MPL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mozilla Public License 2.0 (no copyleft exception)",
+    "link": "https://spdx.org/licenses/MPL-2.0-no-copyleft-exception.html",
+    "identifier": "MPL-2.0-no-copyleft-exception",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "mplus Font License",
+    "link": "https://spdx.org/licenses/mplus.html",
+    "identifier": "mplus",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Microsoft Limited Public License",
+    "link": "https://spdx.org/licenses/MS-LPL.html",
+    "identifier": "MS-LPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Microsoft Public License",
+    "link": "https://spdx.org/licenses/MS-PL.html",
+    "identifier": "MS-PL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Microsoft Reciprocal License",
+    "link": "https://spdx.org/licenses/MS-RL.html",
+    "identifier": "MS-RL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Matrix Template Library License",
+    "link": "https://spdx.org/licenses/MTLL.html",
+    "identifier": "MTLL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mulan Permissive Software License, Version 1",
+    "link": "https://spdx.org/licenses/MulanPSL-1.0.html",
+    "identifier": "MulanPSL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Mulan Permissive Software License, Version 2",
+    "link": "https://spdx.org/licenses/MulanPSL-2.0.html",
+    "identifier": "MulanPSL-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Multics License",
+    "link": "https://spdx.org/licenses/Multics.html",
+    "identifier": "Multics",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Mup License",
+    "link": "https://spdx.org/licenses/Mup.html",
+    "identifier": "Mup",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Nara Institute of Science and Technology License (2003)",
+    "link": "https://spdx.org/licenses/NAIST-2003.html",
+    "identifier": "NAIST-2003",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NASA Open Source Agreement 1.3",
+    "link": "https://spdx.org/licenses/NASA-1.3.html",
+    "identifier": "NASA-1.3",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Naumen Public License",
+    "link": "https://spdx.org/licenses/Naumen.html",
+    "identifier": "Naumen",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Net Boolean Public License v1",
+    "link": "https://spdx.org/licenses/NBPL-1.0.html",
+    "identifier": "NBPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NCBI Public Domain Notice",
+    "link": "https://spdx.org/licenses/NCBI-PD.html",
+    "identifier": "NCBI-PD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Non-Commercial Government Licence",
+    "link": "https://spdx.org/licenses/NCGL-UK-2.0.html",
+    "identifier": "NCGL-UK-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NCL Source Code License",
+    "link": "https://spdx.org/licenses/NCL.html",
+    "identifier": "NCL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "University of Illinois/NCSA Open Source License",
+    "link": "https://spdx.org/licenses/NCSA.html",
+    "identifier": "NCSA",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Net-SNMP License",
+    "link": "https://spdx.org/licenses/Net-SNMP.html",
+    "identifier": "Net-SNMP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NetCDF license",
+    "link": "https://spdx.org/licenses/NetCDF.html",
+    "identifier": "NetCDF",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Newsletr License",
+    "link": "https://spdx.org/licenses/Newsletr.html",
+    "identifier": "Newsletr",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Nethack General Public License",
+    "link": "https://spdx.org/licenses/NGPL.html",
+    "identifier": "NGPL",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "ngrep License",
+    "link": "https://spdx.org/licenses/ngrep.html",
+    "identifier": "ngrep",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NICTA Public Software License, Version 1.0",
+    "link": "https://spdx.org/licenses/NICTA-1.0.html",
+    "identifier": "NICTA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NIST Public Domain Notice",
+    "link": "https://spdx.org/licenses/NIST-PD.html",
+    "identifier": "NIST-PD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NIST Public Domain Notice with license fallback",
+    "link": "https://spdx.org/licenses/NIST-PD-fallback.html",
+    "identifier": "NIST-PD-fallback",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NIST    Public Domain Notice TNT variant",
+    "link": "https://spdx.org/licenses/NIST-PD-TNT.html",
+    "identifier": "NIST-PD-TNT",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NIST Software License",
+    "link": "https://spdx.org/licenses/NIST-Software.html",
+    "identifier": "NIST-Software",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Norwegian Licence for Open Government Data (NLOD) 1.0",
+    "link": "https://spdx.org/licenses/NLOD-1.0.html",
+    "identifier": "NLOD-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Norwegian Licence for Open Government Data (NLOD) 2.0",
+    "link": "https://spdx.org/licenses/NLOD-2.0.html",
+    "identifier": "NLOD-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "No Limit Public License",
+    "link": "https://spdx.org/licenses/NLPL.html",
+    "identifier": "NLPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Nokia Open Source License",
+    "link": "https://spdx.org/licenses/Nokia.html",
+    "identifier": "Nokia",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Netizen Open Source License",
+    "link": "https://spdx.org/licenses/NOSL.html",
+    "identifier": "NOSL",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Noweb License",
+    "link": "https://spdx.org/licenses/Noweb.html",
+    "identifier": "Noweb",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Netscape Public License v1.0",
+    "link": "https://spdx.org/licenses/NPL-1.0.html",
+    "identifier": "NPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Netscape Public License v1.1",
+    "link": "https://spdx.org/licenses/NPL-1.1.html",
+    "identifier": "NPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Non-Profit Open Software License 3.0",
+    "link": "https://spdx.org/licenses/NPOSL-3.0.html",
+    "identifier": "NPOSL-3.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "NRL License",
+    "link": "https://spdx.org/licenses/NRL.html",
+    "identifier": "NRL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NTIA Public Domain Notice",
+    "link": "https://spdx.org/licenses/NTIA-PD.html",
+    "identifier": "NTIA-PD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "NTP License",
+    "link": "https://spdx.org/licenses/NTP.html",
+    "identifier": "NTP",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "NTP No Attribution",
+    "link": "https://spdx.org/licenses/NTP-0.html",
+    "identifier": "NTP-0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Nunit License",
+    "link": "https://spdx.org/licenses/Nunit.html",
+    "identifier": "Nunit",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Use of Data Agreement v1.0",
+    "link": "https://spdx.org/licenses/O-UDA-1.0.html",
+    "identifier": "O-UDA-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OAR License",
+    "link": "https://spdx.org/licenses/OAR.html",
+    "identifier": "OAR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open CASCADE Technology Public License",
+    "link": "https://spdx.org/licenses/OCCT-PL.html",
+    "identifier": "OCCT-PL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OCLC Research Public License 2.0",
+    "link": "https://spdx.org/licenses/OCLC-2.0.html",
+    "identifier": "OCLC-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Open Data Commons Open Database License v1.0",
+    "link": "https://spdx.org/licenses/ODbL-1.0.html",
+    "identifier": "ODbL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Data Commons Attribution License v1.0",
+    "link": "https://spdx.org/licenses/ODC-By-1.0.html",
+    "identifier": "ODC-By-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OFFIS License",
+    "link": "https://spdx.org/licenses/OFFIS.html",
+    "identifier": "OFFIS",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.0",
+    "link": "https://spdx.org/licenses/OFL-1.0.html",
+    "identifier": "OFL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.0 with no Reserved Font Name",
+    "link": "https://spdx.org/licenses/OFL-1.0-no-RFN.html",
+    "identifier": "OFL-1.0-no-RFN",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.0 with Reserved Font Name",
+    "link": "https://spdx.org/licenses/OFL-1.0-RFN.html",
+    "identifier": "OFL-1.0-RFN",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.1",
+    "link": "https://spdx.org/licenses/OFL-1.1.html",
+    "identifier": "OFL-1.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.1 with no Reserved Font Name",
+    "link": "https://spdx.org/licenses/OFL-1.1-no-RFN.html",
+    "identifier": "OFL-1.1-no-RFN",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "SIL Open Font License 1.1 with Reserved Font Name",
+    "link": "https://spdx.org/licenses/OFL-1.1-RFN.html",
+    "identifier": "OFL-1.1-RFN",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "OGC Software License, Version 1.0",
+    "link": "https://spdx.org/licenses/OGC-1.0.html",
+    "identifier": "OGC-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Taiwan Open Government Data License, version 1.0",
+    "link": "https://spdx.org/licenses/OGDL-Taiwan-1.0.html",
+    "identifier": "OGDL-Taiwan-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Government Licence - Canada",
+    "link": "https://spdx.org/licenses/OGL-Canada-2.0.html",
+    "identifier": "OGL-Canada-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Government Licence v1.0",
+    "link": "https://spdx.org/licenses/OGL-UK-1.0.html",
+    "identifier": "OGL-UK-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Government Licence v2.0",
+    "link": "https://spdx.org/licenses/OGL-UK-2.0.html",
+    "identifier": "OGL-UK-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Government Licence v3.0",
+    "link": "https://spdx.org/licenses/OGL-UK-3.0.html",
+    "identifier": "OGL-UK-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Group Test Suite License",
+    "link": "https://spdx.org/licenses/OGTSL.html",
+    "identifier": "OGTSL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v1.1",
+    "link": "https://spdx.org/licenses/OLDAP-1.1.html",
+    "identifier": "OLDAP-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v1.2",
+    "link": "https://spdx.org/licenses/OLDAP-1.2.html",
+    "identifier": "OLDAP-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v1.3",
+    "link": "https://spdx.org/licenses/OLDAP-1.3.html",
+    "identifier": "OLDAP-1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v1.4",
+    "link": "https://spdx.org/licenses/OLDAP-1.4.html",
+    "identifier": "OLDAP-1.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.0 (or possibly 2.0A and 2.0B)",
+    "link": "https://spdx.org/licenses/OLDAP-2.0.html",
+    "identifier": "OLDAP-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.0.1",
+    "link": "https://spdx.org/licenses/OLDAP-2.0.1.html",
+    "identifier": "OLDAP-2.0.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.1",
+    "link": "https://spdx.org/licenses/OLDAP-2.1.html",
+    "identifier": "OLDAP-2.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.2",
+    "link": "https://spdx.org/licenses/OLDAP-2.2.html",
+    "identifier": "OLDAP-2.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.2.1",
+    "link": "https://spdx.org/licenses/OLDAP-2.2.1.html",
+    "identifier": "OLDAP-2.2.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License 2.2.2",
+    "link": "https://spdx.org/licenses/OLDAP-2.2.2.html",
+    "identifier": "OLDAP-2.2.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.3",
+    "link": "https://spdx.org/licenses/OLDAP-2.3.html",
+    "identifier": "OLDAP-2.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.4",
+    "link": "https://spdx.org/licenses/OLDAP-2.4.html",
+    "identifier": "OLDAP-2.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.5",
+    "link": "https://spdx.org/licenses/OLDAP-2.5.html",
+    "identifier": "OLDAP-2.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.6",
+    "link": "https://spdx.org/licenses/OLDAP-2.6.html",
+    "identifier": "OLDAP-2.6",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.7",
+    "link": "https://spdx.org/licenses/OLDAP-2.7.html",
+    "identifier": "OLDAP-2.7",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open LDAP Public License v2.8",
+    "link": "https://spdx.org/licenses/OLDAP-2.8.html",
+    "identifier": "OLDAP-2.8",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Open Logistics Foundation License Version 1.3",
+    "link": "https://spdx.org/licenses/OLFL-1.3.html",
+    "identifier": "OLFL-1.3",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Open Market License",
+    "link": "https://spdx.org/licenses/OML.html",
+    "identifier": "OML",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OpenMDW License Agreement v1.0",
+    "link": "https://spdx.org/licenses/OpenMDW-1.0.html",
+    "identifier": "OpenMDW-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OpenPBS v2.3 Software License",
+    "link": "https://spdx.org/licenses/OpenPBS-2.3.html",
+    "identifier": "OpenPBS-2.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OpenSSL License",
+    "link": "https://spdx.org/licenses/OpenSSL.html",
+    "identifier": "OpenSSL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OpenSSL License - standalone",
+    "link": "https://spdx.org/licenses/OpenSSL-standalone.html",
+    "identifier": "OpenSSL-standalone",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OpenVision License",
+    "link": "https://spdx.org/licenses/OpenVision.html",
+    "identifier": "OpenVision",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Public License v1.0",
+    "link": "https://spdx.org/licenses/OPL-1.0.html",
+    "identifier": "OPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "United    Kingdom Open Parliament Licence v3.0",
+    "link": "https://spdx.org/licenses/OPL-UK-3.0.html",
+    "identifier": "OPL-UK-3.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Publication License v1.0",
+    "link": "https://spdx.org/licenses/OPUBL-1.0.html",
+    "identifier": "OPUBL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "OSET Public License version 2.1",
+    "link": "https://spdx.org/licenses/OSET-PL-2.1.html",
+    "identifier": "OSET-PL-2.1",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Open Software License 1.0",
+    "link": "https://spdx.org/licenses/OSL-1.0.html",
+    "identifier": "OSL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Software License 1.1",
+    "link": "https://spdx.org/licenses/OSL-1.1.html",
+    "identifier": "OSL-1.1",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Software License 2.0",
+    "link": "https://spdx.org/licenses/OSL-2.0.html",
+    "identifier": "OSL-2.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Software License 2.1",
+    "link": "https://spdx.org/licenses/OSL-2.1.html",
+    "identifier": "OSL-2.1",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Software License 3.0",
+    "link": "https://spdx.org/licenses/OSL-3.0.html",
+    "identifier": "OSL-3.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "OSSP License",
+    "link": "https://spdx.org/licenses/OSSP.html",
+    "identifier": "OSSP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PADL License",
+    "link": "https://spdx.org/licenses/PADL.html",
+    "identifier": "PADL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ParaType Free Font Licensing Agreement v1.3",
+    "link": "https://spdx.org/licenses/ParaType-Free-Font-1.3.html",
+    "identifier": "ParaType-Free-Font-1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "The Parity Public License 6.0.0",
+    "link": "https://spdx.org/licenses/Parity-6.0.0.html",
+    "identifier": "Parity-6.0.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "The Parity Public License 7.0.0",
+    "link": "https://spdx.org/licenses/Parity-7.0.0.html",
+    "identifier": "Parity-7.0.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Open Data Commons Public Domain Dedication & License 1.0",
+    "link": "https://spdx.org/licenses/PDDL-1.0.html",
+    "identifier": "PDDL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PHP License v3.0",
+    "link": "https://spdx.org/licenses/PHP-3.0.html",
+    "identifier": "PHP-3.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "PHP License v3.01",
+    "link": "https://spdx.org/licenses/PHP-3.01.html",
+    "identifier": "PHP-3.01",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Pixar License",
+    "link": "https://spdx.org/licenses/Pixar.html",
+    "identifier": "Pixar",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "pkgconf License",
+    "link": "https://spdx.org/licenses/pkgconf.html",
+    "identifier": "pkgconf",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Plexus Classworlds License",
+    "link": "https://spdx.org/licenses/Plexus.html",
+    "identifier": "Plexus",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "pnmstitch License",
+    "link": "https://spdx.org/licenses/pnmstitch.html",
+    "identifier": "pnmstitch",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PolyForm Noncommercial License 1.0.0",
+    "link": "https://spdx.org/licenses/PolyForm-Noncommercial-1.0.0.html",
+    "identifier": "PolyForm-Noncommercial-1.0.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PolyForm Small Business License 1.0.0",
+    "link": "https://spdx.org/licenses/PolyForm-Small-Business-1.0.0.html",
+    "identifier": "PolyForm-Small-Business-1.0.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "PostgreSQL License",
+    "link": "https://spdx.org/licenses/PostgreSQL.html",
+    "identifier": "PostgreSQL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Peer Production License",
+    "link": "https://spdx.org/licenses/PPL.html",
+    "identifier": "PPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Python Software Foundation License 2.0",
+    "link": "https://spdx.org/licenses/PSF-2.0.html",
+    "identifier": "PSF-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "psfrag License",
+    "link": "https://spdx.org/licenses/psfrag.html",
+    "identifier": "psfrag",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "psutils License",
+    "link": "https://spdx.org/licenses/psutils.html",
+    "identifier": "psutils",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Python License 2.0",
+    "link": "https://spdx.org/licenses/Python-2.0.html",
+    "identifier": "Python-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Python License 2.0.1",
+    "link": "https://spdx.org/licenses/Python-2.0.1.html",
+    "identifier": "Python-2.0.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Python ldap License",
+    "link": "https://spdx.org/licenses/python-ldap.html",
+    "identifier": "python-ldap",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Qhull License",
+    "link": "https://spdx.org/licenses/Qhull.html",
+    "identifier": "Qhull",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Q Public License 1.0",
+    "link": "https://spdx.org/licenses/QPL-1.0.html",
+    "identifier": "QPL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Q Public License 1.0 - INRIA 2004 variant",
+    "link": "https://spdx.org/licenses/QPL-1.0-INRIA-2004.html",
+    "identifier": "QPL-1.0-INRIA-2004",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "radvd License",
+    "link": "https://spdx.org/licenses/radvd.html",
+    "identifier": "radvd",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Rdisc License",
+    "link": "https://spdx.org/licenses/Rdisc.html",
+    "identifier": "Rdisc",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Red Hat eCos Public License v1.1",
+    "link": "https://spdx.org/licenses/RHeCos-1.1.html",
+    "identifier": "RHeCos-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Reciprocal Public License 1.1",
+    "link": "https://spdx.org/licenses/RPL-1.1.html",
+    "identifier": "RPL-1.1",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Reciprocal Public License 1.5",
+    "link": "https://spdx.org/licenses/RPL-1.5.html",
+    "identifier": "RPL-1.5",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "RealNetworks Public Source License v1.0",
+    "link": "https://spdx.org/licenses/RPSL-1.0.html",
+    "identifier": "RPSL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "RSA Message-Digest License",
+    "link": "https://spdx.org/licenses/RSA-MD.html",
+    "identifier": "RSA-MD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Ricoh Source Code Public License",
+    "link": "https://spdx.org/licenses/RSCPL.html",
+    "identifier": "RSCPL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Ruby License",
+    "link": "https://spdx.org/licenses/Ruby.html",
+    "identifier": "Ruby",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Ruby pty extension license",
+    "link": "https://spdx.org/licenses/Ruby-pty.html",
+    "identifier": "Ruby-pty",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sax Public Domain Notice",
+    "link": "https://spdx.org/licenses/SAX-PD.html",
+    "identifier": "SAX-PD",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sax Public Domain Notice 2.0",
+    "link": "https://spdx.org/licenses/SAX-PD-2.0.html",
+    "identifier": "SAX-PD-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Saxpath License",
+    "link": "https://spdx.org/licenses/Saxpath.html",
+    "identifier": "Saxpath",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SCEA Shared Source License",
+    "link": "https://spdx.org/licenses/SCEA.html",
+    "identifier": "SCEA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Scheme Language Report License",
+    "link": "https://spdx.org/licenses/SchemeReport.html",
+    "identifier": "SchemeReport",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sendmail License",
+    "link": "https://spdx.org/licenses/Sendmail.html",
+    "identifier": "Sendmail",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sendmail License 8.23",
+    "link": "https://spdx.org/licenses/Sendmail-8.23.html",
+    "identifier": "Sendmail-8.23",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sendmail Open Source License v1.1",
+    "link": "https://spdx.org/licenses/Sendmail-Open-Source-1.1.html",
+    "identifier": "Sendmail-Open-Source-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGI Free Software License B v1.0",
+    "link": "https://spdx.org/licenses/SGI-B-1.0.html",
+    "identifier": "SGI-B-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGI Free Software License B v1.1",
+    "link": "https://spdx.org/licenses/SGI-B-1.1.html",
+    "identifier": "SGI-B-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGI Free Software License B v2.0",
+    "link": "https://spdx.org/licenses/SGI-B-2.0.html",
+    "identifier": "SGI-B-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGI OpenGL License",
+    "link": "https://spdx.org/licenses/SGI-OpenGL.html",
+    "identifier": "SGI-OpenGL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGMLUG Parser Materials License",
+    "link": "https://spdx.org/licenses/SGMLUG-PM.html",
+    "identifier": "SGMLUG-PM",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SGP4 Permission Notice",
+    "link": "https://spdx.org/licenses/SGP4.html",
+    "identifier": "SGP4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Solderpad Hardware License v0.5",
+    "link": "https://spdx.org/licenses/SHL-0.5.html",
+    "identifier": "SHL-0.5",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Solderpad Hardware License, Version 0.51",
+    "link": "https://spdx.org/licenses/SHL-0.51.html",
+    "identifier": "SHL-0.51",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Simple Public License 2.0",
+    "link": "https://spdx.org/licenses/SimPL-2.0.html",
+    "identifier": "SimPL-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sun Industry Standards Source License v1.1",
+    "link": "https://spdx.org/licenses/SISSL.html",
+    "identifier": "SISSL",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Sun Industry Standards Source License v1.2",
+    "link": "https://spdx.org/licenses/SISSL-1.2.html",
+    "identifier": "SISSL-1.2",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SL License",
+    "link": "https://spdx.org/licenses/SL.html",
+    "identifier": "SL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sleepycat License",
+    "link": "https://spdx.org/licenses/Sleepycat.html",
+    "identifier": "Sleepycat",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "SMAIL General Public License",
+    "link": "https://spdx.org/licenses/SMAIL-GPL.html",
+    "identifier": "SMAIL-GPL",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Standard ML of New Jersey License",
+    "link": "https://spdx.org/licenses/SMLNJ.html",
+    "identifier": "SMLNJ",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Secure Messaging Protocol Public License",
+    "link": "https://spdx.org/licenses/SMPPL.html",
+    "identifier": "SMPPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SNIA Public License 1.1",
+    "link": "https://spdx.org/licenses/SNIA.html",
+    "identifier": "SNIA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "snprintf License",
+    "link": "https://spdx.org/licenses/snprintf.html",
+    "identifier": "snprintf",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SOFA Software License",
+    "link": "https://spdx.org/licenses/SOFA.html",
+    "identifier": "SOFA",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "softSurfer License",
+    "link": "https://spdx.org/licenses/softSurfer.html",
+    "identifier": "softSurfer",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Soundex License",
+    "link": "https://spdx.org/licenses/Soundex.html",
+    "identifier": "Soundex",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Spencer License 86",
+    "link": "https://spdx.org/licenses/Spencer-86.html",
+    "identifier": "Spencer-86",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Spencer License 94",
+    "link": "https://spdx.org/licenses/Spencer-94.html",
+    "identifier": "Spencer-94",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Spencer License 99",
+    "link": "https://spdx.org/licenses/Spencer-99.html",
+    "identifier": "Spencer-99",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sun Public License v1.0",
+    "link": "https://spdx.org/licenses/SPL-1.0.html",
+    "identifier": "SPL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "ssh-keyscan License",
+    "link": "https://spdx.org/licenses/ssh-keyscan.html",
+    "identifier": "ssh-keyscan",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SSH OpenSSH license",
+    "link": "https://spdx.org/licenses/SSH-OpenSSH.html",
+    "identifier": "SSH-OpenSSH",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SSH short notice",
+    "link": "https://spdx.org/licenses/SSH-short.html",
+    "identifier": "SSH-short",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SSLeay License - standalone",
+    "link": "https://spdx.org/licenses/SSLeay-standalone.html",
+    "identifier": "SSLeay-standalone",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Server Side Public License, v 1",
+    "link": "https://spdx.org/licenses/SSPL-1.0.html",
+    "identifier": "SSPL-1.0",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Standard ML of New Jersey License",
+    "link": "https://spdx.org/licenses/StandardML-NJ.html",
+    "identifier": "StandardML-NJ",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SugarCRM Public License v1.1.3",
+    "link": "https://spdx.org/licenses/SugarCRM-1.1.3.html",
+    "identifier": "SugarCRM-1.1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sustainable Use License v1.0",
+    "link": "https://spdx.org/licenses/SUL-1.0.html",
+    "identifier": "SUL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sun PPP License",
+    "link": "https://spdx.org/licenses/Sun-PPP.html",
+    "identifier": "Sun-PPP",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sun PPP License (2000)",
+    "link": "https://spdx.org/licenses/Sun-PPP-2000.html",
+    "identifier": "Sun-PPP-2000",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "SunPro License",
+    "link": "https://spdx.org/licenses/SunPro.html",
+    "identifier": "SunPro",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Scheme Widget Library (SWL) Software License Agreement",
+    "link": "https://spdx.org/licenses/SWL.html",
+    "identifier": "SWL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "swrule License",
+    "link": "https://spdx.org/licenses/swrule.html",
+    "identifier": "swrule",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Symlinks License",
+    "link": "https://spdx.org/licenses/Symlinks.html",
+    "identifier": "Symlinks",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TAPR Open Hardware License v1.0",
+    "link": "https://spdx.org/licenses/TAPR-OHL-1.0.html",
+    "identifier": "TAPR-OHL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TCL/TK License",
+    "link": "https://spdx.org/licenses/TCL.html",
+    "identifier": "TCL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TCP Wrappers License",
+    "link": "https://spdx.org/licenses/TCP-wrappers.html",
+    "identifier": "TCP-wrappers",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TekHVC License",
+    "link": "https://spdx.org/licenses/TekHVC.html",
+    "identifier": "TekHVC",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TermReadKey License",
+    "link": "https://spdx.org/licenses/TermReadKey.html",
+    "identifier": "TermReadKey",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Transitive Grace Period Public Licence 1.0",
+    "link": "https://spdx.org/licenses/TGPPL-1.0.html",
+    "identifier": "TGPPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "ThirdEye License",
+    "link": "https://spdx.org/licenses/ThirdEye.html",
+    "identifier": "ThirdEye",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "threeparttable License",
+    "link": "https://spdx.org/licenses/threeparttable.html",
+    "identifier": "threeparttable",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TMate Open Source License",
+    "link": "https://spdx.org/licenses/TMate.html",
+    "identifier": "TMate",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TORQUE v2.5+ Software License v1.1",
+    "link": "https://spdx.org/licenses/TORQUE-1.1.html",
+    "identifier": "TORQUE-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Trusster Open Source License",
+    "link": "https://spdx.org/licenses/TOSL.html",
+    "identifier": "TOSL",
+    "defaultCategory": "Strong Copyleft Licenses"
+  },
+  {
+    "fullName": "Time::ParseDate License",
+    "link": "https://spdx.org/licenses/TPDL.html",
+    "identifier": "TPDL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "THOR Public License 1.0",
+    "link": "https://spdx.org/licenses/TPL-1.0.html",
+    "identifier": "TPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TrustedQSL License",
+    "link": "https://spdx.org/licenses/TrustedQSL.html",
+    "identifier": "TrustedQSL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Text-Tabs+Wrap License",
+    "link": "https://spdx.org/licenses/TTWL.html",
+    "identifier": "TTWL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "TTYP0 License",
+    "link": "https://spdx.org/licenses/TTYP0.html",
+    "identifier": "TTYP0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Technische Universitaet Berlin License 1.0",
+    "link": "https://spdx.org/licenses/TU-Berlin-1.0.html",
+    "identifier": "TU-Berlin-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Technische Universitaet Berlin License 2.0",
+    "link": "https://spdx.org/licenses/TU-Berlin-2.0.html",
+    "identifier": "TU-Berlin-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Ubuntu Font Licence v1.0",
+    "link": "https://spdx.org/licenses/Ubuntu-font-1.0.html",
+    "identifier": "Ubuntu-font-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "UCAR License",
+    "link": "https://spdx.org/licenses/UCAR.html",
+    "identifier": "UCAR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Upstream Compatibility License v1.0",
+    "link": "https://spdx.org/licenses/UCL-1.0.html",
+    "identifier": "UCL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "ulem License",
+    "link": "https://spdx.org/licenses/ulem.html",
+    "identifier": "ulem",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Michigan/Merit Networks License",
+    "link": "https://spdx.org/licenses/UMich-Merit.html",
+    "identifier": "UMich-Merit",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Unicode License v3",
+    "link": "https://spdx.org/licenses/Unicode-3.0.html",
+    "identifier": "Unicode-3.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Unicode License Agreement - Data Files and Software (2015)",
+    "link": "https://spdx.org/licenses/Unicode-DFS-2015.html",
+    "identifier": "Unicode-DFS-2015",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Unicode License Agreement - Data Files and Software (2016)",
+    "link": "https://spdx.org/licenses/Unicode-DFS-2016.html",
+    "identifier": "Unicode-DFS-2016",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Unicode Terms of Use",
+    "link": "https://spdx.org/licenses/Unicode-TOU.html",
+    "identifier": "Unicode-TOU",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "UnixCrypt License",
+    "link": "https://spdx.org/licenses/UnixCrypt.html",
+    "identifier": "UnixCrypt",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "The Unlicense",
+    "link": "https://spdx.org/licenses/Unlicense.html",
+    "identifier": "Unlicense",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Unlicense - libtelnet variant",
+    "link": "https://spdx.org/licenses/Unlicense-libtelnet.html",
+    "identifier": "Unlicense-libtelnet",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Unlicense - libwhirlpool variant",
+    "link": "https://spdx.org/licenses/Unlicense-libwhirlpool.html",
+    "identifier": "Unlicense-libwhirlpool",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "UnRAR License",
+    "link": "https://spdx.org/licenses/UnRAR.html",
+    "identifier": "UnRAR",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Universal Permissive License v1.0",
+    "link": "https://spdx.org/licenses/UPL-1.0.html",
+    "identifier": "UPL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Utah Raster Toolkit Run Length Encoded License",
+    "link": "https://spdx.org/licenses/URT-RLE.html",
+    "identifier": "URT-RLE",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Vim License",
+    "link": "https://spdx.org/licenses/Vim.html",
+    "identifier": "Vim",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Vixie Cron License",
+    "link": "https://spdx.org/licenses/Vixie-Cron.html",
+    "identifier": "Vixie-Cron",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "VOSTROM Public License for Open Source",
+    "link": "https://spdx.org/licenses/VOSTROM.html",
+    "identifier": "VOSTROM",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Vovida Software License v1.0",
+    "link": "https://spdx.org/licenses/VSL-1.0.html",
+    "identifier": "VSL-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "W3C Software Notice and License (2002-12-31)",
+    "link": "https://spdx.org/licenses/W3C.html",
+    "identifier": "W3C",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "W3C Software Notice and License (1998-07-20)",
+    "link": "https://spdx.org/licenses/W3C-19980720.html",
+    "identifier": "W3C-19980720",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "W3C Software Notice and Document License (2015-05-13)",
+    "link": "https://spdx.org/licenses/W3C-20150513.html",
+    "identifier": "W3C-20150513",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "w3m License",
+    "link": "https://spdx.org/licenses/w3m.html",
+    "identifier": "w3m",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Sybase Open Watcom Public License 1.0",
+    "link": "https://spdx.org/licenses/Watcom-1.0.html",
+    "identifier": "Watcom-1.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Widget Workshop License",
+    "link": "https://spdx.org/licenses/Widget-Workshop.html",
+    "identifier": "Widget-Workshop",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "WordNet License",
+    "link": "https://spdx.org/licenses/WordNet.html",
+    "identifier": "WordNet",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Wsuipa License",
+    "link": "https://spdx.org/licenses/Wsuipa.html",
+    "identifier": "Wsuipa",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Do What The F*ck You Want To But It's Not My Fault Public License",
+    "link": "https://spdx.org/licenses/WTFNMFPL.html",
+    "identifier": "WTFNMFPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Do What The F*ck You Want To Public License",
+    "link": "https://spdx.org/licenses/WTFPL.html",
+    "identifier": "WTFPL",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "WWL License",
+    "link": "https://spdx.org/licenses/wwl.html",
+    "identifier": "wwl",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "wxWindows Library License",
+    "link": "https://spdx.org/licenses/wxWindows.html",
+    "identifier": "wxWindows",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "X11 License",
+    "link": "https://spdx.org/licenses/X11.html",
+    "identifier": "X11",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "X11 License Distribution Modification Variant",
+    "link": "https://spdx.org/licenses/X11-distribute-modifications-variant.html",
+    "identifier": "X11-distribute-modifications-variant",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "X11 no permit persons clause",
+    "link": "https://spdx.org/licenses/X11-no-permit-persons.html",
+    "identifier": "X11-no-permit-persons",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "X11 swapped final paragraphs",
+    "link": "https://spdx.org/licenses/X11-swapped.html",
+    "identifier": "X11-swapped",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Xdebug License v 1.03",
+    "link": "https://spdx.org/licenses/Xdebug-1.03.html",
+    "identifier": "Xdebug-1.03",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Xerox License",
+    "link": "https://spdx.org/licenses/Xerox.html",
+    "identifier": "Xerox",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Xfig License",
+    "link": "https://spdx.org/licenses/Xfig.html",
+    "identifier": "Xfig",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "XFree86 License 1.1",
+    "link": "https://spdx.org/licenses/XFree86-1.1.html",
+    "identifier": "XFree86-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "xinetd License",
+    "link": "https://spdx.org/licenses/xinetd.html",
+    "identifier": "xinetd",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "xkeyboard-config Zinoviev License",
+    "link": "https://spdx.org/licenses/xkeyboard-config-Zinoviev.html",
+    "identifier": "xkeyboard-config-Zinoviev",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "xlock License",
+    "link": "https://spdx.org/licenses/xlock.html",
+    "identifier": "xlock",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "X.Net License",
+    "link": "https://spdx.org/licenses/Xnet.html",
+    "identifier": "Xnet",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "XPP License",
+    "link": "https://spdx.org/licenses/xpp.html",
+    "identifier": "xpp",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "XSkat License",
+    "link": "https://spdx.org/licenses/XSkat.html",
+    "identifier": "XSkat",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "xzoom License",
+    "link": "https://spdx.org/licenses/xzoom.html",
+    "identifier": "xzoom",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Yahoo! Public License v1.0",
+    "link": "https://spdx.org/licenses/YPL-1.0.html",
+    "identifier": "YPL-1.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Yahoo! Public License v1.1",
+    "link": "https://spdx.org/licenses/YPL-1.1.html",
+    "identifier": "YPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zed License",
+    "link": "https://spdx.org/licenses/Zed.html",
+    "identifier": "Zed",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zeeff License",
+    "link": "https://spdx.org/licenses/Zeeff.html",
+    "identifier": "Zeeff",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zend License v2.0",
+    "link": "https://spdx.org/licenses/Zend-2.0.html",
+    "identifier": "Zend-2.0",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zimbra Public License v1.3",
+    "link": "https://spdx.org/licenses/Zimbra-1.3.html",
+    "identifier": "Zimbra-1.3",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zimbra Public License v1.4",
+    "link": "https://spdx.org/licenses/Zimbra-1.4.html",
+    "identifier": "Zimbra-1.4",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "zlib License",
+    "link": "https://spdx.org/licenses/Zlib.html",
+    "identifier": "Zlib",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "zlib/libpng License with Acknowledgement",
+    "link": "https://spdx.org/licenses/zlib-acknowledgement.html",
+    "identifier": "zlib-acknowledgement",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zope Public License 1.1",
+    "link": "https://spdx.org/licenses/ZPL-1.1.html",
+    "identifier": "ZPL-1.1",
+    "defaultCategory": "Weak Copyleft Licenses"
+  },
+  {
+    "fullName": "Zope Public License 2.0",
+    "link": "https://spdx.org/licenses/ZPL-2.0.html",
+    "identifier": "ZPL-2.0",
+    "defaultCategory": "Permissive Licenses"
+  },
+  {
+    "fullName": "Zope Public License 2.1",
+    "link": "https://spdx.org/licenses/ZPL-2.1.html",
+    "identifier": "ZPL-2.1",
+    "defaultCategory": "Permissive Licenses"
+  }
+]

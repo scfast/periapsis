@@ -1,0 +1,12 @@
+[
+  {
+    "name": "semver",
+    "version": "7.7.4",
+    "license": "ISC",
+    "path": "node_modules/semver",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/npm/node-semver.git"
+    }
+  }
+]

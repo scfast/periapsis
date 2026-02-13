@@ -1,0 +1,14 @@
+{
+  "allowedCategories": [
+    "Permissive Licenses"
+  ],
+  "failOnUnknownLicense": true,
+  "timezone": "America/Edmonton",
+  "dependencyTypes": [
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+    "optionalDependencies",
+    "bundledDependencies"
+  ]
+}
