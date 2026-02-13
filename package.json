@@ -19,5 +19,16 @@
     "node": ">=18"
   },
   "description": "Lightweight SBOM/license checker with allowlist, exceptions, and upstream chains.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scfast/periapsis"
+  },
+  "keywords": [
+    "sbom",
+    "license",
+    "compliance",
+    "spdx",
+    "cli"
+  ],
   "license": "MIT"
 }
