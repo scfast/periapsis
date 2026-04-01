@@ -1,0 +1,123 @@
+name: Publish Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: Semver increment to publish
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-package
+  cancel-in-progress: false
+
+jobs:
+  authorize-release:
+    name: Authorize Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require default branch
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          if [ "${GITHUB_REF_NAME}" != "${DEFAULT_BRANCH}" ]; then
+            echo "Manual publishing is only allowed from ${DEFAULT_BRANCH}."
+            exit 1
+          fi
+
+      - name: Require repository admin permission
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const actor = context.actor;
+
+            if (owner.toLowerCase() === actor.toLowerCase()) {
+              core.info(`Actor ${actor} matches the repository owner and is treated as admin.`);
+              return;
+            }
+
+            const response = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner,
+              repo,
+              username: actor,
+            });
+
+            const { permission, role_name: roleName } = response.data;
+            core.info(`Actor ${actor} permission=${permission}, role_name=${roleName}`);
+
+            if (permission !== "admin" && roleName !== "admin") {
+              core.setFailed(`Only repository admins can publish packages. ${actor} has ${roleName || permission}.`);
+            }
+
+  publish-package:
+    name: Publish Package
+    needs: authorize-release
+    runs-on: ubuntu-latest
+    environment:
+      # Configure this environment in GitHub with required reviewers for an
+      # extra approval gate, and use the same name in npm trusted publisher
+      # settings if you want npm to bind publishing to this environment.
+      name: package-publish
+    permissions:
+      # Required because this workflow commits the bumped version, creates a
+      # release tag, and pushes both back to the repository.
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run automated test suite
+        run: npm run test:ci
+
+      - name: Bump package version
+        run: npm version "${{ inputs.release_type }}" --no-git-tag-version
+
+      - name: Read new version
+        id: version
+        run: |
+          echo "value=$(node -p 'require(\"./package.json\").version')" >> "$GITHUB_OUTPUT"
+
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit release version
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: |
+          git add package.json package-lock.json
+          git commit -m "chore(release): v${VERSION}"
+          git tag "v${VERSION}"
+
+      - name: Publish to npm with trusted publishing
+        run: npm publish
+
+      - name: Push release commit and tag
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        run: git push --atomic origin "HEAD:${GITHUB_REF_NAME}" "refs/tags/v${VERSION}"
