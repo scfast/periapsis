@@ -233,11 +233,9 @@ function loadPolicyOrThrow(policyDir) {
   return loadPolicyFromNewFiles(policyDir);
 }
 
-async function cmdExceptionsAdd(root, policyDirArg) {
+async function cmdExceptionsAdd(root, policyDirArg, args) {
   const policyDir = path.resolve(root, policyDirArg || 'policy');
   const policy = loadPolicyOrThrow(policyDir);
-  const args = parseArgs(process.argv.slice(2));
-
   const writeExceptions = (record, { editExisting = false } = {}) => {
     const sameScope = policy.exceptions.filter(
       (entry) => entry.package === record.package && scopeKey(entry.scope) === scopeKey(record.scope)
@@ -384,12 +382,10 @@ async function cmdExceptionsAdd(root, policyDirArg) {
   });
 }
 
-async function cmdLicensesAllowAdd(root, policyDirArg) {
+async function cmdLicensesAllowAdd(root, policyDirArg, args) {
   const policyDir = path.resolve(root, policyDirArg || 'policy');
   const policy = loadPolicyOrThrow(policyDir);
   const spdx = loadSpdxCatalog(SPDX_PATH);
-  const args = parseArgs(process.argv.slice(2));
-
   const writeLicenses = (record) => {
     if (policy.licenses.some((entry) => entry.identifier === record.identifier)) {
       console.warn(
@@ -656,8 +652,8 @@ function cmdCheck(root, args) {
   }
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
+export async function main(argv = process.argv.slice(2)) {
+  const args = parseArgs(argv);
   const root = resolveRoot(args);
 
   if (args.help) {
@@ -682,12 +678,12 @@ async function main() {
   }
 
   if (cmd1 === 'exceptions' && cmd2 === 'add') {
-    await cmdExceptionsAdd(root, args['policy-dir']);
+    await cmdExceptionsAdd(root, args['policy-dir'], args);
     return;
   }
 
   if (cmd1 === 'licenses' && cmd2 === 'allow' && cmd3 === 'add') {
-    await cmdLicensesAllowAdd(root, args['policy-dir']);
+    await cmdLicensesAllowAdd(root, args['policy-dir'], args);
     return;
   }
 
@@ -700,7 +696,9 @@ async function main() {
   cmdCheck(root, args);
 }
 
-main().catch((err) => {
-  console.error(err.message);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  main().catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+  });
+}

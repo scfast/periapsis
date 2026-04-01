@@ -1,55 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'fs';
-import os from 'os';
 import path from 'path';
-import { execFileSync } from 'child_process';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const BIN = path.resolve(__dirname, '..', 'bin', 'periapsis.mjs');
+import { createTempDir, runCli, writePolicyBundle } from '../testing/helpers.mjs';
 
 function setupTempProject() {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'periapsis-test-'));
-  fs.mkdirSync(path.join(dir, 'policy'), { recursive: true });
-  fs.writeFileSync(
-    path.join(dir, 'policy', 'policy.json'),
-    JSON.stringify(
-      {
-        allowedCategories: ['Permissive Licenses'],
-        failOnUnknownLicense: true,
-        timezone: 'UTC',
-        dependencyTypes: ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies', 'bundledDependencies']
-      },
-      null,
-      2
-    ) + '\n'
-  );
-  fs.writeFileSync(path.join(dir, 'policy', 'licenses.json'), '[]\n');
-  fs.writeFileSync(path.join(dir, 'policy', 'exceptions.json'), '[]\n');
+  const dir = createTempDir('periapsis-test-');
+  writePolicyBundle(dir);
   return dir;
 }
 
-function runCli(cwd, args, { expectFail = false } = {}) {
-  try {
-    const out = execFileSync('node', [BIN, ...args], {
-      cwd,
-      encoding: 'utf8'
-    });
-    if (expectFail) {
-      assert.fail(`Expected command to fail: ${args.join(' ')}`);
-    }
-    return out;
-  } catch (err) {
-    if (!expectFail) throw err;
-    return `${err.stdout || ''}${err.stderr || ''}`;
-  }
-}
-
-test('licenses allow add supports non-interactive mode', () => {
+test('licenses allow add supports non-interactive mode', async () => {
   const cwd = setupTempProject();
-  runCli(cwd, [
+  await runCli(cwd, [
     'licenses',
     'allow',
     'add',
@@ -72,9 +35,9 @@ test('licenses allow add supports non-interactive mode', () => {
   assert.equal(licenses[0].approvedBy[0], 'security');
 });
 
-test('exceptions add supports non-interactive mode', () => {
+test('exceptions add supports non-interactive mode', async () => {
   const cwd = setupTempProject();
-  runCli(cwd, [
+  await runCli(cwd, [
     'exceptions',
     'add',
     '--non-interactive',
@@ -100,9 +63,9 @@ test('exceptions add supports non-interactive mode', () => {
   assert.equal(exceptions[0].scope.type, 'exact');
 });
 
-test('non-interactive mode enforces required fields', () => {
+test('non-interactive mode enforces required fields', async () => {
   const cwd = setupTempProject();
-  const output = runCli(
+  const output = await runCli(
     cwd,
     ['licenses', 'allow', 'add', '--non-interactive', '--identifier', 'MIT'],
     { expectFail: true }
@@ -111,7 +74,7 @@ test('non-interactive mode enforces required fields', () => {
   assert.match(output, /--approved-by is required/);
 });
 
-test('checker respects --dep-types filter', () => {
+test('checker respects --dep-types filter', async () => {
   const cwd = setupTempProject();
   fs.writeFileSync(
     path.join(cwd, 'package.json'),
@@ -150,7 +113,7 @@ test('checker respects --dep-types filter', () => {
   fs.mkdirSync(path.join(cwd, 'node_modules', 'a'), { recursive: true });
   fs.mkdirSync(path.join(cwd, 'node_modules', 'b'), { recursive: true });
 
-  runCli(cwd, [
+  await runCli(cwd, [
     'licenses',
     'allow',
     'add',
@@ -167,8 +130,8 @@ test('checker respects --dep-types filter', () => {
     'JIRA-300'
   ]);
 
-  runCli(cwd, ['--dep-types', 'dependencies', '--quiet']);
-  const failOutput = runCli(cwd, ['--dep-types', 'devDependencies'], {
+  await runCli(cwd, ['--dep-types', 'dependencies', '--quiet']);
+  const failOutput = await runCli(cwd, ['--dep-types', 'devDependencies'], {
     expectFail: true
   });
   assert.match(failOutput, /license-not-allowed/);
