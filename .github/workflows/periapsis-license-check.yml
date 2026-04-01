@@ -1,4 +1,4 @@
-name: Periapsis License Check
+name: Periapsis PR Gate
 
 on:
   workflow_dispatch:
@@ -9,8 +9,28 @@ permissions:
   contents: read
 
 jobs:
-  periapsis:
+  test-suite:
     if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run automated test suite
+        run: npm run test:ci
+
+  policy-gate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
+    needs: test-suite
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,7 +48,7 @@ jobs:
       - name: Run Periapsis policy check
         id: periapsis
         continue-on-error: true
-        run: npx periapsis --violations-out sbom-violations.json
+        run: npm run policy:check
 
       - name: Enforce zero violations
         if: always()

@@ -17,6 +17,22 @@ npx periapsis init --preset strict
 
 `init` now asks which dependency types should be checked by default (unless provided via flags).
 
+## Testing
+
+Run the regression suite:
+
+```sh
+npm test
+```
+
+Run the repository policy gate locally:
+
+```sh
+npm run policy:check
+```
+
+Testing layers and PR gate guidance live in `docs/testing-strategy.md`.
+
 ## Commands
 
 - `periapsis`: run SBOM + license gate

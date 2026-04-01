@@ -4,7 +4,11 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "test:unit": "node --test test/policy.test.mjs",
+    "test:cli": "node --test test/cli.test.mjs test/commands.test.mjs test/regression-gate.test.mjs",
+    "test:ci": "npm run test",
+    "policy:check": "node ./bin/periapsis.mjs --violations-out sbom-violations.json"
   },
   "bin": {
     "periapsis": "bin/periapsis.mjs"
