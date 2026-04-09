@@ -696,7 +696,16 @@ export async function main(argv = process.argv.slice(2)) {
   cmdCheck(root, args);
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+export function isDirectExecution(entryFilename = __filename, argv1 = process.argv[1]) {
+  if (!argv1) return false;
+  try {
+    return fs.realpathSync(argv1) === entryFilename;
+  } catch {
+    return path.resolve(argv1) === entryFilename;
+  }
+}
+
+if (isDirectExecution()) {
   main().catch((err) => {
     console.error(err.message);
     process.exit(1);

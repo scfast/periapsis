@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'fs';
 import path from 'path';
-import { createTempDir, runCli, writePolicyBundle } from '../testing/helpers.mjs';
+import { isDirectExecution } from '../bin/periapsis.mjs';
+import { BIN, createTempDir, runCli, writePolicyBundle } from '../testing/helpers.mjs';
 
 function setupTempProject() {
   const dir = createTempDir('periapsis-test-');
@@ -135,4 +136,12 @@ test('checker respects --dep-types filter', async () => {
     expectFail: true
   });
   assert.match(failOutput, /license-not-allowed/);
+});
+
+test('isDirectExecution resolves symlinked bin paths', () => {
+  const cwd = createTempDir('periapsis-bin-symlink-');
+  const symlinkPath = path.join(cwd, 'periapsis');
+  fs.symlinkSync(BIN, symlinkPath);
+
+  assert.equal(isDirectExecution(BIN, symlinkPath), true);
 });
