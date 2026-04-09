@@ -9,6 +9,8 @@ npm install
 npx periapsis --violations-out sbom-violations.json
 ```
 
+When working on the `periapsis` repository itself, prefer `node ./bin/periapsis.mjs ...` or `npm run policy:check` so you are exercising the checked-out CLI rather than any previously published copy.
+
 Initialize governed policy files:
 
 ```sh
@@ -311,6 +313,8 @@ Example:
 - run: npm ci
 - run: npx periapsis --violations-out sbom-violations.json
 ```
+
+If you add an inline `node -e` follow-up check in GitHub Actions, wrap the JavaScript in single quotes. Backticks inside a double-quoted shell string are treated as command substitution by `bash`.
 
 When violations exist, Periapsis exits non-zero and prints deterministic markdown summary suitable for Actions logs.
 

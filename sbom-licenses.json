@@ -1,7 +1,7 @@
 [
   {
     "name": "ajv",
-    "version": "8.17.1",
+    "version": "8.18.0",
     "license": "MIT",
     "path": "node_modules/ajv",
     "repository": "ajv-validator/ajv",
@@ -59,19 +59,6 @@
     },
     "dependencyTypes": [
       "dependencies"
-    ]
-  },
-  {
-    "name": "periapsis",
-    "version": "1.0.1",
-    "license": "MIT",
-    "path": "node_modules/periapsis",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/scfast/periapsis"
-    },
-    "dependencyTypes": [
-      "devDependencies"
     ]
   },
   {
