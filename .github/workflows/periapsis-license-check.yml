@@ -63,7 +63,7 @@ jobs:
             exit 1
           fi
 
-          VIOLATION_COUNT=$(node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('sbom-violations.json','utf8'));const count=Array.isArray(d)?d.length:(Array.isArray(d?.violations)?d.violations.length:0);process.stdout.write(String(count));")
+          VIOLATION_COUNT="$(node -e 'const fs = require("fs"); const data = JSON.parse(fs.readFileSync("sbom-violations.json", "utf8")); const count = Array.isArray(data) ? data.length : Array.isArray(data?.violations) ? data.violations.length : 0; process.stdout.write(String(count));')"
           echo "Detected violations: ${VIOLATION_COUNT}"
 
           if [ "${VIOLATION_COUNT}" -gt 0 ]; then

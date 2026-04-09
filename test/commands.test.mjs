@@ -96,3 +96,32 @@ test('checker honors policy dependencyTypes when no CLI override is provided', a
   const sbom = JSON.parse(fs.readFileSync(path.join(cwd, 'sbom-licenses.json'), 'utf8'));
   assert.deepEqual(sbom.map((entry) => entry.name), ['a']);
 });
+
+test('checker accepts npm forwarded args after a standalone double-dash', async () => {
+  const cwd = createTempDir('periapsis-npm-forwarded-args-');
+  writePolicyBundle(cwd);
+  writeJson(path.join(cwd, 'package.json'), {
+    name: 'forwarded-args-app',
+    version: '1.0.0',
+    dependencies: { a: '1.0.0' }
+  });
+  writeJson(path.join(cwd, 'package-lock.json'), {
+    name: 'forwarded-args-app',
+    version: '1.0.0',
+    lockfileVersion: 3,
+    packages: {
+      '': {
+        name: 'forwarded-args-app',
+        version: '1.0.0',
+        dependencies: { a: '1.0.0' }
+      },
+      'node_modules/a': { version: '1.0.0', license: 'MIT' }
+    }
+  });
+  fs.mkdirSync(path.join(cwd, 'node_modules', 'a'), { recursive: true });
+
+  await runCli(cwd, ['--', '--violations-out', 'violations.json', '--quiet']);
+
+  const violations = JSON.parse(fs.readFileSync(path.join(cwd, 'violations.json'), 'utf8'));
+  assert.deepEqual(violations, []);
+});

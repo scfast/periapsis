@@ -34,8 +34,5 @@
     "spdx",
     "cli"
   ],
-  "license": "MIT",
-  "devDependencies": {
-    "periapsis": "^1.0.1"
-  }
+  "license": "MIT"
 }
