@@ -31,6 +31,14 @@ import {
   validatePolicyBundleOrThrow,
   writeJson
 } from '../lib/periapsis-core.mjs';
+import { initVulnerabilityPolicy } from '../lib/domains/vulnerability/initVulnerabilityPolicy.mjs';
+import { evaluateAlerts, ALERT_STATUSES } from '../lib/domains/vulnerability/checkVulnerabilityPolicy.mjs';
+import { validateVulnerabilityExceptionOrThrow, validateVulnerabilityConfigBundle } from '../lib/domains/vulnerability/validateVulnerabilityPolicy.mjs';
+import { addVulnerabilityException, generateExceptionId } from '../lib/domains/vulnerability/exceptions/addVulnerabilityException.mjs';
+import { notifyVulnerabilityOwners } from '../lib/domains/vulnerability/notifyVulnerabilityOwners.mjs';
+import { writeVulnerabilityReports } from '../lib/domains/vulnerability/generateVulnerabilityReport.mjs';
+import { buildPrCheckMarkdown, shouldFailPrCheck } from '../lib/domains/vulnerability/runVulnerabilityPrCheck.mjs';
+import { fetchDependabotAlerts, detectRepo } from '../lib/github/dependabotClient.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -231,6 +239,157 @@ async function askChoice(rl, prompt, options) {
 function loadPolicyOrThrow(policyDir) {
   ensurePolicyFiles(policyDir);
   return loadPolicyFromNewFiles(policyDir);
+}
+
+function printLegacyHint(legacy, preferred) {
+  console.warn(
+    `Note: "periapsis ${legacy}" is supported for backwards compatibility. Preferred form: "periapsis ${preferred}".`
+  );
+}
+
+function loadVulnerabilityConfig(root, args) {
+  const policyDir = path.resolve(root, args['policy-dir'] || 'policy');
+  const policyPath = path.join(policyDir, 'vulnerability-policy.json');
+  if (!fs.existsSync(policyPath)) {
+    throw new Error(
+      `Vulnerability policy not found at ${policyPath}. Run "periapsis vulnerability init" to create it.`
+    );
+  }
+  const policy = loadJson(policyPath, 'vulnerability policy');
+  const exceptionsPath = path.join(policyDir, 'vulnerability-exceptions.json');
+  const exceptions = fs.existsSync(exceptionsPath)
+    ? loadJson(exceptionsPath, 'vulnerability exceptions')
+    : [];
+  return { policy, exceptions, policyDir };
+}
+
+function resolveRepoAndToken(args) {
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    throw new Error('GITHUB_TOKEN environment variable is required.');
+  }
+  const repo = args.repo || detectRepo();
+  if (!repo) {
+    throw new Error(
+      'Could not determine repository. Pass --repo <owner/repo> or run from a git repository with a GitHub remote.'
+    );
+  }
+  const [owner, repoName] = repo.split('/');
+  return { token, repo, owner, repoName };
+}
+
+async function cmdVulnerabilityInit(root, args) {
+  const policyDirName = args['policy-dir'] || 'policy';
+  const force = Boolean(args.force);
+  await initVulnerabilityPolicy(root, { policyDir: policyDirName, force });
+  const resolvedPolicyDir = path.resolve(root, policyDirName);
+  console.log(`Vulnerability policy initialised in ${resolvedPolicyDir}`);
+}
+
+async function cmdVulnerabilityCheck(root, args) {
+  const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+  console.log(`Fetching Dependabot alerts for ${repo}...`);
+  const alerts = await fetchDependabotAlerts(owner, repoName, token);
+  const evaluated = evaluateAlerts(alerts, policy, exceptions, new Date());
+  const breached = evaluated.filter(e => e.status === ALERT_STATUSES.BREACHED);
+  const approaching = evaluated.filter(e => e.status === ALERT_STATUSES.APPROACHING_DUE || e.status === ALERT_STATUSES.DUE_TODAY);
+  console.log(`Total open alerts: ${alerts.length}`);
+  console.log(`Breached: ${breached.length}`);
+  console.log(`Approaching SLA: ${approaching.length}`);
+  if (args.report) {
+    const { jsonPath, mdPath } = await writeVulnerabilityReports(policyDir, evaluated, policy, repo);
+    console.log(`Wrote report to ${jsonPath}`);
+    console.log(`Wrote report to ${mdPath}`);
+  }
+  const mode = policy.rollout?.mode || 'observe';
+  if (breached.length > 0 && (mode === 'pressure' || mode === 'enforce')) {
+    process.exitCode = 1;
+  }
+}
+
+async function cmdVulnerabilityExceptionsAdd(root, args) {
+  if (!args['non-interactive'] && !Object.keys(args).some((k) => k !== '_' && k !== 'policy-dir' && k !== 'root')) {
+    throw new Error(
+      'Interactive mode is not yet supported for "vulnerability exceptions add". Use --non-interactive with CLI flags.'
+    );
+  }
+
+  const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
+
+  const type = String(args.type || '').trim();
+  const pkg = String(args.package || '').trim();
+  const ecosystem = String(args.ecosystem || '').trim();
+  const repo = String(args.repo || '').trim();
+  const alertNumber = args['alert-number'] !== undefined ? Number(args['alert-number']) : undefined;
+  const dependencyScope = String(args['dependency-scope'] || '').trim() || undefined;
+  const severities = csvValues(args.severities);
+  const reason = String(args.reason || '').trim();
+  const acceptedUntilRaw = args['accepted-until'];
+  const acceptedUntil = acceptedUntilRaw ? new Date(acceptedUntilRaw).toISOString() : undefined;
+  const approvedBy = parseApprovers(args['approved-by']);
+  const evidenceRef = String(args['evidence-ref'] || '').trim() || undefined;
+  const createdBy = String(args['created-by'] || '').trim() || undefined;
+
+  const currentYear = new Date().getFullYear();
+  const id = generateExceptionId(exceptions, currentYear);
+
+  const exception = {
+    id,
+    type,
+    ...(pkg ? { package: pkg } : {}),
+    ...(ecosystem ? { ecosystem } : {}),
+    ...(repo ? { repo } : {}),
+    ...(alertNumber !== undefined ? { alertNumber } : {}),
+    ...(dependencyScope ? { dependencyScope } : {}),
+    ...(severities.length > 0 ? { appliesToSeverities: severities } : {}),
+    reason,
+    ...(acceptedUntil ? { acceptedUntil } : {}),
+    ...(approvedBy.length > 0 ? { approvedBy } : {}),
+    createdAt: nowIso(),
+    ...(evidenceRef ? { evidenceRef } : {}),
+    ...(createdBy ? { createdBy } : {})
+  };
+
+  validateVulnerabilityExceptionOrThrow(exception);
+
+  addVulnerabilityException(policyDir, exception);
+  console.log(`Added vulnerability exception ${id} to ${path.join(policyDir, 'vulnerability-exceptions.json')}`);
+}
+
+async function cmdVulnerabilityNotify(root, args) {
+  const { policy, exceptions } = loadVulnerabilityConfig(root, args);
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+  const alerts = await fetchDependabotAlerts(owner, repoName, token);
+  const evaluated = evaluateAlerts(alerts, policy, exceptions, new Date());
+  await notifyVulnerabilityOwners(evaluated, repo);
+}
+
+async function cmdVulnerabilityPrCheck(root, args) {
+  const { policy, exceptions } = loadVulnerabilityConfig(root, args);
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+  const alerts = await fetchDependabotAlerts(owner, repoName, token);
+  const evaluated = evaluateAlerts(alerts, policy, exceptions, new Date());
+  console.log(buildPrCheckMarkdown(evaluated, policy, repo));
+  if (shouldFailPrCheck(evaluated, policy)) {
+    process.exitCode = 1;
+  }
+}
+
+async function cmdVulnerabilityReport(root, args) {
+  const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+  const alerts = await fetchDependabotAlerts(owner, repoName, token);
+  const evaluated = evaluateAlerts(alerts, policy, exceptions, new Date());
+  const { jsonPath, mdPath } = await writeVulnerabilityReports(policyDir, evaluated, policy, repo);
+  console.log(`Wrote report to ${jsonPath}`);
+  console.log(`Wrote report to ${mdPath}`);
+}
+
+function cmdVulnerabilityValidate(root, args) {
+  const { policy, exceptions } = loadVulnerabilityConfig(root, args);
+  validateVulnerabilityConfigBundle({ policy, exceptions });
+  console.log('Vulnerability policy is valid.');
 }
 
 async function cmdExceptionsAdd(root, policyDirArg, args) {
@@ -652,6 +811,44 @@ function cmdCheck(root, args) {
   }
 }
 
+async function handleLicenseDomain(root, args, subCmd, subSubCmd) {
+  if (!subCmd || subCmd === 'check') {
+    cmdCheck(root, args);
+  } else if (subCmd === 'init') {
+    await cmdInit(root, args);
+  } else if (subCmd === 'exceptions' && subSubCmd === 'add') {
+    await cmdExceptionsAdd(root, args['policy-dir'], args);
+  } else if (subCmd === 'allow' && subSubCmd === 'add') {
+    await cmdLicensesAllowAdd(root, args['policy-dir'], args);
+  } else if (subCmd === 'policy' && subSubCmd === 'migrate') {
+    cmdPolicyMigrate(root, args);
+  } else {
+    const cmd = [subCmd, subSubCmd].filter(Boolean).join(' ');
+    throw new Error(`Unknown license subcommand: ${cmd}. Use "periapsis --help" for supported commands.`);
+  }
+}
+
+async function handleVulnerabilityDomain(root, args, subCmd, subSubCmd) {
+  if (subCmd === 'init') {
+    await cmdVulnerabilityInit(root, args);
+  } else if (subCmd === 'check') {
+    await cmdVulnerabilityCheck(root, args);
+  } else if (subCmd === 'exceptions' && subSubCmd === 'add') {
+    await cmdVulnerabilityExceptionsAdd(root, args);
+  } else if (subCmd === 'notify') {
+    await cmdVulnerabilityNotify(root, args);
+  } else if (subCmd === 'pr-check') {
+    await cmdVulnerabilityPrCheck(root, args);
+  } else if (subCmd === 'report') {
+    await cmdVulnerabilityReport(root, args);
+  } else if (subCmd === 'validate') {
+    cmdVulnerabilityValidate(root, args);
+  } else {
+    const cmd = [subCmd, subSubCmd].filter(Boolean).join(' ');
+    throw new Error(`Unknown vulnerability subcommand: ${cmd}. Use "periapsis --help" for supported commands.`);
+  }
+}
+
 export async function main(argv = process.argv.slice(2)) {
   const args = parseArgs(argv);
   const root = resolveRoot(args);
@@ -661,36 +858,43 @@ export async function main(argv = process.argv.slice(2)) {
     return;
   }
 
-  const [rawCmd1, cmd2, cmd3] = args._;
-  const cmd1 =
-    rawCmd1 === 'licences' || rawCmd1 === 'license'
-      ? 'licenses'
-      : rawCmd1;
+  const [rawCmd1, rawCmd2, rawCmd3] = args._;
 
-  if (cmd1 === 'init') {
+  if (rawCmd1 === 'license' || rawCmd1 === 'licence') {
+    await handleLicenseDomain(root, args, rawCmd2, rawCmd3);
+    return;
+  }
+
+  if (rawCmd1 === 'vulnerability') {
+    await handleVulnerabilityDomain(root, args, rawCmd2, rawCmd3);
+    return;
+  }
+
+  if (rawCmd1 === 'init') {
     await cmdInit(root, args);
     return;
   }
 
-  if (cmd1 === 'policy' && cmd2 === 'migrate') {
+  if (rawCmd1 === 'policy' && rawCmd2 === 'migrate') {
+    printLegacyHint('policy migrate', 'license policy migrate');
     cmdPolicyMigrate(root, args);
     return;
   }
 
-  if (cmd1 === 'exceptions' && cmd2 === 'add') {
+  if (rawCmd1 === 'exceptions' && rawCmd2 === 'add') {
+    printLegacyHint('exceptions add', 'license exceptions add');
     await cmdExceptionsAdd(root, args['policy-dir'], args);
     return;
   }
 
-  if (cmd1 === 'licenses' && cmd2 === 'allow' && cmd3 === 'add') {
+  if ((rawCmd1 === 'licenses' || rawCmd1 === 'licences') && rawCmd2 === 'allow' && rawCmd3 === 'add') {
+    printLegacyHint('licenses allow add', 'license allow add');
     await cmdLicensesAllowAdd(root, args['policy-dir'], args);
     return;
   }
 
   if (args._.length > 0) {
-    throw new Error(
-      `Unknown command: ${args._.join(' ')}. Use \"periapsis --help\" for supported commands.`
-    );
+    throw new Error('Unknown command: ' + args._.join(' ') + '. Use "periapsis --help" for supported commands.');
   }
 
   cmdCheck(root, args);
