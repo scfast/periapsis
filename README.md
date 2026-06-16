@@ -474,10 +474,23 @@ npx periapsis vulnerability validate
 
 ### Required Environment Variables
 
-- `GITHUB_TOKEN` (required for `check`, `pr-check`, `notify`, `report`): needs read access to Dependabot alerts. How you get this depends on context:
-  - **GitHub Actions** (`${{ secrets.GITHUB_TOKEN }}`): grant `security-events: read` in the workflow `permissions` block. This is what the generated workflows already do.
-  - **Fine-grained PAT** (local or CI): grant the **Dependabot alerts** repository permission → Read. Note this is the permission label in the fine-grained PAT UI, not `security-events`.
-  - **Classic PAT**: the `repo` scope covers it, though it is broader than needed.
+- `GITHUB_TOKEN` (required for `check`, `pr-check`, `notify`, `report`): needs read access to Dependabot alerts.
+
+  The generated workflows use `${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}`. This means:
+  - If `PERIAPSIS_GITHUB_TOKEN` is set as a repository or organisation secret, it is used.
+  - Otherwise the built-in `GITHUB_TOKEN` is used as a fallback.
+
+  **Why a dedicated secret?** The built-in `GITHUB_TOKEN` in GitHub Actions has `security-events: read` in the workflow permissions block, but this maps to code scanning access — not Dependabot alerts. On many organisations the built-in token returns `403 Resource not accessible by integration` when calling the Dependabot alerts API. A dedicated fine-grained PAT with the correct permission avoids this.
+
+  | Context | How to get a token |
+  | --- | --- |
+  | GitHub Actions (recommended) | Create a fine-grained PAT with **Dependabot alerts: Read**. Store it as a repo/org secret named `PERIAPSIS_GITHUB_TOKEN`. |
+  | GitHub Actions (fallback) | Built-in `GITHUB_TOKEN` with `security-events: read` — works on some org configurations, not all. |
+  | Local / CLI | Fine-grained PAT with **Dependabot alerts: Read**. Set as `GITHUB_TOKEN` env var. |
+  | Classic PAT | `repo` scope covers it, though broader than needed. |
+
+  Fine-grained PAT setup: resource owner → your org, repository access → the target repo, repository permissions → **Dependabot alerts: Read**. If your org requires approval for fine-grained PATs, approve it under org Settings → Personal access tokens.
+
 - `PERIAPSIS_SLACK_WEBHOOK` (optional): Slack incoming webhook URL used by `notify` to post breach summaries. `VULN_SLA_SLACK_WEBHOOK` is also accepted as an alias.
 
 Pass `--repo owner/repo` to override the repository detected from the local git remote.
@@ -596,25 +609,65 @@ Keep these files in version control and protect them with CODEOWNERS review. Do 
 
 ```yaml
 - uses: actions/checkout@v4
+- name: Install periapsis
+  run: npm install -g periapsis
 - name: Run vulnerability governance check
-  run: npx periapsis vulnerability check --report
+  run: periapsis vulnerability check --report
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 - name: Send vulnerability notifications
-  run: npx periapsis vulnerability notify
+  run: periapsis vulnerability notify
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
     PERIAPSIS_SLACK_WEBHOOK: ${{ secrets.PERIAPSIS_SLACK_WEBHOOK }}
+- name: Read breach count from report
+  id: report
+  run: |
+    REPORT=$(ls policy/reports/vulnerability-report-*.json 2>/dev/null | sort | tail -n1)
+    if [ -z "$REPORT" ]; then
+      echo "breached=0" >> $GITHUB_OUTPUT
+    else
+      BREACHED=$(node -e "const r=JSON.parse(require('fs').readFileSync('$REPORT','utf8')); process.stdout.write(String(r.summary.breached))")
+      echo "breached=$BREACHED" >> $GITHUB_OUTPUT
+      echo "md=${REPORT%.json}.md" >> $GITHUB_OUTPUT
+    fi
+- name: Send breach notification email
+  if: steps.report.outputs.breached != '0'
+  uses: dawidd6/action-send-mail@v3
+  with:
+    server_address: ${{ secrets.PERIAPSIS_SMTP_HOST }}
+    server_port: ${{ secrets.PERIAPSIS_SMTP_PORT || 587 }}
+    username: ${{ secrets.PERIAPSIS_SMTP_USER }}
+    password: ${{ secrets.PERIAPSIS_SMTP_PASSWORD }}
+    subject: "[${{ github.repository }}] ${{ steps.report.outputs.breached }} vulnerability SLA breach(es) detected"
+    to: ${{ secrets.PERIAPSIS_EMAIL_TO }}
+    from: ${{ secrets.PERIAPSIS_EMAIL_FROM || secrets.PERIAPSIS_SMTP_USER }}
+    body: file://${{ steps.report.outputs.md }}
 ```
+
+The email step only fires when the report contains at least one breached alert. The markdown report (written by `periapsis vulnerability check --report`) is used as the email body.
+
+Required secrets for email:
+
+| Secret | Description |
+| --- | --- |
+| `PERIAPSIS_SMTP_HOST` | SMTP server hostname |
+| `PERIAPSIS_SMTP_PORT` | SMTP port (optional, defaults to 587) |
+| `PERIAPSIS_SMTP_USER` | SMTP username |
+| `PERIAPSIS_SMTP_PASSWORD` | SMTP password or app password |
+| `PERIAPSIS_EMAIL_TO` | Recipient address(es), comma-separated |
+| `PERIAPSIS_EMAIL_FROM` | Sender address (optional, defaults to SMTP username) |
 
 ### Vulnerability PR check
 
 ```yaml
 - uses: actions/checkout@v4
+- name: Install periapsis
+  run: npm install -g periapsis
 - name: Run vulnerability PR check
-  run: npx periapsis vulnerability pr-check
+  run: periapsis vulnerability pr-check
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 ```
 
 `periapsis vulnerability init` writes all three workflow files automatically.
@@ -730,6 +783,8 @@ Use `--bind` so that gitignored files (including `periapsis-local.tgz`) are avai
 | Dependabot alerts: Read | `check`, `pr-check`, `notify`, `report` |
 | Contents: Read and Write | Exception request PR branch push |
 | Pull requests: Read and Write | Exception request PR creation |
+
+Store this PAT as a repository secret named `PERIAPSIS_GITHUB_TOKEN`. The generated workflows prefer this secret over the built-in `GITHUB_TOKEN` because the built-in token does not reliably grant Dependabot alerts access across all GitHub organisation configurations.
 
 Set the PAT resource owner to the target organisation, and ensure the specific repository is included in the PAT's repository access list.
 
