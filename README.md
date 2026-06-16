@@ -1,58 +1,43 @@
 # Periapsis
 
-License compliance gate for Node.js dependencies. Periapsis reads `package-lock.json` + installed `node_modules`, writes an SBOM, and fails CI when dependency licenses are not covered by active policy.
+Periapsis is a modular governance platform for Node.js projects. It enforces structured, auditable policy across multiple risk domains, failing CI when dependencies or vulnerabilities are not covered by active policy.
 
-## Install / Run
+Currently Periapsis ships two governance domains: **license governance** (SBOM generation and license compliance gating) and **vulnerability governance** (Dependabot alert SLA tracking and PR pressure). Both domains share a common `policy/` directory, a consistent exception model, and the same `periapsis <domain> <command>` CLI shape.
+
+## Quick Start
+
+Initialize license governance policy:
 
 ```sh
-npm install
-npx periapsis --violations-out sbom-violations.json
+npx periapsis license init --preset strict
+```
+
+Initialize vulnerability governance policy:
+
+```sh
+npx periapsis vulnerability init
 ```
 
 When working on the `periapsis` repository itself, prefer `node ./bin/periapsis.mjs ...` or `npm run policy:check` so you are exercising the checked-out CLI rather than any previously published copy.
 
-Initialize governed policy files:
+## License Governance
+
+### Install / Run
 
 ```sh
-npx periapsis init --preset strict
+npm install
+npx periapsis license check --violations-out sbom-violations.json
 ```
 
-`init` now asks which dependency types should be checked by default (unless provided via flags).
-
-## Testing
-
-Run the regression suite:
+`init` asks which dependency types should be checked by default unless provided via flags:
 
 ```sh
-npm test
+npx periapsis license init --preset strict
 ```
 
-Run the repository policy gate locally:
+### Policy Files
 
-```sh
-npm run policy:check
-```
-
-Testing layers and PR gate guidance live in `docs/testing-strategy.md`.
-
-## Commands
-
-- `periapsis`: run SBOM + license gate
-- `periapsis init --preset <strict|standard|permissive> [--policy-dir policy] [--force]`
-- `periapsis exceptions add [--policy-dir policy]` (interactive)
-- `periapsis licenses allow add [--policy-dir policy]` (interactive)
-- `periapsis policy migrate [--from allowedConfig.json] [--policy-dir policy] [--force]`
-
-Automation mode:
-
-- `periapsis exceptions add --non-interactive ...`
-- `periapsis licenses allow add --non-interactive ...`
-- `periapsis --dep-types dependencies,peerDependencies`
-- `periapsis --production-only` (same as `--dep-types dependencies`)
-
-## Policy Files
-
-Periapsis now uses governed policy metadata files under `policy/`:
+Periapsis uses governed policy metadata files under `policy/`:
 
 - `policy/policy.json`
 - `policy/licenses.json`
@@ -68,15 +53,15 @@ Load behavior:
 
 - Periapsis prefers `policy/` files.
 - If `policy/policy.json` is missing, it can temporarily fall back to legacy `allowedConfig.json` (with warning).
-- Use `periapsis policy migrate` to move legacy config into governed policy files.
+- Use `periapsis license policy migrate` to move legacy config into governed policy files.
 
 Validation behavior:
 
 - All `policy/*.json` files are schema-validated on load.
-- `licenses add` and `exceptions add` validate the full policy bundle before writing.
+- `licenses allow add` and `license exceptions add` validate the full policy bundle before writing.
 - Invalid files fail fast with field-level schema error messages.
 
-### `policy/policy.json`
+#### `policy/policy.json`
 
 ```json
 {
@@ -104,7 +89,7 @@ Validation behavior:
 - `optionalDependencies`: non-critical optional packages
 - `bundledDependencies`: dependencies bundled with the package tarball
 
-### `policy/licenses.json`
+#### `policy/licenses.json`
 
 ```json
 [
@@ -122,7 +107,7 @@ Validation behavior:
 ]
 ```
 
-### `policy/exceptions.json`
+#### `policy/exceptions.json`
 
 ```json
 [
@@ -145,15 +130,15 @@ Practical authoring rules:
 - Keep `package` as package name only (for example `caniuse-lite`), and encode version logic in `scope`.
 - Prefer `scope.type = "exact"` for least risk; use `range` carefully; avoid `any` unless necessary.
 - Use non-empty `evidenceRef` values that link to a ticket, issue, or approval artifact.
-- Do not delete old records to “update” policy; add follow-up records so history stays audit-friendly.
+- Do not delete old records to "update" policy; add follow-up records so history stays audit-friendly.
 
-## License Categories
+### License Categories
 
 Periapsis uses three license policy categories:
 
 Disclaimer: This section provides operational guidance for engineering policy decisions and is not legal advice. Consult qualified legal counsel for binding interpretation.
 
-### `Permissive Licenses`
+#### `Permissive Licenses`
 
 Examples:
 
@@ -171,7 +156,7 @@ With minimal obligations, usually attribution.
 
 Typical risk level for most SMEs: Low.
 
-### `Weak Copyleft Licenses`
+#### `Weak Copyleft Licenses`
 
 Examples:
 
@@ -184,7 +169,7 @@ These typically require:
 
 Typical risk level: Moderate, depending on usage and distribution model.
 
-### `Strong Copyleft Licenses`
+#### `Strong Copyleft Licenses`
 
 Examples:
 
@@ -199,12 +184,12 @@ These may require:
 
 Typical risk level: High in some commercial contexts.
 
-## Interactive Governance Workflows
+### Interactive Governance Workflows
 
-### Add an exception
+#### Add an exception
 
 ```sh
-npx periapsis exceptions add
+npx periapsis license exceptions add
 ```
 
 Prompts include:
@@ -221,10 +206,10 @@ Prompts include:
 
 If same package+scope exists, Periapsis prompts to add a follow-up record (recommended) or edit the latest record.
 
-### Add an allowed license
+#### Add an allowed license
 
 ```sh
-npx periapsis licenses allow add
+npx periapsis license allow add
 ```
 
 Prompts include:
@@ -241,12 +226,12 @@ Prompts include:
 
 If identifier already exists, Periapsis appends a follow-up record.
 
-### Non-interactive examples
+#### Non-interactive examples
 
 Add allowed license without prompts:
 
 ```sh
-npx periapsis licenses allow add \
+npx periapsis license allow add \
   --non-interactive \
   --identifier MIT \
   --approved-by security,legal \
@@ -258,7 +243,7 @@ npx periapsis licenses allow add \
 Add exception without prompts:
 
 ```sh
-npx periapsis exceptions add \
+npx periapsis license exceptions add \
   --non-interactive \
   --package caniuse-lite \
   --scope-type exact \
@@ -272,16 +257,16 @@ npx periapsis exceptions add \
 Run checker against only production dependencies:
 
 ```sh
-npx periapsis --production-only
+npx periapsis license check --production-only
 ```
 
 Run checker against a custom dependency set:
 
 ```sh
-npx periapsis --dep-types dependencies,peerDependencies
+npx periapsis license check --dep-types dependencies,peerDependencies
 ```
 
-## Expiration and Follow-up Behavior
+### Expiration and Follow-up Behavior
 
 A policy record is active when:
 
@@ -300,25 +285,7 @@ Evaluation rules:
 
 Violation messages include expired record details and remediation commands.
 
-## CI / GitHub Actions
-
-Example:
-
-```yaml
-- uses: actions/checkout@v4
-- uses: actions/setup-node@v4
-  with:
-    node-version: 20
-    cache: npm
-- run: npm ci
-- run: npx periapsis --violations-out sbom-violations.json
-```
-
-If you add an inline `node -e` follow-up check in GitHub Actions, wrap the JavaScript in single quotes. Backticks inside a double-quoted shell string are treated as command substitution by `bash`.
-
-When violations exist, Periapsis exits non-zero and prints deterministic markdown summary suitable for Actions logs.
-
-## Troubleshooting Large Violation Sets
+### Troubleshooting Large Violation Sets
 
 When you get a large burst of violations, use this order to reduce noise quickly:
 
@@ -328,7 +295,7 @@ When you get a large burst of violations, use this order to reduce noise quickly
 
 Quick checks:
 
-- If many rows show `license-not-allowed`, add explicit records via `periapsis licenses allow add` for the most common licenses first (`MIT`, `Apache-2.0`, `ISC`, `BSD-3-Clause`).
+- If many rows show `license-not-allowed`, add explicit records via `periapsis license allow add` for the most common licenses first (`MIT`, `Apache-2.0`, `ISC`, `BSD-3-Clause`).
 - If many rows show `expired-license-policy` or `expired-exception`, add follow-up records instead of editing/deleting old records.
 - If one package appears repeatedly blocked across versions, prefer a targeted exception with `scope.type = "range"` or `exact`.
 - If unknown license expressions are noisy and expected, decide whether to keep strict mode or set `failOnUnknownLicense` to `false` in `policy/policy.json`.
@@ -337,7 +304,7 @@ Quick checks:
 
 Recommended triage workflow:
 
-1. Run `npx periapsis --violations-out sbom-violations.json`.
+1. Run `npx periapsis license check --violations-out sbom-violations.json`.
 2. Count by license in `sbom-licenses.json` and prioritize highest-frequency licenses.
 3. Add 1-3 high-impact explicit license records.
 4. Re-run and verify violation count drops.
@@ -349,12 +316,431 @@ Team process tips:
 - Require CODEOWNERS/legal-security review for policy edits.
 - Add expirations intentionally, then renew with follow-up records before they expire.
 
-## Governance Recommendation
+## Vulnerability Governance
 
-Protect policy changes with CODEOWNERS review:
+Periapsis tracks Dependabot alerts against SLA policy and optionally pressures PRs when breaches exist. Data source is the GitHub Dependabot API; a `GITHUB_TOKEN` with access to Dependabot alerts is required.
+
+### Initialize
+
+```sh
+npx periapsis vulnerability init
+```
+
+Creates in `policy/`:
+
+- `vulnerability-policy.json` — SLA days, rollout mode, PR check config, exception rules
+- `vulnerability-exceptions.json` — accepted breach exceptions
+- `vulnerability-owners.json` — alert ownership assignments
+- `vulnerability-notifications.json` — notification channel config
+
+Also writes three GitHub Actions workflow files under `.github/workflows/`:
+
+- `periapsis-vulnerability-daily.yml` — scheduled check + notify
+- `periapsis-vulnerability-pr-check.yml` — PR gate
+- `periapsis-vulnerability-exception-request.yml` — workflow-dispatch driven exception creation
+
+### Policy Structure
+
+Default `policy/vulnerability-policy.json`:
+
+```json
+{
+  "version": 1,
+  "rollout": {
+    "enabled": true,
+    "gracePeriodUntil": null,
+    "mode": "observe"
+  },
+  "slaDays": {
+    "critical": 3,
+    "high": 30,
+    "medium": 60,
+    "low": 100
+  },
+  "warningThresholdDays": {
+    "critical": 1,
+    "high": 7,
+    "medium": 14,
+    "low": 30
+  },
+  "prCheck": {
+    "enabled": true,
+    "failOnBreach": true,
+    "advisoryOnly": true,
+    "minimumSeverity": "high"
+  },
+  "exceptions": {
+    "requireApproval": true,
+    "maxDurationDays": 90,
+    "allowPackageScope": true,
+    "allowRepoWideScope": true,
+    "allowOrgWideScope": false
+  }
+}
+```
+
+`slaDays` defines the maximum number of days an open alert at each severity level can remain unresolved before it is considered breached. `warningThresholdDays` controls how early the approaching-due warning state begins.
+
+`prCheck.advisoryOnly`: when `true`, the PR check posts a summary comment but does not fail the check run. Set to `false` to enforce a hard gate. `prCheck.minimumSeverity` controls the lowest severity level that triggers PR pressure.
+
+### Rollout Modes
+
+`rollout.mode` controls how the vulnerability gate behaves:
+
+- `observe`: evaluate alerts and report results; never fail CI or pressure PRs.
+- `notify`: evaluate alerts and send Slack/owner notifications on breach; CI does not fail.
+- `pressure`: evaluate alerts; post advisory PR comments when breaches exist; CI does not fail (equivalent to `advisoryOnly: true` on PRs).
+- `enforce`: evaluate alerts; fail CI on breach (`process.exitCode = 1`); PR check respects `prCheck.failOnBreach` and `prCheck.advisoryOnly`.
+
+Start with `observe` to understand your current alert state before moving to `enforce`. Use `rollout.gracePeriodUntil` (ISO datetime) to defer failure for pre-existing alerts during a transition.
+
+### Advisory PR Pressure
+
+When `prCheck.enabled` is `true` and `prCheck.advisoryOnly` is `true`, every PR receives a markdown comment summarizing any SLA-breached alerts at or above `minimumSeverity`. The PR check run itself does not fail. This lets teams adopt visibility incrementally before enabling hard enforcement.
+
+To switch to hard enforcement, set both `prCheck.advisoryOnly: false` and `rollout.mode: "enforce"`.
+
+### Adding Exceptions
+
+Exceptions accept a specific alert, a package, a repo-wide severity, or an entire ecosystem. All exceptions require an expiry date; indefinite exceptions are not allowed.
+
+Exception types: `alert`, `package`, `repo_severity`, `ecosystem`.
+
+Non-interactive example (package-scoped exception):
+
+```sh
+npx periapsis vulnerability exceptions add \
+  --non-interactive \
+  --repo owner/my-repo \
+  --type package \
+  --package lodash \
+  --ecosystem npm \
+  --severities high,critical \
+  --reason "Upstream fix not yet available; mitigated by WAF rule." \
+  --accepted-until 2026-09-01T00:00:00Z \
+  --approved-by security \
+  --evidence-ref JIRA-9999
+```
+
+Non-interactive example (alert-scoped exception):
+
+```sh
+npx periapsis vulnerability exceptions add \
+  --non-interactive \
+  --repo owner/my-repo \
+  --type alert \
+  --alert-number 42 \
+  --severities critical \
+  --reason "False positive confirmed by security team." \
+  --accepted-until 2026-07-01T00:00:00Z \
+  --approved-by security \
+  --evidence-ref JIRA-8888
+```
+
+Exception IDs are auto-generated in the format `VEX-<year>-<sequence>` (for example `VEX-2026-001`).
+
+### Running Checks
+
+Evaluate current Dependabot alert SLA status:
+
+```sh
+npx periapsis vulnerability check
+npx periapsis vulnerability check --report   # also write JSON report files
+```
+
+Run PR check (posts markdown summary, exits non-zero if `advisoryOnly: false` and breaches exist):
+
+```sh
+npx periapsis vulnerability pr-check
+```
+
+Send owner/Slack notifications for breached alerts:
+
+```sh
+npx periapsis vulnerability notify
+```
+
+Generate vulnerability report files:
+
+```sh
+npx periapsis vulnerability report
+```
+
+Validate policy and exception files against schema:
+
+```sh
+npx periapsis vulnerability validate
+```
+
+### Required Environment Variables
+
+- `GITHUB_TOKEN` (required for `check`, `pr-check`, `notify`, `report`): needs read access to Dependabot alerts. How you get this depends on context:
+  - **GitHub Actions** (`${{ secrets.GITHUB_TOKEN }}`): grant `security-events: read` in the workflow `permissions` block. This is what the generated workflows already do.
+  - **Fine-grained PAT** (local or CI): grant the **Dependabot alerts** repository permission → Read. Note this is the permission label in the fine-grained PAT UI, not `security-events`.
+  - **Classic PAT**: the `repo` scope covers it, though it is broader than needed.
+- `PERIAPSIS_SLACK_WEBHOOK` (optional): Slack incoming webhook URL used by `notify` to post breach summaries. `VULN_SLA_SLACK_WEBHOOK` is also accepted as an alias.
+
+Pass `--repo owner/repo` to override the repository detected from the local git remote.
+
+## Command Reference
+
+The preferred CLI form is `periapsis <domain> <subcommand>`. Legacy top-level aliases still work and will print a deprecation hint pointing to the preferred form.
+
+### License domain
+
+```
+periapsis license check [--violations-out <file>] [--production-only] [--dep-types <csv>]
+periapsis license init --preset <strict|standard|permissive> [--policy-dir policy] [--force]
+periapsis license exceptions add [--policy-dir policy]
+periapsis license allow add [--policy-dir policy]
+periapsis license policy migrate [--from allowedConfig.json] [--policy-dir policy] [--force]
+```
+
+Non-interactive flags for `license exceptions add`:
+
+```
+--non-interactive
+--package <name>
+--scope-type <exact|range|any>
+--version <value>           (required when --scope-type=exact)
+--range <value>             (required when --scope-type=range)
+--detected-licenses <csv>
+--reason <text>
+--notes <text>
+--approved-by <csv>
+--approved-at <iso>
+--expires-at <iso|never>
+--evidence-ref <value>
+--edit-existing
+```
+
+Non-interactive flags for `license allow add`:
+
+```
+--non-interactive
+--identifier <spdx>
+--full-name <name>
+--notes <text>
+--approved-by <csv>
+--approved-at <iso>
+--expires-at <iso|never>
+--category <name>
+--rationale <text>
+--evidence-ref <value>
+```
+
+### Vulnerability domain
+
+```
+periapsis vulnerability init [--policy-dir policy] [--force]
+periapsis vulnerability check [--report] [--repo owner/repo]
+periapsis vulnerability pr-check [--repo owner/repo]
+periapsis vulnerability notify [--repo owner/repo]
+periapsis vulnerability report [--repo owner/repo]
+periapsis vulnerability validate [--policy-dir policy]
+periapsis vulnerability exceptions add --non-interactive ...
+```
+
+Non-interactive flags for `vulnerability exceptions add`:
+
+```
+--non-interactive
+--repo <owner/repo>
+--type <alert|package|repo_severity|ecosystem>
+--alert-number <n>          (required when --type=alert)
+--package <name>            (required when --type=package)
+--ecosystem <name>          (required when --type=package or --type=ecosystem)
+--dependency-scope <prod|dev|unknown>
+--severities <csv>
+--reason <text>
+--accepted-until <iso>
+--approved-by <csv>
+--evidence-ref <value>
+--created-by <name>
+```
+
+### Legacy aliases (still supported)
+
+```
+periapsis init              -> periapsis license init
+periapsis exceptions add    -> periapsis license exceptions add
+periapsis licenses allow add -> periapsis license allow add
+periapsis policy migrate    -> periapsis license policy migrate
+periapsis                   -> periapsis license check
+```
+
+## Exception Storage
+
+Each domain owns its own exception file:
+
+- `policy/exceptions.json` — license exceptions (package-level overrides)
+- `policy/vulnerability-exceptions.json` — vulnerability SLA exceptions (VEX records)
+
+Keep these files in version control and protect them with CODEOWNERS review. Do not delete old records; append follow-up records so decision history is preserved.
+
+## GitHub Actions
+
+### License gate
+
+```yaml
+- uses: actions/checkout@v4
+- uses: actions/setup-node@v4
+  with:
+    node-version: 20
+    cache: npm
+- run: npm ci
+- run: npx periapsis license check --violations-out sbom-violations.json
+```
+
+### Vulnerability daily check
+
+```yaml
+- uses: actions/checkout@v4
+- name: Run vulnerability governance check
+  run: npx periapsis vulnerability check --report
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+- name: Send vulnerability notifications
+  run: npx periapsis vulnerability notify
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    PERIAPSIS_SLACK_WEBHOOK: ${{ secrets.PERIAPSIS_SLACK_WEBHOOK }}
+```
+
+### Vulnerability PR check
+
+```yaml
+- uses: actions/checkout@v4
+- name: Run vulnerability PR check
+  run: npx periapsis vulnerability pr-check
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+`periapsis vulnerability init` writes all three workflow files automatically.
+
+If you add an inline `node -e` follow-up check in GitHub Actions, wrap the JavaScript in single quotes. Backticks inside a double-quoted shell string are treated as command substitution by `bash`.
+
+When license violations exist, Periapsis exits non-zero and prints a deterministic markdown summary suitable for Actions logs.
+
+## Testing
+
+### Unit and integration tests
+
+Run the regression suite:
+
+```sh
+npm test
+```
+
+This covers all domains including legacy alias behaviour. Legacy aliases are tested in `test/aliases.test.mjs` — do not remove that file or modify the routing block in `bin/periapsis.mjs` without updating the alias tests.
+
+Run the repository policy gate locally:
+
+```sh
+npm run policy:check
+```
+
+### Testing against another repository
+
+To exercise the CLI against a real repo before publishing:
+
+```sh
+# From the periapsis directory — build a local tarball
+npm pack
+cp periapsis-*.tgz /path/to/target-repo/periapsis-local.tgz
+
+# From the target repo
+cd /path/to/target-repo
+GITHUB_TOKEN=your_pat node /path/to/periapsis/bin/periapsis.mjs vulnerability check
+GITHUB_TOKEN=your_pat node /path/to/periapsis/bin/periapsis.mjs vulnerability check --report
+GITHUB_TOKEN=your_pat node /path/to/periapsis/bin/periapsis.mjs vulnerability pr-check
+node /path/to/periapsis/bin/periapsis.mjs vulnerability validate
+```
+
+### Testing GitHub Actions workflows locally with `act`
+
+Install [`act`](https://github.com/nektos/act) to run the generated workflows without pushing to GitHub. The generated workflows use `npx periapsis`, which pulls from npm. For local dev testing, use the `-local` variant workflows described below.
+
+**Setup (once per periapsis build):**
+
+```sh
+cd /path/to/periapsis
+npm pack
+cp periapsis-*.tgz /path/to/target-repo/periapsis-local.tgz
+```
+
+Add to the target repo's `.gitignore`:
+
+```
+periapsis-local.tgz
+.github/workflows/*-local.yml
+policy/reports/
+```
+
+**Create local workflow variants** in `.github/workflows/` that install from the tarball instead of `npx`:
+
+```yaml
+- name: Install local periapsis
+  run: npm install -g ./periapsis-local.tgz
+# then use `periapsis` instead of `npx periapsis` in subsequent steps
+```
+
+**Daily check workflow:**
+
+```sh
+act workflow_dispatch \
+  -W .github/workflows/periapsis-vulnerability-daily-local.yml \
+  --secret GITHUB_TOKEN=your_pat \
+  --bind
+```
+
+**Exception request workflow** (omit the `create-pull-request` step from the local variant):
+
+```sh
+act workflow_dispatch \
+  -W .github/workflows/periapsis-vulnerability-exception-request-local.yml \
+  --secret GITHUB_TOKEN=your_pat \
+  --bind \
+  --input repo=owner/repo \
+  --input alertNumber=1 \
+  --input exceptionType=alert \
+  --input severities=medium \
+  --input reason="Testing exception workflow" \
+  --input acceptedUntil=2026-09-01 \
+  --input approvedBy=approver@example.com \
+  --input evidenceRef=JIRA-0000
+```
+
+**PR check workflow:**
+
+```sh
+act workflow_dispatch \
+  -W .github/workflows/periapsis-vulnerability-pr-check-local.yml \
+  --secret GITHUB_TOKEN=your_pat \
+  --bind
+```
+
+Use `--bind` so that gitignored files (including `periapsis-local.tgz`) are available inside the container. Rerun `npm pack && cp` after every periapsis code change — the container uses the tarball, not the source files directly.
+
+**Fine-grained PAT requirements for local workflow testing:**
+
+| Permission | Required for |
+| --- | --- |
+| Dependabot alerts: Read | `check`, `pr-check`, `notify`, `report` |
+| Contents: Read and Write | Exception request PR branch push |
+| Pull requests: Read and Write | Exception request PR creation |
+
+Set the PAT resource owner to the target organisation, and ensure the specific repository is included in the PAT's repository access list.
+
+## Governance Recommendations
+
+Protect all policy changes with CODEOWNERS review:
 
 ```txt
 /policy/* @security-team @legal-team
 ```
 
 Use expiring entries plus follow-up records to preserve decision history without overwriting prior approvals.
+
+For vulnerability governance, start with `rollout.mode: "observe"` to establish a baseline, then move through `notify` and `pressure` before enabling `enforce`. Set `rollout.gracePeriodUntil` to a future date to give teams time to remediate pre-existing alerts before CI starts failing.
