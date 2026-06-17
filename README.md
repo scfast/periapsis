@@ -493,6 +493,24 @@ npx periapsis vulnerability validate
 
 - `PERIAPSIS_SLACK_WEBHOOK` (optional): Slack incoming webhook URL used by `notify` to post breach summaries. `VULN_SLA_SLACK_WEBHOOK` is also accepted as an alias.
 
+  To get a webhook URL:
+  1. Go to [api.slack.com/apps](https://api.slack.com/apps) → **Create New App** → **From scratch**
+  2. Under **Features** → **Incoming Webhooks** → toggle on → **Add New Webhook to Workspace**
+  3. Pick the channel to post to and authorise
+  4. Copy the webhook URL (`https://hooks.slack.com/services/T.../B.../...`)
+  5. Store it as `PERIAPSIS_SLACK_WEBHOOK` in your repo secrets
+
+  `notify` is a no-op when the webhook is not set and when no alerts are breached or approaching SLA — no noise on clean days.
+
+  Test locally before publishing:
+
+  ```sh
+  cd /path/to/target-repo
+  GITHUB_TOKEN=your_pat \
+  PERIAPSIS_SLACK_WEBHOOK=https://hooks.slack.com/services/your/webhook/url \
+  node /path/to/periapsis/bin/periapsis.mjs vulnerability notify
+  ```
+
 Pass `--repo owner/repo` to override the repository detected from the local git remote.
 
 ## Command Reference
@@ -615,6 +633,13 @@ Keep these files in version control and protect them with CODEOWNERS review. Do 
   run: periapsis vulnerability check --report
   env:
     GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+- name: Upload vulnerability report
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: vulnerability-report
+    path: policy/reports/
+    retention-days: 90
 - name: Send vulnerability notifications
   run: periapsis vulnerability notify
   env:
