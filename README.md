@@ -381,10 +381,18 @@ Default `policy/vulnerability-policy.json`:
     "notify": ["slack", "email"],
     "apply": {
       "minimumConfidence": "high",
+      "minimumConfidenceSingleStep": "medium",
       "allowedReachability": ["not_reachable", "potentially_reachable"],
       "approvedBy": ["periapsis-triage"],
       "workflow": "periapsis-vulnerability-exception-request.yml",
       "ref": null
+    },
+    "automation": {
+      "minimumSeverity": "high",
+      "scopes": ["runtime", "development"],
+      "maxTriagesPerRun": 10,
+      "retriageAfterDays": 30,
+      "skipAlerts": []
     }
   }
 }
@@ -497,7 +505,7 @@ npx periapsis vulnerability validate
 
 ### AI-Assisted Triage
 
-Dependabot severity comes from the advisory's generic CVSS score, not from how *your* code uses the package. `periapsis vulnerability triage` challenges that label for a single alert: it gathers evidence from the repository and asks an LLM to re-assess the risk in context.
+Dependabot severity comes from the advisory's generic CVSS score, not from how *your* code uses the package. `periapsis vulnerability triage` challenges that label: it gathers evidence from the repository and asks an LLM to re-assess the risk in context. Run it for one alert (`--alert <n>`), or let it work through the open-alert backlog on a schedule (`--pending`, see [Automated triage](#automated-triage)).
 
 ```sh
 export GITHUB_TOKEN=...                 # Dependabot alerts: Read
@@ -524,14 +532,14 @@ The model's output is advisory: triage itself never edits policy files. What hap
 | `triage.mode` | Behaviour |
 | --- | --- |
 | `recommend` (default) | Sends the result to the configured channels. For a downgrade, the message includes the exact severity adjustment and expiry to request, and a ready-to-run `exceptions add` command. A developer decides and acts. |
-| `apply` | When every gate below passes, dispatches the **Periapsis Vulnerability Exception Request** workflow with the adjustment pre-filled. That workflow opens a pull request; the adjustment takes effect once someone reviews and merges it. When a gate fails, it falls back to `recommend` and the message lists why. |
+| `apply` | When every gate below passes, requests the severity adjustment through a pull request; the adjustment takes effect once someone reviews and merges it. Single-alert runs dispatch the **Periapsis Vulnerability Exception Request** workflow; `--pending` runs add all of the run's adjustments to one PR (see [Automated triage](#automated-triage)). When a gate fails, it falls back to `recommend` and the message lists why. Re-triaging an alert whose active adjustment is no longer supported (rated higher, or now `reachable`) is reported as a **regression**; adjustments are never removed or renewed automatically. |
 
 Override the mode for a single run with `--mode recommend|apply` (or the `mode` input on the triage workflow).
 
 Apply gates (all must pass):
 
 - the recommendation is a **downgrade** (upgrades and unchanged ratings are always sent as recommendations, and upgrades are flagged as needing attention);
-- `result.confidence` is at least `triage.apply.minimumConfidence` (default `high`);
+- `result.confidence` is at least `triage.apply.minimumConfidenceSingleStep` (default `medium`) for a one-level downgrade such as high → medium, or `triage.apply.minimumConfidence` (default `high`) for larger drops;
 - `result.reachability` is in `triage.apply.allowedReachability` (default `not_reachable`, `potentially_reachable`);
 - the alert is open and has no active severity adjustment already;
 - the adjusted SLA has not already elapsed.
@@ -559,6 +567,24 @@ What `apply` requests:
 
 To act on a recommendation by hand, run the Exception Request workflow or the command included in the message.
 
+#### Automated triage
+
+`periapsis vulnerability triage --pending` works through open alerts without repeating work. The generated triage workflow runs it daily (and when dispatched without an alert number).
+
+Each run:
+
+1. Fetches all open alerts. Fixed or dismissed alerts drop out here, and are removed from the ledger, at no LLM cost.
+2. Keeps alerts that match `triage.automation`: `minimumSeverity` (default `high`), `scopes` (`runtime`, `development`), and not listed in `skipAlerts`.
+3. Groups them by package and makes **one LLM call per package** covering all its advisories, since they share the same code evidence.
+4. Skips packages whose previous verdicts still hold, using the **triage ledger** (`policy/triage/ledger.json`). A package is re-triaged when an alert is new, when its fingerprint changed, or when its verdict is older than `retriageAfterDays` (default 30). The fingerprint covers the advisory text, severity and `updated_at`, the installed versions and dependency chains, the code evidence, the model, and the prompt version.
+5. Ranks what is due (never triaged, then changed, then expired; within each, highest severity, then closest to SLA breach) and triages at most `maxTriagesPerRun` packages (default 10). The rest are queued for later runs.
+6. Writes per-alert reports and a run digest (`policy/triage/digest.md`, also the job summary). It sends one Slack digest, and email if configured, only when something notable happened: new or changed verdicts, applied adjustments, regressions or errors.
+7. In `apply` mode, writes every approved adjustment to `policy/vulnerability-exceptions.json`. The workflow then opens **a single pull request** for the run. Opening one PR per alert would conflict on that file.
+
+Manual `--alert` runs are recorded in the ledger too, so the schedule won't repeat them. Preview a run with `--pending --dry-run`; it needs no LLM key and writes nothing.
+
+In GitHub Actions the ledger is stored as the `periapsis-triage-ledger` workflow artifact. Each run restores the newest copy and uploads the updated one, and runs are serialised with a concurrency group. If the artifact is missing (first run, or no run for 90 days), triage starts fresh, and the per-run cap bounds the cost.
+
 #### LLM configuration
 
 | Variable / flag | Purpose |
@@ -570,7 +596,7 @@ To act on a recommendation by hand, run the Exception Request workflow or the co
 
 API keys are read only from the environment, never from CLI flags.
 
-Other flags: `--mode recommend|apply`, `--no-notify`, `--repo owner/repo`, `--max-files <n>` (default 20) and `--max-chars <n>` (default 60000) to bound how much code is sent, and `--dry-run` to print the exact prompt without calling a model (no LLM key needed).
+Other flags: `--pending`, `--ledger <file>`, `--mode recommend|apply`, `--no-notify`, `--repo owner/repo`, `--max-files <n>` (default 20) and `--max-chars <n>` (default 60000) to bound how much code is sent, and `--dry-run` to print the exact prompt without calling a model (no LLM key needed).
 
 #### Data sent to the provider
 
@@ -685,7 +711,7 @@ periapsis vulnerability pr-check [--repo owner/repo]
 periapsis vulnerability notify [--repo owner/repo]
 periapsis vulnerability report [--repo owner/repo]
 periapsis vulnerability validate [--policy-dir policy]
-periapsis vulnerability triage --alert <n> [--repo owner/repo] [--mode recommend|apply] [--no-notify] [--provider <name>] [--model <id>] [--max-files <n>] [--max-chars <n>] [--dry-run]
+periapsis vulnerability triage (--alert <n> | --pending) [--ledger <file>] [--repo owner/repo] [--mode recommend|apply] [--no-notify] [--provider <name>] [--model <id>] [--max-files <n>] [--max-chars <n>] [--dry-run]
 periapsis vulnerability exceptions add --non-interactive ...
 ```
 
@@ -813,23 +839,28 @@ Required secrets for email:
     GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 ```
 
-### Vulnerability triage (manual dispatch)
+### Vulnerability triage
 
-`periapsis-vulnerability-triage.yml` runs from **Actions → Periapsis Vulnerability Triage → Run workflow** with an alert number and an optional `mode` override (`policy`, `recommend`, `apply`). It writes the result to the job summary, uploads `policy/triage/` as an artifact, posts to Slack, emails the report when SMTP is configured, and in `apply` mode dispatches the exception request workflow.
+`periapsis-vulnerability-triage.yml` runs daily and from **Actions → Periapsis Vulnerability Triage → Run workflow**, with an optional alert number and an optional `mode` override (`policy`, `recommend`, `apply`).
+
+- **Without an alert number**, it runs `triage --pending`: restores the ledger artifact, triages what is due, saves the ledger, and in `apply` mode validates the policy and opens one PR with the run's adjustments.
+- **With an alert number**, it triages that alert, and in `apply` mode dispatches the exception request workflow.
+
+Both write the job summary, upload per-alert reports as `vulnerability-triage-<run id>`, post to Slack, and email when SMTP is configured. Change the `cron` line to adjust the schedule.
 
 Setup:
 
 | Name | Kind | Purpose |
 | --- | --- | --- |
-| `PERIAPSIS_LLM_API_KEY` | secret | LLM API key |
+| `PERIAPSIS_LLM_API_KEY` | secret | LLM API key (or `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `GEMINI_API_KEY`, which are also passed through) |
 | `PERIAPSIS_LLM_PROVIDER` | variable | `anthropic`, `openai` or `gemini` |
 | `PERIAPSIS_LLM_MODEL` | variable (optional) | model override |
 | `PERIAPSIS_SLACK_WEBHOOK` | secret (optional) | Slack notifications |
 | `PERIAPSIS_SMTP_HOST`, `PERIAPSIS_SMTP_PORT`, `PERIAPSIS_SMTP_USER`, `PERIAPSIS_SMTP_PASSWORD`, `PERIAPSIS_EMAIL_TO`, `PERIAPSIS_EMAIL_FROM` | secrets (optional) | email; the step is skipped when `PERIAPSIS_SMTP_HOST` is unset |
 
-The workflow requests `actions: write` so `apply` mode can dispatch the exception request workflow. If you set `PERIAPSIS_GITHUB_TOKEN`, it is used instead of the built-in token and must also have **Actions: Read and write** (in addition to **Dependabot alerts: Read**) for `apply` mode.
+Permissions: `actions: write` (restore the ledger artifact, dispatch single-alert exception requests), and `contents: write` + `pull-requests: write` (open the batch adjustment PR). If you set `PERIAPSIS_GITHUB_TOKEN`, the CLI uses it instead of the built-in token, so for single-alert `apply` it also needs **Actions: Read and write** in addition to **Dependabot alerts: Read**. The ledger restore and the batch PR always use the built-in token.
 
-The exception request workflow opens its PR with the built-in token, so as with manually requested exceptions, PR checks may not run on it automatically.
+PRs are opened with the built-in token: enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests** (also at the organization level, if set there). As with manually requested exceptions, PR checks may not run on these PRs automatically.
 
 ### Updating generated workflows
 

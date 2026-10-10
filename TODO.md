@@ -32,7 +32,7 @@
 - Triage: commit the triage report into the exception request PR so evidence outlives the 90-day artifact retention
 - Triage: route triage notifications per owner using `policy/vulnerability-owners.json`
 - Triage: lockfile dependency chains for non-npm ecosystems (pip, Go modules, Maven)
-- Triage: optional batch mode (e.g. `--all-breached`) with a cost cap
+- Triage: offer committing the ledger to a state branch as an alternative to the workflow artifact
 
 ## Reporting
 

@@ -35,7 +35,24 @@ import { initVulnerabilityPolicy } from '../lib/domains/vulnerability/initVulner
 import { evaluateAlerts, ALERT_STATUSES } from '../lib/domains/vulnerability/checkVulnerabilityPolicy.mjs';
 import { validateVulnerabilityExceptionOrThrow, validateVulnerabilityConfigBundle } from '../lib/domains/vulnerability/validateVulnerabilityPolicy.mjs';
 import { addVulnerabilityException, generateExceptionId } from '../lib/domains/vulnerability/exceptions/addVulnerabilityException.mjs';
-import { notifyTriageResult, notifyVulnerabilityOwners } from '../lib/domains/vulnerability/notifyVulnerabilityOwners.mjs';
+import {
+  notifyTriageDigest,
+  notifyTriageResult,
+  notifyVulnerabilityOwners
+} from '../lib/domains/vulnerability/notifyVulnerabilityOwners.mjs';
+import {
+  loadTriageLedger,
+  pruneLedger,
+  recordTriage,
+  saveTriageLedger
+} from '../lib/domains/vulnerability/triage/triageLedger.mjs';
+import { planTriageBatch, runTriageBatch } from '../lib/domains/vulnerability/triage/runTriageBatch.mjs';
+import {
+  buildTriageDigestMarkdown,
+  categorizeBatch,
+  digestHeadline,
+  isNotable
+} from '../lib/domains/vulnerability/triage/triageDigest.mjs';
 import { writeVulnerabilityReports } from '../lib/domains/vulnerability/generateVulnerabilityReport.mjs';
 import { buildPrCheckMarkdown, shouldFailPrCheck } from '../lib/domains/vulnerability/runVulnerabilityPrCheck.mjs';
 import {
@@ -59,7 +76,8 @@ import {
   TRIAGE_ACTIONS,
   applyTriageOutcome,
   decideTriageOutcome,
-  resolveTriagePolicy
+  resolveTriagePolicy,
+  stageTriageExceptions
 } from '../lib/domains/vulnerability/triage/applyTriageRecommendation.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -119,7 +137,10 @@ Init options:
   --production-only         Set policy dependencyTypes=["dependencies"]
 
 vulnerability triage options (AI-assisted, advisory only):
-  --alert <number>          Required Dependabot alert number
+  --alert <number>          Triage one Dependabot alert
+  --pending                 Triage open alerts that are new, changed, or stale per the ledger
+                            (scope and per-run cap from policy.triage.automation)
+  --ledger <file>           Triage ledger path (default: <policy-dir>/triage/ledger.json)
   --repo <owner/repo>       Repository (default: GITHUB_REPOSITORY or git remote)
   --provider <name>         anthropic | openai | gemini (default: PERIAPSIS_LLM_PROVIDER or detected key)
   --model <id>              Model override (default: PERIAPSIS_LLM_MODEL or provider default)
@@ -436,10 +457,143 @@ function positiveIntArg(args, key, fallback) {
   return value;
 }
 
+function actionsRunUrl() {
+  const { GITHUB_SERVER_URL, GITHUB_REPOSITORY, GITHUB_RUN_ID } = process.env;
+  return GITHUB_SERVER_URL && GITHUB_REPOSITORY && GITHUB_RUN_ID
+    ? `${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}`
+    : null;
+}
+
+function triageLedgerPath(root, policyDir, args) {
+  return args.ledger ? path.resolve(root, args.ledger) : path.join(policyDir, 'triage', 'ledger.json');
+}
+
+function contextLimitsFromArgs(args) {
+  return {
+    maxFiles: positiveIntArg(args, 'max-files', DEFAULT_CONTEXT_LIMITS.maxFiles),
+    maxChars: positiveIntArg(args, 'max-chars', DEFAULT_CONTEXT_LIMITS.maxChars)
+  };
+}
+
+function writeStepOutputs(outputs) {
+  if (!process.env.GITHUB_OUTPUT) return;
+  const lines = Object.entries(outputs).map(([k, v]) => `${k}=${String(v).replace(/[\r\n]+/g, ' ')}`);
+  fs.appendFileSync(process.env.GITHUB_OUTPUT, lines.join('\n') + '\n');
+}
+
+async function cmdVulnerabilityTriagePending(root, args) {
+  const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
+  const dryRun = Boolean(args['dry-run']);
+  let llm = null;
+  try {
+    llm = resolveLlmConfig({ provider: args.provider, model: args.model });
+  } catch (err) {
+    if (!dryRun) throw err;
+  }
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+  const now = new Date();
+
+  const ledgerPath = triageLedgerPath(root, policyDir, args);
+  const { ledger, warning } = loadTriageLedger(ledgerPath);
+  if (warning) console.error(warning);
+
+  console.error(`Fetching open Dependabot alerts for ${repo}...`);
+  const alerts = await fetchDependabotAlerts(owner, repoName, token);
+  const limits = contextLimitsFromArgs(args);
+  const plan = planTriageBatch({
+    root,
+    alerts,
+    policy,
+    exceptions,
+    ledger,
+    model: llm?.model || args.model || process.env.PERIAPSIS_LLM_MODEL || 'unknown',
+    now,
+    collectContext: (r, alert) => collectTriageContext(r, alert, limits)
+  });
+  console.error(
+    `${alerts.length} open alert(s): ${plan.eligibleCount} in scope, ${plan.fresh.length} package(s) still current, ` +
+      `${plan.selected.length} to triage now, ${plan.backlog.length} queued.`
+  );
+
+  if (dryRun) {
+    const describe = (g) => `- ${g.packageName} (${g.staleness}): ${g.alerts.map((a) => `#${a.number}`).join(', ')}`;
+    console.log(['# Triage plan', '', '## Selected', ...plan.selected.map(describe), '', '## Queued', ...plan.backlog.map(describe)].join('\n'));
+    return;
+  }
+
+  const evidenceUrl = actionsRunUrl();
+  const { processed, errors } = await runTriageBatch({
+    plan,
+    policy,
+    exceptions,
+    ledger,
+    llm,
+    now,
+    mode: args.mode,
+    evidenceRefFor: (alert) => evidenceUrl || `${path.relative(root, policyDir).split(path.sep).join('/') || '.'}/triage/alert-${alert.number}.md`
+  });
+
+  const stagedItems = processed.filter((p) => p.triage.outcome.status === 'staged');
+  try {
+    const records = stageTriageExceptions(policyDir, stagedItems.map((p) => p.triage.outcome.exception), now);
+    records.forEach((record, i) => {
+      stagedItems[i].triage.outcome.exceptionId = record.id;
+    });
+  } catch (err) {
+    for (const item of stagedItems) Object.assign(item.triage.outcome, { status: 'failed', error: err.message });
+    errors.push({ package: 'exception staging', alerts: stagedItems.map((p) => p.triage.alert.number), error: err.message });
+  }
+
+  for (const { triage } of processed) {
+    triage.outcome.evidenceUrl = evidenceUrl;
+    writeTriageReport(policyDir, triage);
+    recordTriage(ledger, triage, now);
+  }
+  const pruned = pruneLedger(ledger, alerts.map((a) => a.number));
+  saveTriageLedger(ledgerPath, ledger, now);
+  if (pruned.length) console.error(`Removed ${pruned.length} closed alert(s) from the triage ledger.`);
+
+  const categories = categorizeBatch({ processed, errors });
+  const headline = digestHeadline(repo, categories, plan);
+  const markdown = buildTriageDigestMarkdown({ repo, plan, categories, runUrl: evidenceUrl });
+  const digestPath = path.join(policyDir, 'triage', 'digest.md');
+  fs.mkdirSync(path.dirname(digestPath), { recursive: true });
+  fs.writeFileSync(digestPath, markdown);
+  console.log(markdown);
+  console.error(`Wrote ledger to ${ledgerPath}`);
+  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, markdown + '\n');
+
+  const channels = args['no-notify'] ? [] : resolveTriagePolicy(policy).notify;
+  const notable = isNotable(categories);
+  if (channels.includes('slack') && notable) {
+    try {
+      const sent = await notifyTriageDigest({ headline, categories, plan, runUrl: evidenceUrl });
+      console.error(sent ? 'Sent Slack digest.' : 'Slack digest skipped: PERIAPSIS_SLACK_WEBHOOK is not set.');
+    } catch (err) {
+      console.error(`Slack digest failed: ${err.message}`);
+      process.exitCode = 1;
+    }
+  }
+
+  writeStepOutputs({
+    email: channels.includes('email') && notable,
+    report: digestPath,
+    subject: headline,
+    applied: categories.applied.length,
+    triaged: processed.length
+  });
+
+  if (errors.length > 0) process.exitCode = 1;
+}
+
 async function cmdVulnerabilityTriage(root, args) {
+  if (args.pending) {
+    await cmdVulnerabilityTriagePending(root, args);
+    return;
+  }
   const alertNumber = positiveIntArg(args, 'alert', null);
   if (alertNumber === null) {
-    throw new Error('--alert <number> is required for "vulnerability triage".');
+    throw new Error('--alert <number> or --pending is required for "vulnerability triage".');
   }
   const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
   const dryRun = Boolean(args['dry-run']);
@@ -453,10 +607,7 @@ async function cmdVulnerabilityTriage(root, args) {
     console.error(`Note: alert #${alertNumber} is ${alert.state}; triaging anyway.`);
   }
 
-  const context = collectTriageContext(root, alert, {
-    maxFiles: positiveIntArg(args, 'max-files', DEFAULT_CONTEXT_LIMITS.maxFiles),
-    maxChars: positiveIntArg(args, 'max-chars', DEFAULT_CONTEXT_LIMITS.maxChars)
-  });
+  const context = collectTriageContext(root, alert, contextLimitsFromArgs(args));
   console.error(
     `Collected context: ${context.stats.includedFiles} usage file(s) from ${context.stats.filesScanned} scanned${context.stats.truncated ? ' (truncated)' : ''}.`
   );
@@ -469,10 +620,7 @@ async function cmdVulnerabilityTriage(root, args) {
   console.error(`Requesting triage from ${llm.provider} (${llm.model})...`);
   const triage = await triageVulnerabilityAlert({ alert, context, llm });
 
-  const evidenceUrl =
-    process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
-      ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
-      : null;
+  const evidenceUrl = actionsRunUrl();
   const evidenceRef =
     evidenceUrl || path.relative(root, path.join(policyDir, 'triage', `alert-${alertNumber}.md`)).split(path.sep).join('/');
   const outcome = decideTriageOutcome({ triage, alert, policy, exceptions, mode: args.mode, evidenceRef });
@@ -500,6 +648,12 @@ async function cmdVulnerabilityTriage(root, args) {
   triage.outcome = { ...outcome, status, ...(dispatch ? { dispatch } : {}), ...(error ? { error } : {}), evidenceUrl };
 
   const { jsonPath, mdPath } = writeTriageReport(policyDir, triage);
+  // Manual single-alert runs also count towards the ledger so scheduled runs don't repeat them.
+  const ledgerPath = triageLedgerPath(root, policyDir, args);
+  const { ledger, warning } = loadTriageLedger(ledgerPath);
+  if (warning) console.error(warning);
+  recordTriage(ledger, triage);
+  saveTriageLedger(ledgerPath, ledger);
   const markdown = buildTriageMarkdown(triage);
   console.log(markdown);
   console.error(`Wrote triage to ${jsonPath}`);
@@ -523,18 +677,14 @@ async function cmdVulnerabilityTriage(root, args) {
   }
 
   // Email is sent by the workflow (SMTP action) using these step outputs.
-  if (process.env.GITHUB_OUTPUT) {
-    const subject = `[${repo}] Triage alert #${alertNumber} (${triage.alert.package}): ${triage.dependabotSeverity} -> ${triage.recommendedSeverity} - ${headline}`;
-    fs.appendFileSync(
-      process.env.GITHUB_OUTPUT,
-      [
-        `email=${channels.includes('email')}`,
-        `report=${mdPath}`,
-        `subject=${subject.replace(/[\r\n]+/g, ' ')}`,
-        `status=${status}`
-      ].join('\n') + '\n'
-    );
-  }
+  writeStepOutputs({
+    email: channels.includes('email'),
+    report: mdPath,
+    subject: `[${repo}] Triage alert #${alertNumber} (${triage.alert.package}): ${triage.dependabotSeverity} -> ${triage.recommendedSeverity} - ${headline}`,
+    status,
+    applied: 0,
+    triaged: 1
+  });
 }
 
 function cmdVulnerabilityValidate(root, args) {
