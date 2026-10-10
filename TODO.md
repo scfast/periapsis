@@ -27,6 +27,12 @@
 - Consider exception renewal workflows before expiration
 - Consider historical trend reporting
 - Add interactive mode for `periapsis vulnerability exceptions add`
+- Triage: let the model request more files (bounded tool-use loop) to follow values across files and into parent packages
+- Triage: surface latest `policy/triage/alert-<n>.json` recommendations in `vulnerability report` and the daily Slack digest
+- Triage: commit the triage report into the exception request PR so evidence outlives the 90-day artifact retention
+- Triage: route triage notifications per owner using `policy/vulnerability-owners.json`
+- Triage: lockfile dependency chains for non-npm ecosystems (pip, Go modules, Maven)
+- Triage: optional batch mode (e.g. `--all-breached`) with a cost cap
 
 ## Reporting
 

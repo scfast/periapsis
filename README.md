@@ -375,9 +375,22 @@ Default `policy/vulnerability-policy.json`:
     "allowPackageScope": true,
     "allowRepoWideScope": true,
     "allowOrgWideScope": false
+  },
+  "triage": {
+    "mode": "recommend",
+    "notify": ["slack", "email"],
+    "apply": {
+      "minimumConfidence": "high",
+      "allowedReachability": ["not_reachable", "potentially_reachable"],
+      "approvedBy": ["periapsis-triage"],
+      "workflow": "periapsis-vulnerability-exception-request.yml",
+      "ref": null
+    }
   }
 }
 ```
+
+The `triage` block is optional (older policy files use these defaults); see [AI-Assisted Triage](#ai-assisted-triage).
 
 `slaDays` defines the maximum number of days an open alert at each severity level can remain unresolved before it is considered breached. `warningThresholdDays` controls how early the approaching-due warning state begins.
 
@@ -439,6 +452,16 @@ npx periapsis vulnerability exceptions add \
 
 Exception IDs are auto-generated in the format `VEX-<year>-<sequence>` (for example `VEX-2026-001`).
 
+#### Severity adjustments
+
+An alert-scoped exception can carry `adjustedSeverity` (CLI: `--adjusted-severity`) to re-rate an alert instead of waiving a breach. While it is active, SLA evaluation uses the adjusted severity, so the due date becomes `created_at + slaDays[adjustedSeverity]`, and reports show `medium (adjusted from high by VEX-2026-004)`.
+
+- Only downgrades are allowed: `adjustedSeverity` must be lower than every entry in `--severities`.
+- It matches only while Dependabot still reports one of `--severities`; if the advisory is re-rated, the adjustment stops applying.
+- It never acts as a breach waiver. When `acceptedUntil` passes, the alert reverts to its Dependabot severity.
+
+Severity adjustments are what triage `apply` mode requests (see below), but they can also be added by hand.
+
 ### Running Checks
 
 Evaluate current Dependabot alert SLA status:
@@ -472,6 +495,97 @@ Validate policy and exception files against schema:
 npx periapsis vulnerability validate
 ```
 
+### AI-Assisted Triage
+
+Dependabot severity comes from the advisory's generic CVSS score, not from how *your* code uses the package. `periapsis vulnerability triage` challenges that label for a single alert: it gathers evidence from the repository and asks an LLM to re-assess the risk in context.
+
+```sh
+export GITHUB_TOKEN=...                 # Dependabot alerts: Read
+export ANTHROPIC_API_KEY=...            # or OPENAI_API_KEY / GEMINI_API_KEY
+npx periapsis vulnerability triage --alert 42
+```
+
+What it does:
+
+1. Fetches Dependabot alert `#42` (advisory text, CVSS, CWEs, vulnerable range, patched version, dependency scope).
+2. Collects repository evidence locally:
+   - dependency chains from `package-lock.json` (npm), so transitive packages are traced to the top-level dependency that pulls them in;
+   - manifest lines that reference the package;
+   - every source file that imports the package (or its top-level parent), with line-numbered excerpts of the import and of the lines that use the imported names.
+3. Sends one structured request to the configured model and validates the JSON response.
+4. Prints a markdown summary (also appended to `$GITHUB_STEP_SUMMARY` in Actions) and writes `policy/triage/alert-<n>.json` and `.md`.
+
+The result contains `recommendedSeverity` (critical/high/medium/low), `severityChange` versus Dependabot (`downgrade`/`upgrade`/`unchanged`), `reachability` (`reachable`, `potentially_reachable`, `not_reachable`, `unknown`), `confidence`, a rationale, cited evidence (`file:line`), exploit preconditions and recommended actions.
+
+The model's output is advisory: triage itself never edits policy files. What happens next is controlled by `triage` in `vulnerability-policy.json`.
+
+#### Recommend and apply modes
+
+| `triage.mode` | Behaviour |
+| --- | --- |
+| `recommend` (default) | Sends the result to the configured channels. For a downgrade, the message includes the exact severity adjustment and expiry to request, and a ready-to-run `exceptions add` command. A developer decides and acts. |
+| `apply` | When every gate below passes, dispatches the **Periapsis Vulnerability Exception Request** workflow with the adjustment pre-filled. That workflow opens a pull request; the adjustment takes effect once someone reviews and merges it. When a gate fails, it falls back to `recommend` and the message lists why. |
+
+Override the mode for a single run with `--mode recommend|apply` (or the `mode` input on the triage workflow).
+
+Apply gates (all must pass):
+
+- the recommendation is a **downgrade** (upgrades and unchanged ratings are always sent as recommendations, and upgrades are flagged as needing attention);
+- `result.confidence` is at least `triage.apply.minimumConfidence` (default `high`);
+- `result.reachability` is in `triage.apply.allowedReachability` (default `not_reachable`, `potentially_reachable`);
+- the alert is open and has no active severity adjustment already;
+- the adjusted SLA has not already elapsed.
+
+What `apply` requests:
+
+| Exception field | Value |
+| --- | --- |
+| `type` / `alertNumber` | `alert` / the triaged alert |
+| `severities` | the Dependabot severity |
+| `adjustedSeverity` | the recommended severity |
+| `acceptedUntil` | `min(alert created_at + slaDays[adjustedSeverity], now + exceptions.maxDurationDays)` |
+| `reason` | provider/model, severity change, reachability, confidence and the model's summary |
+| `evidenceRef` | link to the triage workflow run (job summary + `vulnerability-triage-<n>` artifact); `policy/triage/alert-<n>.md` when run locally |
+| `approvedBy` | `triage.apply.approvedBy` (default `periapsis-triage`); the human approval is the PR review |
+
+`triage.apply.workflow` names the workflow to dispatch and `triage.apply.ref` the branch to run it on (default: the branch the triage ran on, else the repository default branch).
+
+#### Notifications
+
+`triage.notify` lists the channels for triage results (default `["slack", "email"]`; `[]` disables them, as does `--no-notify` for one run):
+
+- `slack`: posted by the CLI to `PERIAPSIS_SLACK_WEBHOOK` (skipped with a log line when unset).
+- `email`: sent by the triage workflow's SMTP step using the same `PERIAPSIS_SMTP_*` / `PERIAPSIS_EMAIL_*` secrets as the daily check; the body is the triage markdown. In GitHub Actions the CLI writes `email`, `subject`, `report` and `status` step outputs for that step.
+
+To act on a recommendation by hand, run the Exception Request workflow or the command included in the message.
+
+#### LLM configuration
+
+| Variable / flag | Purpose |
+| --- | --- |
+| `PERIAPSIS_LLM_PROVIDER` / `--provider` | `anthropic` (alias `claude`), `openai`, or `gemini` (alias `google`). Optional when a provider-specific key below is set. |
+| `PERIAPSIS_LLM_API_KEY` | API key for the selected provider. Requires a provider to be set. |
+| `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY` / `GOOGLE_API_KEY` | Provider-specific fallbacks. If no provider is set, the first one found (in this order) is used. |
+| `PERIAPSIS_LLM_MODEL` / `--model` | Model override. Defaults: `claude-opus-5-5`, `gpt-5`, `gemini-2.5-pro`. |
+
+API keys are read only from the environment, never from CLI flags.
+
+Other flags: `--mode recommend|apply`, `--no-notify`, `--repo owner/repo`, `--max-files <n>` (default 20) and `--max-chars <n>` (default 60000) to bound how much code is sent, and `--dry-run` to print the exact prompt without calling a model (no LLM key needed).
+
+#### Data sent to the provider
+
+Triage sends the advisory text plus code excerpts from your repository to a third-party LLM API. Before enabling it, make sure that is acceptable under your organisation's data-handling policy, and use `--dry-run` to inspect exactly what would be sent. To limit exposure:
+
+- only git-tracked source and manifest files are considered (falls back to a directory walk outside git);
+- `node_modules`, build output, vendored directories and likely-secret files (`.env*`, `*.pem`, `*.key`, `.npmrc`, credentials files, SSH keys) are always excluded;
+- only excerpts around import and usage sites are sent, capped by `--max-files` / `--max-chars`.
+
+#### Limitations
+
+- Evidence gathering is static and text-based: it follows imported names within a file, but not values passed across files or into a parent package's internals. When evidence is thin, the model is instructed to answer `unknown` / low confidence rather than guess.
+- Dependency chains are computed for npm only; other ecosystems still get manifest and usage-site evidence.
+- LLM output can be wrong. Treat the recommendation as a starting point for review, not a decision.
+
 ### Required Environment Variables
 
 - `GITHUB_TOKEN` (required for `check`, `pr-check`, `notify`, `report`): needs read access to Dependabot alerts.
@@ -490,6 +604,8 @@ npx periapsis vulnerability validate
   | Classic PAT | `repo` scope covers it, though broader than needed. |
 
   Fine-grained PAT setup: resource owner → your org, repository access → the target repo, repository permissions → **Dependabot alerts: Read**. If your org requires approval for fine-grained PATs, approve it under org Settings → Personal access tokens.
+
+- `PERIAPSIS_LLM_PROVIDER`, `PERIAPSIS_LLM_API_KEY`, `PERIAPSIS_LLM_MODEL` (optional, `triage` only): see [AI-Assisted Triage](#ai-assisted-triage).
 
 - `PERIAPSIS_SLACK_WEBHOOK` (optional): Slack incoming webhook URL used by `notify` to post breach summaries. `VULN_SLA_SLACK_WEBHOOK` is also accepted as an alias.
 
@@ -563,12 +679,13 @@ Non-interactive flags for `license allow add`:
 ### Vulnerability domain
 
 ```
-periapsis vulnerability init [--policy-dir policy] [--force]
+periapsis vulnerability init [--policy-dir policy] [--force | --workflows-only]
 periapsis vulnerability check [--report] [--repo owner/repo]
 periapsis vulnerability pr-check [--repo owner/repo]
 periapsis vulnerability notify [--repo owner/repo]
 periapsis vulnerability report [--repo owner/repo]
 periapsis vulnerability validate [--policy-dir policy]
+periapsis vulnerability triage --alert <n> [--repo owner/repo] [--mode recommend|apply] [--no-notify] [--provider <name>] [--model <id>] [--max-files <n>] [--max-chars <n>] [--dry-run]
 periapsis vulnerability exceptions add --non-interactive ...
 ```
 
@@ -588,6 +705,7 @@ Non-interactive flags for `vulnerability exceptions add`:
 --approved-by <csv>
 --evidence-ref <value>
 --created-by <name>
+--adjusted-severity <severity>  (alert type only; must be lower than --severities)
 ```
 
 ### Legacy aliases (still supported)
@@ -695,7 +813,29 @@ Required secrets for email:
     GITHUB_TOKEN: ${{ secrets.PERIAPSIS_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
 ```
 
-`periapsis vulnerability init` writes all three workflow files automatically.
+### Vulnerability triage (manual dispatch)
+
+`periapsis-vulnerability-triage.yml` runs from **Actions → Periapsis Vulnerability Triage → Run workflow** with an alert number and an optional `mode` override (`policy`, `recommend`, `apply`). It writes the result to the job summary, uploads `policy/triage/` as an artifact, posts to Slack, emails the report when SMTP is configured, and in `apply` mode dispatches the exception request workflow.
+
+Setup:
+
+| Name | Kind | Purpose |
+| --- | --- | --- |
+| `PERIAPSIS_LLM_API_KEY` | secret | LLM API key |
+| `PERIAPSIS_LLM_PROVIDER` | variable | `anthropic`, `openai` or `gemini` |
+| `PERIAPSIS_LLM_MODEL` | variable (optional) | model override |
+| `PERIAPSIS_SLACK_WEBHOOK` | secret (optional) | Slack notifications |
+| `PERIAPSIS_SMTP_HOST`, `PERIAPSIS_SMTP_PORT`, `PERIAPSIS_SMTP_USER`, `PERIAPSIS_SMTP_PASSWORD`, `PERIAPSIS_EMAIL_TO`, `PERIAPSIS_EMAIL_FROM` | secrets (optional) | email; the step is skipped when `PERIAPSIS_SMTP_HOST` is unset |
+
+The workflow requests `actions: write` so `apply` mode can dispatch the exception request workflow. If you set `PERIAPSIS_GITHUB_TOKEN`, it is used instead of the built-in token and must also have **Actions: Read and write** (in addition to **Dependabot alerts: Read**) for `apply` mode.
+
+The exception request workflow opens its PR with the built-in token, so as with manually requested exceptions, PR checks may not run on it automatically.
+
+### Updating generated workflows
+
+`periapsis vulnerability init --workflows-only` rewrites the four workflow files from the installed version's templates without touching `policy/`. Run it after upgrading Periapsis: triage `apply` mode needs the current exception request workflow (it adds the `adjustedSeverity` input and a per-run PR branch), and dispatching to an older copy fails with `Unexpected inputs provided`.
+
+`periapsis vulnerability init` writes all four workflow files automatically.
 
 If you add an inline `node -e` follow-up check in GitHub Actions, wrap the JavaScript in single quotes. Backticks inside a double-quoted shell string are treated as command substitution by `bash`.
 

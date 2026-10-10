@@ -35,10 +35,32 @@ import { initVulnerabilityPolicy } from '../lib/domains/vulnerability/initVulner
 import { evaluateAlerts, ALERT_STATUSES } from '../lib/domains/vulnerability/checkVulnerabilityPolicy.mjs';
 import { validateVulnerabilityExceptionOrThrow, validateVulnerabilityConfigBundle } from '../lib/domains/vulnerability/validateVulnerabilityPolicy.mjs';
 import { addVulnerabilityException, generateExceptionId } from '../lib/domains/vulnerability/exceptions/addVulnerabilityException.mjs';
-import { notifyVulnerabilityOwners } from '../lib/domains/vulnerability/notifyVulnerabilityOwners.mjs';
+import { notifyTriageResult, notifyVulnerabilityOwners } from '../lib/domains/vulnerability/notifyVulnerabilityOwners.mjs';
 import { writeVulnerabilityReports } from '../lib/domains/vulnerability/generateVulnerabilityReport.mjs';
 import { buildPrCheckMarkdown, shouldFailPrCheck } from '../lib/domains/vulnerability/runVulnerabilityPrCheck.mjs';
-import { fetchDependabotAlerts, detectRepo } from '../lib/github/dependabotClient.mjs';
+import {
+  detectRepo,
+  dispatchWorkflow,
+  fetchDefaultBranch,
+  fetchDependabotAlert,
+  fetchDependabotAlerts
+} from '../lib/github/dependabotClient.mjs';
+import { collectTriageContext, DEFAULT_CONTEXT_LIMITS } from '../lib/domains/vulnerability/triage/collectTriageContext.mjs';
+import {
+  TRIAGE_SYSTEM_PROMPT,
+  buildTriagePrompt,
+  buildTriageMarkdown,
+  outcomeHeadline,
+  triageVulnerabilityAlert,
+  writeTriageReport
+} from '../lib/domains/vulnerability/triage/triageVulnerabilityAlert.mjs';
+import { resolveLlmConfig } from '../lib/llm/llmClient.mjs';
+import {
+  TRIAGE_ACTIONS,
+  applyTriageOutcome,
+  decideTriageOutcome,
+  resolveTriagePolicy
+} from '../lib/domains/vulnerability/triage/applyTriageRecommendation.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -95,6 +117,18 @@ Init options:
   --force                   Overwrite existing policy settings
   --dep-types <csv>         Set policy dependencyTypes
   --production-only         Set policy dependencyTypes=["dependencies"]
+
+vulnerability triage options (AI-assisted, advisory only):
+  --alert <number>          Required Dependabot alert number
+  --repo <owner/repo>       Repository (default: GITHUB_REPOSITORY or git remote)
+  --provider <name>         anthropic | openai | gemini (default: PERIAPSIS_LLM_PROVIDER or detected key)
+  --model <id>              Model override (default: PERIAPSIS_LLM_MODEL or provider default)
+  --max-files <n>           Max usage files sent to the model (default: 20)
+  --max-chars <n>           Max code excerpt characters sent (default: 60000)
+  --dry-run                 Print the prompt that would be sent; do not call the model
+  --mode <recommend|apply>  Override policy.triage.mode for this run
+  --no-notify               Skip Slack/email notifications for this run
+  Env: GITHUB_TOKEN, PERIAPSIS_LLM_API_KEY (or ANTHROPIC_API_KEY / OPENAI_API_KEY / GEMINI_API_KEY)
 
 Migration options:
   --from <file>             Legacy config path (default: allowedConfig.json)
@@ -281,7 +315,12 @@ function resolveRepoAndToken(args) {
 async function cmdVulnerabilityInit(root, args) {
   const policyDirName = args['policy-dir'] || 'policy';
   const force = Boolean(args.force);
-  await initVulnerabilityPolicy(root, { policyDir: policyDirName, force });
+  const workflowsOnly = Boolean(args['workflows-only']);
+  await initVulnerabilityPolicy(root, { policyDir: policyDirName, force, workflowsOnly });
+  if (workflowsOnly) {
+    console.log(`Vulnerability workflows updated in ${path.resolve(root, '.github/workflows')}`);
+    return;
+  }
   const resolvedPolicyDir = path.resolve(root, policyDirName);
   console.log(`Vulnerability policy initialised in ${resolvedPolicyDir}`);
 }
@@ -330,6 +369,7 @@ async function cmdVulnerabilityExceptionsAdd(root, args) {
   const approvedBy = parseApprovers(args['approved-by']);
   const evidenceRef = String(args['evidence-ref'] || '').trim() || undefined;
   const createdBy = String(args['created-by'] || '').trim() || undefined;
+  const adjustedSeverity = String(args['adjusted-severity'] || '').trim() || undefined;
 
   const currentYear = new Date().getFullYear();
   const id = generateExceptionId(exceptions, currentYear);
@@ -343,6 +383,7 @@ async function cmdVulnerabilityExceptionsAdd(root, args) {
     ...(alertNumber !== undefined ? { alertNumber } : {}),
     ...(dependencyScope ? { dependencyScope } : {}),
     ...(severities.length > 0 ? { appliesToSeverities: severities } : {}),
+    ...(adjustedSeverity ? { adjustedSeverity } : {}),
     reason,
     ...(acceptedUntil ? { acceptedUntil } : {}),
     ...(approvedBy.length > 0 ? { approvedBy } : {}),
@@ -384,6 +425,116 @@ async function cmdVulnerabilityReport(root, args) {
   const { jsonPath, mdPath } = await writeVulnerabilityReports(policyDir, evaluated, policy, repo);
   console.log(`Wrote report to ${jsonPath}`);
   console.log(`Wrote report to ${mdPath}`);
+}
+
+function positiveIntArg(args, key, fallback) {
+  if (args[key] === undefined) return fallback;
+  const value = Number(args[key]);
+  if (!Number.isInteger(value) || value <= 0) {
+    throw new Error(`--${key} must be a positive integer.`);
+  }
+  return value;
+}
+
+async function cmdVulnerabilityTriage(root, args) {
+  const alertNumber = positiveIntArg(args, 'alert', null);
+  if (alertNumber === null) {
+    throw new Error('--alert <number> is required for "vulnerability triage".');
+  }
+  const { policy, exceptions, policyDir } = loadVulnerabilityConfig(root, args);
+  const dryRun = Boolean(args['dry-run']);
+  // Resolve the LLM config before any network calls so a missing key fails fast.
+  const llm = dryRun ? null : resolveLlmConfig({ provider: args.provider, model: args.model });
+  const { token, repo, owner, repoName } = resolveRepoAndToken(args);
+
+  console.error(`Fetching Dependabot alert #${alertNumber} for ${repo}...`);
+  const alert = await fetchDependabotAlert(owner, repoName, alertNumber, token);
+  if (alert.state !== 'open') {
+    console.error(`Note: alert #${alertNumber} is ${alert.state}; triaging anyway.`);
+  }
+
+  const context = collectTriageContext(root, alert, {
+    maxFiles: positiveIntArg(args, 'max-files', DEFAULT_CONTEXT_LIMITS.maxFiles),
+    maxChars: positiveIntArg(args, 'max-chars', DEFAULT_CONTEXT_LIMITS.maxChars)
+  });
+  console.error(
+    `Collected context: ${context.stats.includedFiles} usage file(s) from ${context.stats.filesScanned} scanned${context.stats.truncated ? ' (truncated)' : ''}.`
+  );
+
+  if (dryRun) {
+    console.log(`# System prompt\n\n${TRIAGE_SYSTEM_PROMPT}\n\n# User prompt\n\n${buildTriagePrompt(alert, context)}`);
+    return;
+  }
+
+  console.error(`Requesting triage from ${llm.provider} (${llm.model})...`);
+  const triage = await triageVulnerabilityAlert({ alert, context, llm });
+
+  const evidenceUrl =
+    process.env.GITHUB_SERVER_URL && process.env.GITHUB_REPOSITORY && process.env.GITHUB_RUN_ID
+      ? `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`
+      : null;
+  const evidenceRef =
+    evidenceUrl || path.relative(root, path.join(policyDir, 'triage', `alert-${alertNumber}.md`)).split(path.sep).join('/');
+  const outcome = decideTriageOutcome({ triage, alert, policy, exceptions, mode: args.mode, evidenceRef });
+
+  let status = 'recommended';
+  let dispatch;
+  let error;
+  if (outcome.action === TRIAGE_ACTIONS.APPLY) {
+    try {
+      dispatch = await applyTriageOutcome(outcome, {
+        owner,
+        repoName,
+        token,
+        policy,
+        dispatchWorkflow,
+        fetchDefaultBranch
+      });
+      status = 'dispatched';
+    } catch (err) {
+      status = 'failed';
+      error = err.message;
+      process.exitCode = 1;
+    }
+  }
+  triage.outcome = { ...outcome, status, ...(dispatch ? { dispatch } : {}), ...(error ? { error } : {}), evidenceUrl };
+
+  const { jsonPath, mdPath } = writeTriageReport(policyDir, triage);
+  const markdown = buildTriageMarkdown(triage);
+  console.log(markdown);
+  console.error(`Wrote triage to ${jsonPath}`);
+  console.error(`Wrote triage to ${mdPath}`);
+
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, markdown + '\n');
+  }
+
+  const headline = outcomeHeadline(triage);
+  const channels = args['no-notify'] ? [] : resolveTriagePolicy(policy).notify;
+
+  if (channels.includes('slack')) {
+    try {
+      const sent = await notifyTriageResult(triage, headline);
+      console.error(sent ? 'Sent Slack notification.' : 'Slack notification skipped: PERIAPSIS_SLACK_WEBHOOK is not set.');
+    } catch (err) {
+      console.error(`Slack notification failed: ${err.message}`);
+      process.exitCode = 1;
+    }
+  }
+
+  // Email is sent by the workflow (SMTP action) using these step outputs.
+  if (process.env.GITHUB_OUTPUT) {
+    const subject = `[${repo}] Triage alert #${alertNumber} (${triage.alert.package}): ${triage.dependabotSeverity} -> ${triage.recommendedSeverity} - ${headline}`;
+    fs.appendFileSync(
+      process.env.GITHUB_OUTPUT,
+      [
+        `email=${channels.includes('email')}`,
+        `report=${mdPath}`,
+        `subject=${subject.replace(/[\r\n]+/g, ' ')}`,
+        `status=${status}`
+      ].join('\n') + '\n'
+    );
+  }
 }
 
 function cmdVulnerabilityValidate(root, args) {
@@ -841,6 +992,8 @@ async function handleVulnerabilityDomain(root, args, subCmd, subSubCmd) {
     await cmdVulnerabilityPrCheck(root, args);
   } else if (subCmd === 'report') {
     await cmdVulnerabilityReport(root, args);
+  } else if (subCmd === 'triage') {
+    await cmdVulnerabilityTriage(root, args);
   } else if (subCmd === 'validate') {
     cmdVulnerabilityValidate(root, args);
   } else {
