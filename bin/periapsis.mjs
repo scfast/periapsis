@@ -546,7 +546,8 @@ async function cmdVulnerabilityTriagePending(root, args) {
 
   for (const { triage } of processed) {
     triage.outcome.evidenceUrl = evidenceUrl;
-    writeTriageReport(policyDir, triage);
+    // Verdicts re-used from the ledger already have a full report in the run that produced them.
+    if (!triage.fromLedger) writeTriageReport(policyDir, triage);
     recordTriage(ledger, triage, now);
   }
   const pruned = pruneLedger(ledger, alerts.map((a) => a.number));

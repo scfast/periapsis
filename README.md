@@ -578,8 +578,12 @@ Each run:
 3. Groups them by package and makes **one LLM call per package** covering all its advisories, since they share the same code evidence.
 4. Skips packages whose previous verdicts still hold, using the **triage ledger** (`policy/triage/ledger.json`). A package is re-triaged when an alert is new, when its fingerprint changed, or when its verdict is older than `retriageAfterDays` (default 30). The fingerprint covers the advisory text, severity and `updated_at`, the installed versions and dependency chains, the code evidence, the model, and the prompt version.
 5. Ranks what is due (never triaged, then changed, then expired; within each, highest severity, then closest to SLA breach) and triages at most `maxTriagesPerRun` packages (default 10). The rest are queued for later runs.
-6. Writes per-alert reports and a run digest (`policy/triage/digest.md`, also the job summary). It sends one Slack digest, and email if configured, only when something notable happened: new or changed verdicts, applied adjustments, regressions or errors.
+6. Writes per-alert reports and a run digest. The digest groups results as: applied, regressions, eligible to auto-apply (recommend mode), needs review (with the blocking gate), downgrades that can't be applied (e.g. the adjusted SLA has already passed), and confirmed. It is written to `policy/triage/digest.md` and the job summary. It sends one Slack digest, and email if configured, only when something notable happened: new or changed verdicts, applied adjustments, regressions or errors.
 7. In `apply` mode, writes every approved adjustment to `policy/vulnerability-exceptions.json`. The workflow then opens **a single pull request** for the run. Opening one PR per alert would conflict on that file.
+
+Switching `triage.mode` from `recommend` to `apply` takes effect on the next run without re-triaging. Verdicts that are still current but were only recommended are re-checked against the apply gates from the ledger, and staged with no LLM call. Recommend-mode digests list these under **Eligible to auto-apply**.
+
+An adjustment is proposed only once. The ledger marks it as proposed when it is staged or dispatched, and later runs won't propose it again while the recommended severity stays the same, whether the PR is still open or was closed without merging. Merged adjustments are already covered by the active-adjustment gate.
 
 Manual `--alert` runs are recorded in the ledger too, so the schedule won't repeat them. Preview a run with `--pending --dry-run`; it needs no LLM key and writes nothing.
 
